@@ -25,17 +25,18 @@
 .slider:before{
 	text-align: center;
 	position: absolute;
-	content : "\f186";
+	content : "\f6e2";
 	font-family: "Font Awesome 5 Free";
 	font-size: 22px;
 	font-weight: 900;
 	height: 30px;
 	width: 30px;
-	left: 0px;
-	bottom: 1px;
-	background-color: white;
+	left: 3px;
+	bottom: 0px;
+	background-color: black;
 	transition: 0.4s;
 	border-radius: 50px;
+	color: white;
 }
 
 input:checked + .slider{
