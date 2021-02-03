@@ -1,0 +1,76 @@
+:root[web-theme='light']{
+    --bgColor: white;
+    --borderColor: #e1e4e8;
+    --h1Color: black;
+    --infoColor: #586069;
+}
+:root[web-theme='dark']{
+    --bgColor: #0d1117;
+    --borderColor: #30363d;
+    --h1Color: #c9d1d9;
+    --infoColor: #8b949e;
+}
+* { transition: background-color 1s, color 0.1s, border 0.5s; }
+
+
+body{ background-color: var(--bgColor); }
+a{ text-decoration: none; }
+a:hover{ text-decoration: none; }
+hr{
+    border: 1px solid;
+    margin-top: 25px;
+}
+
+
+/* header css */
+#header{
+    height: 200px;
+}
+/**************/
+
+
+/* menu css */
+#menu{
+    margin-right: 20px;
+}
+/************/
+
+
+/* contents css */
+#contents{
+    margin-top: 70px;
+}
+
+
+.project-box{
+    border: 1px solid var(--borderColor);
+    width: 520px;
+    height: auto;
+    border-radius : 10px;
+
+    padding: 20px 20px;
+    margin-bottom: 20px;
+}
+.project-box > h1{
+    color: var(--h1Color);
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+
+.project-title{
+    display:inline-block;
+    font-size: 20px;
+    width: 320px;
+    font-weight: bold;
+}
+.project-writer{
+    display: inline-block;
+    width: 70px;
+
+    color: var(--infoColor);
+}
+.project-date{
+    color: var(--infoColor);
+}
+/************/
