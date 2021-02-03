@@ -1,17 +1,26 @@
-body{
-    background-color: #0d1117;
-    /* background-color: #2f374a; */
+:root[web-theme='light']{
+    --bgColor: white;
+    --borderColor: #e1e4e8;
+    --h1Color: black;
+    --infoColor: #586069;
 }
-a{
-    text-decoration: none;
+:root[web-theme='dark']{
+    --bgColor: #0d1117;
+    --borderColor: #30363d;
+    --h1Color: #c9d1d9;
+    --infoColor: #8b949e;
 }
-a:hover{
-    text-decoration: none;
-}
+* { transition: background-color 1s, color 0.1s, border 0.5s; }
+
+
+body{ background-color: var(--bgColor); }
+a{ text-decoration: none; }
+a:hover{ text-decoration: none; }
 hr{
     border: 1px solid;
     margin-top: 25px;
 }
+
 
 /* header css */
 #header{
@@ -34,7 +43,7 @@ hr{
 
 
 .project-box{
-    border: 1px solid #30363d;
+    border: 1px solid var(--borderColor);
     width: 520px;
     height: auto;
     border-radius : 10px;
@@ -43,7 +52,7 @@ hr{
     margin-bottom: 20px;
 }
 .project-box > h1{
-    color: #c9d1d9;
+    color: var(--h1Color);
     margin-bottom: 50px;
     text-align: center;
 }
@@ -53,14 +62,15 @@ hr{
     display:inline-block;
     font-size: 20px;
     width: 320px;
+    font-weight: bold;
 }
 .project-writer{
     display: inline-block;
     width: 70px;
 
-    color: #8b949e;
+    color: var(--infoColor);
 }
 .project-date{
-    color: #8b949e;
+    color: var(--infoColor);
 }
 /************/
