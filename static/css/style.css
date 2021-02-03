@@ -1,0 +1,35 @@
+:root[web-theme='light']{
+    --bgColor: white;
+    --borderColor: #e1e4e8;
+    --h1Color: black;
+    --infoColor: #586069;
+
+    --filterBtnColor: #f3f4f6;
+    --filterBtnFont: #24292e;
+
+    --headerFont: black;
+}
+:root[web-theme='dark']{
+    --bgColor: #0d1117; /* #16151f */
+    --borderColor: #30363d;
+    --h1Color: #c9d1d9;
+    --infoColor: #8b949e;
+
+    --filterBtnColor: #21262d;
+    --filterBtnFont: white;
+
+    --headerFont: white;
+}
+* { transition: background-color 1s, color 0.1s, border 0.5s; }
+
+
+body{ 
+    background-color: var(--bgColor);
+    /* margin: 20px 350px; */
+}
+a{ text-decoration: none; }
+a:hover{ text-decoration: none; }
+hr{
+    border: 1px solid;
+    margin-top: 25px;
+}

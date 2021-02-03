@@ -1,147 +1,201 @@
 <html web-theme="<%=web_theme %>">
     <head>
+        <title>
+            Project Manager
+        </title>
         <link rel="stylesheet" href="/css/bootstrap.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap" rel="stylesheet">
 
         <!-- custom css -->
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/darkwhite.css">
         <link rel="stylesheet" href="/css/bootstrap-custom.css">
         <!-- ---------- -->
 
     </head>
     <body>
-        <!-- <div id="header">
-            
-        </div> -->
-        <div id="menu">
-            <div class="dark-mode float-right">
-                <button type="button" class="btn btn-success">All</button>
-                <button type="button" class="btn btn-secondary">Casper</button>
-                <button type="button" class="btn btn-secondary">Personal</button>
-                <label class="switch">
-                    <input type="checkbox" <%= check ? "checked" : "" %>>
-                    <span class="slider round"></span>
-                </label>
-
+        <div id="header">
+            <div class="container">
+                <div class="header-title">
+                    <a href="/">Pr<i class="fas fa-ghost"></i>ject Manager</a>
+                </div>
+                <div class="header-menu float-right">
+                    <button type="button" class="btn btn-secondary">Login</button>
+                </div>
+                <div class="header-img">
+                    <div class="content">
+                        <h1>Project Manager</h1>
+                        <h5>For Casper</h5>
+                    </div>
+                    <div class="img-cover"></div>
+                </div>
             </div>
         </div>
-        <Br>
+        <div id="menu">
+            <div class="container">
+                <div class="dark-mode float-right">
+                    <button type="button" class="btn btn-success">All</button>
+                    <button type="button" class="btn btn-secondary">Casper</button>
+                    <button type="button" class="btn btn-secondary">Personal</button>
+                    <label class="switch">
+                        <input type="checkbox" <%= check ? "checked" : "" %>>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <Br><Br>
         <div id="contents">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm">
+                    <div class="col-sm-4">
                         <div class="project-box">
-                            <h1>popular</h1>
+                            <h3>popular</h3>
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
 
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
 
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm-4">
                         <div class="project-box">
-                            <h1>recent comment</h1>
+                            <h3>recent comment</h3>
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
 
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
 
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                         </div>
                         <div class="project-box">
-                            <h1>recent Q&A</h1>
+                            <h3>recent Q&A</h3>
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
 
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
 
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm-4">
                         <div class="project-box">
-                            <h1>2021</h1>
+                            <h3>2021</h3>
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
 
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
                             
-                            <h1>2021</h1>
+                            <h3>2021</h3>
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
 
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                             <hr>
                             
                             <div class="project-list">
-                                <span class="project-title"><a href="#">인공지능에 대하여</a></span>
-                                <span class="project-writer">김종민</span>
-                                <span class="project-date">2021.02.03</span>
+                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <div class="project-info">
+                                    <span class="project-writer">김종민</span>
+                                    <span class="project-date">2021.02.03</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                This project is <a href="https://github.com/CASPER-REPSAC/project-manager">open source.</a>
             </div>
         </div>
         <script src="/js/darkmode.js"></script>

@@ -1,0 +1,165 @@
+<html web-theme="<%=web_theme %>">
+    <head>
+        <title>
+            Project Manager
+        </title>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
+        <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+        <!-- custom css -->
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/post.css">
+        <link rel="stylesheet" href="/css/modal.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/darkwhite.css">
+        <link rel="stylesheet" href="/css/bootstrap-custom.css">
+        <!-- ---------- -->
+
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <div class="header-title">
+                    <a href="/">Pr<i class="fas fa-ghost"></i>ject Manager</a>
+                </div>
+                <div class="header-menu float-right">
+                    <button type="button" class="btn btn-secondary">Login</button>
+                </div>
+            </div>
+        </div>
+        <div id="menu">
+            <div class="container">
+                <div class="dark-mode float-right">
+                    <label class="switch">
+                        <input type="checkbox" <%= check ? "checked" : "" %>>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <Br><Br>
+        <div id="contents">
+            <div class="container contents-box">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="project-title">
+                            <h1><i class="fas fa-ghost"></i> 인공지능 이란 무엇인가</h1>
+                        </div>
+                        <div class="project-subtitle">
+                            <h4>인공지능 이란 무엇인가</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="project-writer">김종민</span>
+                        <span class="project-date">2021.02.03</span>
+                        <div class="project-tag">
+                            <a href="#" class="badge badge-secondary">web</a>
+                            <a href="#" class="badge badge-secondary">pwn</a>
+                            <a href="#" class="badge badge-secondary">reversing</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row project-content">
+                    <div class="col-sm-8">
+                        <div class="project-section">
+                            <div class="project-section-title">
+                                <h3><i class="fas fa-angle-right"></i> 인공지능 종류</h3>
+                            </div>
+                            <div class="project-section-image">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <a href="/image/sample.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4" data-title="모달 제목" data-footer="모달 푸터내용">
+                                                <img src="/image/sample.jpg" class="img-fluid rounded">
+                                            </a>
+                                            <a href="/image/sample.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                                <img src="/image/sample.jpg" class="img-fluid rounded">
+                                            </a>
+                                            <a href="/image/sample.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                                <img src="/image/sample.jpg" class="img-fluid rounded">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="project-section-info">
+                            인공 지능에 대한 설명은 다음과 같습니다.
+                        </div>
+                    </div>
+                </div>
+                <div class="row project-content">
+                    <div class="col-sm-8">
+                        <div class="project-section">
+                            <div class="project-section-title">
+                                <h3><i class="fas fa-angle-right"></i> 인공지능 종류</h3>
+                            </div>
+                            <div class="project-section-image">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <a href="/image/sample.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4" data-title="모달 제목" data-footer="모달 푸터내용">
+                                                <img src="/image/sample.jpg" class="img-fluid rounded">
+                                            </a>
+                                            <a href="/image/sample.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                                <img src="/image/sample.jpg" class="img-fluid rounded">
+                                            </a>
+                                            <a href="/image/sample.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                                <img src="/image/sample.jpg" class="img-fluid rounded">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="project-section-info">
+                            인공 지능에 대한 설명은 다음과 같습니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row project-content">
+                    <div class="col-sm-12">
+                        <div class="project-opinion">
+                            <h3><i class="fas fa-comment-dots"></i> my opinion</h3>
+                            <span class="project-opinion-contents">
+                                인공지능을 공부하면서... 그래서... 그렇다고....아니....모르겠다고...응애...
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container contents-box">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="comments">
+                            <span><i class="fas fa-comments"></i> Comments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                This project is <a href="https://github.com/CASPER-REPSAC/project-manager">open source.</a>
+            </div>
+        </div>
+        <script src="/js/darkmode.js"></script>
+        <script src="/js/modal.js"></script>
+    </body>
+</html>

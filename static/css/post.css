@@ -1,0 +1,26 @@
+.contents-box{
+    border: 1px solid var(--borderColor);
+    border-radius : 10px;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
+
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.project-title, .project-subtitle{
+    font-family: 'Do Hyeon', sans-serif;
+    color: var(--h1Color);
+}
+
+.project-content{
+    margin-top: 70px;
+}
+
+.project-section-title > h3,  .project-section-info, .project-opinion, .comments > span{
+    font-family: 'Nanum Gothic', sans-serif;
+    color: var(--h1Color);
+}
+
+.project-opinion-contents{
+    margin-left: 30px;
+}
