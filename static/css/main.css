@@ -3,12 +3,18 @@
     --borderColor: #e1e4e8;
     --h1Color: black;
     --infoColor: #586069;
+
+    --filterBtnColor: #f3f4f6;
+    --filterBtnFont: #24292e;
 }
 :root[web-theme='dark']{
     --bgColor: #0d1117;
     --borderColor: #30363d;
     --h1Color: #c9d1d9;
     --infoColor: #8b949e;
+
+    --filterBtnColor: #21262d;
+    --filterBtnFont: white;
 }
 * { transition: background-color 1s, color 0.1s, border 0.5s; }
 
@@ -31,14 +37,15 @@ hr{
 
 /* menu css */
 #menu{
-    margin-right: 20px;
+    margin-right: 50px;
+    margin-bottom: 50px;
 }
 /************/
 
 
 /* contents css */
 #contents{
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 
