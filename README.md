@@ -1,5 +1,8 @@
 # Project Manager
 
+![images](https://img.shields.io/badge/npm-v6.14-brightgreen)
+![images](https://img.shields.io/badge/node-v14.15-brightgreen)
+
 ## # Summary
 
 Casper에서 활동 했던 `프로젝트` 혹은 `개인 프로젝트`를 관리 하는 웹 서비스.
@@ -12,6 +15,16 @@ Casper에서 활동 했던 `프로젝트` 혹은 `개인 프로젝트`를 관리
 ## # How to use
 
 v1.0이 완성이 되면 올리겠음.
+
+---
+
+## # Module list
+
+```
+express
+express-session
+nodemon
+```
 
 ---
 
