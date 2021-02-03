@@ -34,6 +34,9 @@ nodemon
 
 - dark mode 디자인
 - 세션을 통해 dark mode 기능 지원
+- main page 디자인 수정
+- post page 추가 및 디자인
+- image modal 기능 추가
 
 2021.02.02
 
