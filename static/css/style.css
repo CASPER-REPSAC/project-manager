@@ -1,5 +1,6 @@
 :root[web-theme='light']{
     --bgColor: white;
+    --fontColor: black;
     --borderColor: #e1e4e8;
     --h1Color: black;
     --infoColor: #586069;
@@ -8,9 +9,15 @@
     --filterBtnFont: #24292e;
 
     --headerFont: black;
+
+    --writeFormInput: white;
+    --writeFormInputBorder: #e1e4e8;
+    --writeFormInputFocus: black;
+    --writeFormDateIcon: 0;
 }
 :root[web-theme='dark']{
     --bgColor: #0d1117; /* #16151f */
+    --fontColor: #c9d1d9;
     --borderColor: #30363d;
     --h1Color: #c9d1d9;
     --infoColor: #8b949e;
@@ -19,6 +26,11 @@
     --filterBtnFont: white;
 
     --headerFont: white;
+
+    --writeFormInput: #0d1117;
+    --writeFormInputBorder: #21262d;
+    --writeFormInputFocus: #006aff;
+    --writeFormDateIcon: 1;
 }
 * { transition: background-color 1s, color 0.1s, border 0.5s; }
 

@@ -25,6 +25,9 @@ v1.0이 완성이 되면 올리겠음.
 express
 express-session
 nodemon
+passport
+passport-google-oauth20
+mysql2
 ```
 
 ---
@@ -32,15 +35,17 @@ nodemon
 ## # Update
 
 2021.02.04
+- write page 디자인
 - google Oauth으로 로그인 구현
-- DB 설계 및 적용
+- DB 설계 및 연결
+
 
 2021.02.03
 
 - dark mode 디자인
-- 세션을 통해 dark mode 기능 지원
 - main page 디자인 수정
 - post page 추가 및 디자인
+- 세션을 통해 dark mode 기능 지원
 - image modal 기능 추가
 
 2021.02.02
