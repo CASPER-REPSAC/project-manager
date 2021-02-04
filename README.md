@@ -2,6 +2,7 @@
 
 ![images](https://img.shields.io/badge/npm-v6.14-brightgreen)
 ![images](https://img.shields.io/badge/node-v14.15-brightgreen)
+![images](https://raw.githubusercontent.com/CASPER-REPSAC/project-manager/main/cover.png)
 
 ## # Summary
 
