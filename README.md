@@ -30,6 +30,10 @@ nodemon
 
 ## # Update
 
+2021.02.04
+- google Oauth으로 로그인 구현
+- DB 설계 및 적용
+
 2021.02.03
 
 - dark mode 디자인
