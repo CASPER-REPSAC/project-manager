@@ -11,12 +11,14 @@ CREATE TABLE user (
 
 CREATE TABLE post (
     post_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id VARCHAR(50) NOT NULL,
     writer VARCHAR(50) NOT NULL,
     title TEXT NOT NULL,
     subtitle TEXT,
-    contents TEXT NOT NULL,
+    contents JSON NOT NULL,
     opinion TEXT,
-    post_date TIMESTAMP NOT NULL
+    post_date TIMESTAMP NOT NULL,
+    project_date DATE NOT NULL
 )
 
 CREATE TABLE post_attach(

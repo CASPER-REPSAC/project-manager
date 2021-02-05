@@ -57,21 +57,21 @@
                 <div class="write-form">
                     <div class="row">
                         <div class="col-sm-8">
-                            <input type="text" class="form-control write-form-input" placeholder="Enter title.">
+                            <input type="text" class="form-control write-form-input" placeholder="Enter title." name="title">
                         </div>
                         <div class="col-sm-4">
-                            <input type="date" class="form-control write-form-input">
+                            <input type="date" class="form-control write-form-input" name="date">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-7">
-                            <input type="text" class="form-control write-form-input" placeholder="Enter subtitle.">
+                            <input type="text" class="form-control write-form-input" placeholder="Enter subtitle." name="subtitle">
                         </div>
                         <div class="col-sm-3">
-                            <input type="file" class="form-control write-form-input">
+                            <input type="file" class="form-control write-form-input" name="file">
                         </div>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control write-form-input" placeholder="Total Page." readonly>
+                            <input type="text" class="form-control write-form-input" placeholder="Total Page." readonly name="total_page">
                         </div>
                     </div>
                     <div class="row section-field">
@@ -79,7 +79,7 @@
                             <h5><i class="fas fa-stream"></i> Section 1</h5>
                         </div>
                         <div class="col-sm-9">
-                            <textarea class="write-form-textarea" placeholder="Input the section information."></textarea>
+                            <textarea class="write-form-textarea" placeholder="Input the section information." name="section_content"></textarea>
                             <div class="row">
                                 <div class="col-sm-10">
                                     Set range of page.&nbsp;
@@ -99,13 +99,13 @@
                             <h5><i class="fas fa-comment-dots"></i> My opinion</h5>
                         </div>
                         <div class="col-sm-9">
-                            <textarea class="write-form-textarea" placeholder="Input your opinion about project."></textarea>
+                            <textarea class="write-form-textarea" placeholder="Input your opinion about project." name="section_opinion"></textarea>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-11"></div>
                         <div class="col-sm-1">
-                            <button type="button" class="btn btn-success">submit</button>
+                            <button type="button" class="btn btn-success btn-submit">submit</button>
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,9 @@
             </div>
         </div>
         <script src="/js/HTML.js"></script>
+        <script src="/js/feature/writeForm.js"></script>
         <script src="/js/darkmode.js"></script>
         <script src="/js/write.js"></script>
+        <script src="/js/feature/writeSubmit.js"></script>
     </body>
 </html>

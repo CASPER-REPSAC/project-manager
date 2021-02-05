@@ -28,6 +28,7 @@
                     <% if(!require.is_login){ %>
                         <a href="/login"><button type="button" class="btn btn-secondary">Login</button></a>
                     <% } else { %>
+                        <a href="/write"><button type="button" class="btn btn-secondary">Write</button></a>
                         <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
                     <% } %>
                 </div>
@@ -61,137 +62,52 @@
                         <div class="project-box">
                             <h3>popular</h3>
                             <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <span class="project-title"><a href="/post">동작 안함</a></span>
                                 <div class="project-info">
                                     <span class="project-writer">김종민</span>
                                     <span class="project-date">2021.02.03</span>
                                 </div>
                             </div>
                             <hr>
-
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="project-box">
                             <h3>recent comment</h3>
                             <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <span class="project-title"><a href="/post">동작 안함</a></span>
                                 <div class="project-info">
                                     <span class="project-writer">김종민</span>
                                     <span class="project-date">2021.02.03</span>
                                 </div>
                             </div>
                             <hr>
-
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
                         </div>
                         <div class="project-box">
                             <h3>recent Q&A</h3>
                             <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
+                                <span class="project-title"><a href="/post">동작 안함</a></span>
                                 <div class="project-info">
                                     <span class="project-writer">김종민</span>
                                     <span class="project-date">2021.02.03</span>
                                 </div>
                             </div>
                             <hr>
-
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="project-box">
-                            <h3>2021</h3>
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
+                            <h3>Recent Project</h3>
+                            <% for (let i=0; i<post_data.length; i++){ %>
+                                <div class="project-list">
+                                    <span class="project-title"><a href="/post/<%= post_data[i].post_idx %>"><%=post_data[i].title %></a></span>
+                                    <div class="project-info">
+                                        <span class="project-writer"><%=post_data[i].writer %></span>
+                                        <span class="project-date"><%=post_data[i].post_date %></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
-
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
-                            <hr>
-                            
-                            <h3>2021</h3>
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
-                            <hr>
-
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
-                            <hr>
-                            
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">인공지능에 대하여</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
-                                </div>
-                            </div>
+                                <hr>
+                            <% } %>
                         </div>
                     </div>
                 </div>
