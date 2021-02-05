@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="/css/bootstrap.css">
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+        <script src="/js/jquery.tagsinput.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -23,6 +24,7 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/darkwhite.css">
         <link rel="stylesheet" href="/css/bootstrap-custom.css">
+        <link rel="stylesheet" href="/css/jquery.tagsinput.css">
         <!-- ---------- -->
 
     </head>
@@ -55,6 +57,20 @@
         <div id="content">
             <div class="container write-box">
                 <div class="write-form">
+                    <div class="row">
+                        <div class="col-sm-10"></div>
+                        <div class="col-sm-2">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked value="casper">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                캐스퍼 프로젝트
+                            </label>
+                            <Br>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="personal">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                개인 프로젝트
+                            </label>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-8">
                             <input type="text" class="form-control write-form-input" placeholder="Enter title." name="title">
@@ -103,6 +119,12 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <input name="tags" id="tags"/>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-11"></div>
                         <div class="col-sm-1">
                             <button type="button" class="btn btn-success btn-submit">submit</button>
@@ -121,5 +143,8 @@
         <script src="/js/darkmode.js"></script>
         <script src="/js/write.js"></script>
         <script src="/js/feature/writeSubmit.js"></script>
+        <script>
+            $('#tags').tagsInput();
+        </script>
     </body>
 </html>

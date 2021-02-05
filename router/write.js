@@ -18,7 +18,8 @@ router.post("/write", async (req, res) => {
     
     if(input.title.length == 0) { res.json({"result" : "error", "message" : "제목을 입력해 주세요."}); return; }
     if(input.date.length == 0) { res.json({"result" : "error", "message" : "날짜를 입력해 주세요"}); return; }
-    if(input.section_opinion.length == 0) { res.json({"result" : "error", "message" : "의견를 입력해 주세요"}); return; }
+    if(input.section_opinion.length == 0) { res.json({"result" : "error", "message" : "의견을 입력해 주세요"}); return; }
+    if(input.tag.length == 0) { res.json({"result" : "error", "message" : "태그를 입력해 주세요"}); return; }
 
     for(let i=0; i<input.section.length; i++){
         if(input.section[i].section_content.length == 0){ res.json({"result" : "error", "message" : "섹션 설명을 입력해 주세요."}); return; }
@@ -29,8 +30,8 @@ router.post("/write", async (req, res) => {
     const user_id = req.session.passport.user.id;
     const writer = req.session.passport.user.displayName;
 
-    await sendQuery(`INSERT INTO post (user_id, writer, title, subtitle, contents, opinion, post_date, project_date) VALUES (?, ?, ?, ?, ?, ?, sysdate(), ?)`,
-                                       [user_id, writer, input.title, input.subtitle, input.section, input.section_opinion, input.date]);
+    await sendQuery(`INSERT INTO post (user_id, writer, title, subtitle, contents, opinion, post_date, project_date, type, tag) VALUES (?, ?, ?, ?, ?, ?, now(), ?, ?, ?)`,
+                                       [user_id, writer, input.title, input.subtitle, input.section, input.section_opinion, input.date, input.type, input.tag]);
     const row = await sendQuery(`SELECT post_idx FROM post WHERE user_id = ? ORDER BY post_idx DESC LIMIT 0,1`, [user_id]);
 
     res.json({"result" : "success", "message" : "글이 작성 되었습니다.", "redirect" : `/post/${row[0].post_idx}`})

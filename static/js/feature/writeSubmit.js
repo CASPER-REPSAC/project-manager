@@ -7,12 +7,15 @@ function getWriteData() {
         "total_page" : $("input[name=total_page]").val(),
         "section" : [],
         "section_opinion" : $("textarea[name=section_opinion]").val(),
+        "type" : $(".form-check-input:checked").val(),
+        "tag" : $('#tags').val()
     }
     const section_count = $(".section-field").length;
     
     if(data.title.length == 0) { alert("제목을 입력해 주세요"); return; }
     if(data.date.length == 0) { alert("날짜를 입력해 주세요"); return; }
     if(data.section_opinion.length == 0) { alert("의견을 입력해 주세요"); return; }
+    if(data.tag.length == 0) { alert("태그를 입력해 주세요"); return; }
 
     for(let i=0; i<section_count; i++){
         data.section.push({

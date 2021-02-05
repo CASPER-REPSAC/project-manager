@@ -17,8 +17,10 @@ CREATE TABLE post (
     subtitle TEXT,
     contents JSON NOT NULL,
     opinion TEXT,
-    post_date TIMESTAMP NOT NULL,
-    project_date DATE NOT NULL
+    post_date DATE NOT NULL,
+    project_date DATE NOT NULL,
+    type VARCHAR(10) NOT NULL,
+    tag TEXT NOT NULL
 )
 
 CREATE TABLE post_attach(

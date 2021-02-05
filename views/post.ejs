@@ -68,9 +68,9 @@
                         <span class="project-writer"><%=post_data.writer %></span>
                         <span class="project-date"><%=post_data.project_date %></span>
                         <div class="project-tag">
-                            <a href="#" class="badge badge-secondary">web</a>
-                            <a href="#" class="badge badge-secondary">pwn</a>
-                            <a href="#" class="badge badge-secondary">reversing</a>
+                            <% for(let j=0; j<post_data.tag.split(',').length; j++) { %>
+                                <a href="#" class="badge badge-pill badge-secondary"><%=post_data.tag.split(',')[j] %></a>
+                            <% } %>
                         </div>
                     </div>
                 </div>

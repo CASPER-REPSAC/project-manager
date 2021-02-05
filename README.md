@@ -27,6 +27,15 @@ passport-google-oauth20
 mysql2
 ```
 
+# > Javascript Library
+```
+tagsinput.js      # https://github.com/xoxco/jQuery-Tags-Input
+jquery
+fontawesome
+bootstrap
+ekko-lightbox
+```
+
 # > Project structure
 ```
 │  .gitattributes
