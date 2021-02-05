@@ -1,2 +1,3 @@
-*.sql linguist-detectable=true
+node_modules/* linguist-vendored
 *.js linguist-vendored=false
+*.sql linguist-detectable=true
