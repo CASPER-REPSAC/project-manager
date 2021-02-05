@@ -34,6 +34,7 @@
 .write-form-textarea{
     width: 100%;
     height: 200px;
+    padding: 10px;
 }
 .write-form-numbering{
     display: inline-block;
