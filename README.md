@@ -102,6 +102,7 @@ ekko-lightbox
 - `Feature`
   - write 기능 구현
   - 글 보기 기능 구현
+  - 태그 입력 기능 구현
 
 2021.02.04
 - `Design`
