@@ -1,2 +1,2 @@
-* linguist-vendored
+*.sql linguist-detectable=true
 *.js linguist-vendored=false
