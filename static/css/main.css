@@ -19,7 +19,7 @@
 }
 .header-img{
     position: relative;
-    background-image: url(/image/header1.png);                                                               
+    background-image: url(/image/header2.jpg);                                                               
     height: 50%;
     background-size: cover;
 
@@ -30,7 +30,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);                                                                 
+    /* background-color: rgba(0, 0, 0, 0.6);                                                                  */
     z-index:1;
     border-radius: 30px;
  }

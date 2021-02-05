@@ -1,0 +1,46 @@
+::-webkit-calendar-picker-indicator {
+    filter: invert(var(--writeFormDateIcon));
+}
+.form-control[readonly]{
+    background-color:var(--writeFormInput);
+}
+
+.row{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.write-box{
+    border: 1px solid var(--borderColor);
+    border-radius : 10px;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
+
+    padding: 20px;
+    margin-bottom: 20px;
+    padding: 50px;
+
+    color: var(--fontColor);
+}
+.write-form-input, .write-form-textarea{
+    background-color: var(--writeFormInput);
+    border: 1px solid var(--writeFormInputBorder);
+    color: var(--fontColor);
+}
+.write-form-input:focus{
+    background-color: var(--writeFormInput);
+    border: 1px solid var(--writeFormInputBorder);
+    color: var(--fontColor);
+}
+.write-form-textarea{
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+}
+.write-form-numbering{
+    display: inline-block;
+    width: 50px;
+}
+.write-form-numbering2{
+    display: inline-block;
+    width: 70px;
+}

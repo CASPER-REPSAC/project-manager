@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const checkTheme = require("../feature/checkTheme");
+const requirement = require("../feature/requirement");
 
-router.get("/post", (req, res) => {
-    const [user_theme, check] = checkTheme.check(req.session.user_theme);
+router.get("/post", async (req, res) => {
+    const data = await requirement.getRequireData(req.session);
 
-    res.render("post", {web_theme : user_theme, check: check});
+    res.render("post", {require: data});
 })
 
 module.exports = router;

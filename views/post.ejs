@@ -1,4 +1,4 @@
-<html web-theme="<%=web_theme %>">
+<html web-theme="<%=require.web_theme %>">
     <head>
         <title>
             Project Manager
@@ -34,7 +34,11 @@
                     <a href="/">Pr<i class="fas fa-ghost"></i>ject Manager</a>
                 </div>
                 <div class="header-menu float-right">
-                    <button type="button" class="btn btn-secondary">Login</button>
+                    <% if(!require.is_login){ %>
+                        <a href="/login"><button type="button" class="btn btn-secondary">Login</button></a>
+                    <% } else { %>
+                        <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
+                    <% } %>
                 </div>
             </div>
         </div>
@@ -42,7 +46,7 @@
             <div class="container">
                 <div class="dark-mode float-right">
                     <label class="switch">
-                        <input type="checkbox" <%= check ? "checked" : "" %>>
+                        <input type="checkbox" <%= require.check ? "checked" : "" %>>
                         <span class="slider round"></span>
                     </label>
                 </div>
