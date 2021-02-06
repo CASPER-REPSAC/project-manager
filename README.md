@@ -100,7 +100,7 @@ ekko-lightbox
 
 # > Update
 
-2021.02.05
+2021.02.06
 - `Feature`
   - 파일 업로드 구현
 
