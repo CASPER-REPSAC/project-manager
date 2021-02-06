@@ -24,7 +24,7 @@ router.post("/upload", async (req, res) => {
     if(!(await checkOauth.checkAuth(req, res, data))) return;
     
     upload(req, res, async (err) => {
-        const file_path = "/uploads/" + uuidv4() + path.extname(req.file.originalname);
+        const file_path = "/uploads/" + req.file.filename;
         const user_id = req.session.passport.user.id;
         const row = await sendQuery(`SELECT user_id FROM tmp_post_attach WHERE user_id = ?`, [user_id]);
 

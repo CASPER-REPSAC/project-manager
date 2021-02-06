@@ -36,6 +36,7 @@ jquery
 fontawesome
 bootstrap
 ekko-lightbox
+pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf-during-upload-wih-next-prev-buttons
 ```
 
 # > Project structure
@@ -103,6 +104,7 @@ ekko-lightbox
 2021.02.06
 - `Feature`
   - 파일 업로드 구현
+  - pdf to image 구현
 
 2021.02.05
 - `Feature`

@@ -25,3 +25,28 @@ function writeFormBtnsHTML(){
     return `<button type="button" class="btn btn-success btn-section-add"><i class="fas fa-plus"></i></button>
             <button type="button" class="btn btn-danger btn-section-remove"><i class="fas fa-minus"></i></button>`;
 }
+
+function pdfToImgModalHTML(modal_number){
+    return `<div id="pdf-main-container">
+                <div id="pdf-contents">
+                    <canvas id="pdf-canvas" class="pdf-to-image-canvas" width="400" data-toggle="modal" data-target="#exampleModal-${modal_number}"></canvas>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal-${modal_number}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">이미지 확대</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <canvas id="pdf-canvas" class="pdf-to-image-canvas2" width="1100"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+}

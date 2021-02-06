@@ -14,10 +14,12 @@ router.get("/post/:idx", async (req, res) => {
         return;
     }
 
+    const post_attach = await sendQuery(`SELECT path FROM post_attach WHERE post_idx = ?`, [post_idx]);
+    
     post_row[0].project_date = (await sendQuery(`SELECT date_format(?, '%Y-%m-%d') as date`, [post_row[0].project_date]))[0].date;
     post_row[0].contents = post_row[0].contents
     
-    res.render("post", {require: data, post_data : post_row[0]});
+    res.render("post", {require: data, post_data : post_row[0], post_attach : post_attach[0]});
 })
 
 module.exports = router;

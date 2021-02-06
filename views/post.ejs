@@ -17,6 +17,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
+        <!-- pdf -> image 로 변환해 주는 라이브러리 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.min.js"></script>
+
         <!-- custom css -->
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/post.css">
@@ -27,6 +30,10 @@
 
     </head>
     <body>
+        <input type="hidden" class="file-name" value="<%= post_attach.path%>">
+        <% for(let i=0; i<post_data.contents.length; i++) { %>
+            <input type="hidden" class="section-range" value="<%= post_data.contents[i].range_start %>~<%= post_data.contents[i].range_end %>">
+        <% } %>
         <div id="header">
             <div class="container">
                 <div class="header-title">
@@ -83,19 +90,9 @@
                                     <h3><i class="fas fa-angle-right"></i> Section <%= i+1 %></h3>
                                 </div>
                                 <div class="project-section-image">
-                                    <div class="row justify-content-center">
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <a href="/image/sample.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4" data-title="모달 제목" data-footer="모달 푸터내용">
-                                                    <img src="/image/sample.jpg" class="img-fluid rounded">
-                                                </a>
-                                                <a href="/image/sample.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                                    <img src="/image/sample.jpg" class="img-fluid rounded">
-                                                </a>
-                                                <a href="/image/sample.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                                    <img src="/image/sample.jpg" class="img-fluid rounded">
-                                                </a>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -137,5 +134,7 @@
         </div>
         <script src="/js/darkmode.js"></script>
         <script src="/js/modal.js"></script>
+        <script src="/js/HTML.js"></script>
+        <script src="/js/feature/pdfToImg.js"></script>
     </body>
 </html>
