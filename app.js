@@ -9,6 +9,7 @@ const router_theme = require("./router/theme");
 const router_post = require("./router/post");
 const router_login = require("./router/login");
 const router_write = require("./router/write");
+const router_upload = require("./router/upload");
 
 const config = require("./config/secret.json");
 
@@ -30,6 +31,7 @@ app.post("/write", router_write);
 app.get('/login', router_login);
 app.get("/logout", router_login);
 app.get('/auth/google/callback', router_login);
+app.post("/upload", router_upload);
 
 app.listen(8080, () => {
     console.log("running");

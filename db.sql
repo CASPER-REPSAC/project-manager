@@ -29,6 +29,12 @@ CREATE TABLE post_attach(
     path TEXT
 )
 
+CREATE TABLE tmp_post_attach(
+    tmp_attach_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id VARCHAR(50) NOT NULL,
+    tmp_path TEXT 
+)
+
 CREATE TABLE post_comment(
     comment_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     post_idx INT NOT NULL,

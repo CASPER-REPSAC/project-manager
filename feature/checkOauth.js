@@ -20,6 +20,21 @@ module.exports.getAuth = async (user_id) => {
     return row[0].auth;
 }
 
+module.exports.checkAuth = async (req, res, data) => {
+    if(!data.is_login){
+        const html = "<script>alert('로그인이 필요합니다.'); location.href='/'; </script>";
+        res.send(html);
+        return false;
+    }
+    if(this.getAuth(req.session.passport) == "guest"){
+        const html = "<script>alert('게스트는 글을 작성 할 수 없습니다.'); location.href='/'; </script>";
+        res.send(html);
+        return false;
+    }
+
+    return true;
+}
+
 function isNull(data){
     return (!data ? true : false);
 }

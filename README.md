@@ -25,6 +25,8 @@ nodemon
 passport
 passport-google-oauth20
 mysql2
+multer
+uuid
 ```
 
 # > Javascript Library
