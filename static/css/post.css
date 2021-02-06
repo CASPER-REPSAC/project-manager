@@ -24,3 +24,11 @@
 .project-opinion-contents{
     margin-left: 30px;
 }
+
+
+#pdf-main-container{
+    display: inline-block;
+}
+.pdf-to-image-canvas2{
+    width: 100%;
+}

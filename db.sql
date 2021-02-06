@@ -11,18 +11,28 @@ CREATE TABLE user (
 
 CREATE TABLE post (
     post_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id VARCHAR(50) NOT NULL,
     writer VARCHAR(50) NOT NULL,
     title TEXT NOT NULL,
     subtitle TEXT,
-    contents TEXT NOT NULL,
+    contents JSON NOT NULL,
     opinion TEXT,
-    post_date TIMESTAMP NOT NULL
+    post_date DATE NOT NULL,
+    project_date DATE NOT NULL,
+    type VARCHAR(10) NOT NULL,
+    tag TEXT NOT NULL
 )
 
 CREATE TABLE post_attach(
     attach_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     post_idx INT NOT NULL,
     path TEXT
+)
+
+CREATE TABLE tmp_post_attach(
+    tmp_attach_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    user_id VARCHAR(50) NOT NULL,
+    tmp_path TEXT 
 )
 
 CREATE TABLE post_comment(

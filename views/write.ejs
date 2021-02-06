@@ -9,10 +9,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
 
+        <!-- 태그 입력에 사용되는 라이브러리 -->
+        <script src="/js/jquery.tagsinput.js"></script>
+
+        <!-- 이미지 클릭시 모달창이 뜨는 라이브러리 -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 
+        <!-- 구글 폰트 -->
         <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
@@ -23,6 +28,7 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/darkwhite.css">
         <link rel="stylesheet" href="/css/bootstrap-custom.css">
+        <link rel="stylesheet" href="/css/jquery.tagsinput.css">
         <!-- ---------- -->
 
     </head>
@@ -56,30 +62,44 @@
             <div class="container write-box">
                 <div class="write-form">
                     <div class="row">
+                        <div class="col-sm-10"></div>
+                        <div class="col-sm-2">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked value="casper">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                캐스퍼 프로젝트
+                            </label>
+                            <Br>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="personal">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                개인 프로젝트
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-8">
-                            <input type="text" class="form-control write-form-input" placeholder="Enter title.">
+                            <input type="text" class="form-control write-form-input" placeholder="Enter title." name="title">
                         </div>
                         <div class="col-sm-4">
-                            <input type="date" class="form-control write-form-input">
+                            <input type="date" class="form-control write-form-input" name="date">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-7">
-                            <input type="text" class="form-control write-form-input" placeholder="Enter subtitle.">
+                            <input type="text" class="form-control write-form-input" placeholder="Enter subtitle." name="subtitle">
                         </div>
                         <div class="col-sm-3">
-                            <input type="file" class="form-control write-form-input">
+                            <input type="file" class="form-control write-form-input" name="file">
                         </div>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control write-form-input" placeholder="Total Page." readonly>
+                            <input type="text" class="form-control write-form-input" placeholder="Total Page." readonly name="total_page">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row section-field">
                         <div class="col-sm-3">
-                            <input type="text" class="form-control write-form-input" value="Section 1" readonly>
+                            <h5><i class="fas fa-stream"></i> Section 1</h5>
                         </div>
                         <div class="col-sm-9">
-                            <textarea class="write-form-textarea" placeholder="Input the section information."></textarea>
+                            <textarea class="write-form-textarea" placeholder="Input the section information." name="section_content"></textarea>
                             <div class="row">
                                 <div class="col-sm-10">
                                     Set range of page.&nbsp;
@@ -88,24 +108,30 @@
                                     <input type="number" class="form-control write-form-input write-form-numbering2" value="1">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="button" class="btn btn-success btn-plus"><i class="fas fa-plus"></i></button>
-                                    <button type="button" class="btn btn-danger btn-minus"><i class="fas fa-minus"></i></button>
+                                    <button type="button" class="btn btn-success btn-plus btn-section-add"><i class="fas fa-plus"></i></button>
+                                    <button type="button" class="btn btn-danger btn-minus btn-section-remove"><i class="fas fa-minus"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <i class="fas fa-comment-dots"></i> My opinion
+                            <h5><i class="fas fa-comment-dots"></i> My opinion</h5>
                         </div>
                         <div class="col-sm-9">
-                            <textarea class="write-form-textarea" placeholder="Input your opinion about project."></textarea>
+                            <textarea class="write-form-textarea" placeholder="Input your opinion about project." name="section_opinion"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <input name="tags" id="tags"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-11"></div>
                         <div class="col-sm-1">
-                            <button type="button" class="btn btn-success">submit</button>
+                            <button type="button" class="btn btn-success btn-submit">submit</button>
                         </div>
                     </div>
                 </div>
@@ -116,7 +142,16 @@
                 This project is <a href="https://github.com/CASPER-REPSAC/project-manager">open source.</a>
             </div>
         </div>
+
+        <script src="/js/HTML.js"></script>
+        <script src="/js/feature/writeForm.js"></script>
         <script src="/js/darkmode.js"></script>
         <script src="/js/write.js"></script>
+        <script src="/js/feature/writeSubmit.js"></script>
+        <script src="/js/feature/uploadFile.js"></script>
+        <script src="/js/uploadEvent.js"></script>
+        <script>
+            $('#tags').tagsInput();
+        </script>
     </body>
 </html>
