@@ -11,7 +11,7 @@ function addSectionField($secion_field, section_count){
     const current_section_page = getCurrentSectionPage($secion_field);
 
     template = template.replace("{{section_number}}", section_count+1);
-    template = template.replaceAll("{{section}}", current_section_page);
+    template = template.replaceAll("{{section}}", Number(current_section_page)+1);
 
     $secion_field.after(template);
 }
