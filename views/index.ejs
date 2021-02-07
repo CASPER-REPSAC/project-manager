@@ -73,15 +73,17 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="project-box">
-                            <h3>recent comment</h3>
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">동작 안함</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
+                            <h3><i class="fas fa-comments"></i> recent comment</h3>
+                            <% for(let i=0; i<recent_comment.length; i++){ %>
+                                <div class="project-list">
+                                    <span class="project-title"><i class="fas fa-comments"></i> <a href="/post/<%=recent_comment[i].post_idx %>"><%=recent_comment[i].comment_content %></a></span>
+                                    <div class="project-info">
+                                        <span class="project-writer"><%=recent_comment[i].writer %></span>
+                                        <span class="project-date"><%=recent_comment[i].comment_date %></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
+                                <hr>
+                            <% } %>
                         </div>
                         <div class="project-box">
                             <h3>recent Q&A</h3>
@@ -97,7 +99,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="project-box">
-                            <h3>Recent Project</h3>
+                            <h3><i class="fas fa-project-diagram"></i> Recent Project</h3>
                             <% for (let i=0; i<post_data.length; i++){ %>
                                 <div class="project-list">
                                     <div class="project-title"><a href="#" class="badge badge-pill badge-warning"><%= post_data[i].type %></a> <a href="/post/<%= post_data[i].post_idx %>"><%=post_data[i].title %></a></div>

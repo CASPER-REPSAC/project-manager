@@ -2,7 +2,13 @@ const mysql = require('mysql2/promise');
 const config = require("../config/secret.json");
 
 const pool = mysql.createPool(
-    {host: 'localhost', user: config.mysql.user, password: config.mysql.password, database: config.mysql.dbname}
+    {   
+        host: 'localhost', 
+        user: config.mysql.user,
+        password: config.mysql.password,
+        database: config.mysql.dbname,
+        dateStrings: 'date'
+    }
 );
 
 const getConnection = function() {

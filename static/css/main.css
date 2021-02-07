@@ -88,6 +88,9 @@
     font-weight: bold;
     margin-bottom: 10px;
 }
+.project-title > i{
+    color: var(--infoColor);
+}
 .project-info{
     margin-top: 10px;
 }
