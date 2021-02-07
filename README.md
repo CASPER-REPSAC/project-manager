@@ -108,6 +108,9 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 - `Feature`
   - 댓글 기능 구현
   - 답글 기능 구현
+  - main page에 최근 댓글 출력
+- `Bug`
+  - nodejs로 mysql 시간 값 가져올때, 타입 변경되는 버그 수정
 
 2021.02.06
 - `Feature`
