@@ -101,6 +101,14 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.02.07
+- `Design`
+  - 댓글 디자인
+  - 답글 디자인
+- `Feature`
+  - 댓글 기능 구현
+  - 답글 기능 구현
+
 2021.02.06
 - `Feature`
   - 파일 업로드 구현

@@ -33,6 +33,7 @@
     <body>
         <input type="hidden" class="file-name" value="<%= post_attach.path%>">
         <input type="hidden" name="user-image" value="<%= user_info.user_image %>">
+        <input type="hidden" name="post-idx" value="<%=post_data.post_idx %>">
         <% for(let i=0; i<post_data.contents.length; i++) { %>
             <input type="hidden" class="section-range" value="<%= post_data.contents[i].range_start %>~<%= post_data.contents[i].range_end %>">
         <% } %>
@@ -127,32 +128,56 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-1">
-                        <div class="comment-writer-image">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                        </div>
-                    </div>
-                    <div class="col-sm-11">
-                        <div class="comment-info">
-                            <span class="comment-writer">
-                                김종민
-                            </span>
-                            <span class="comment-date">
-                                2021.02.03
-                            </span>
-                            <div class="comment-content">
-                                aaaaaaaaaa
+                <% for(let i = 0; i<comment_data.length; i++){ %>
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <div class="comment-writer-image">
+                                <img src="<%=comment_image[comment_data[i].user_id] %>">
                             </div>
                         </div>
-                        <% if(require.is_login){ %>
-                            <div class="comment-reply">
-                                <input type="hidden" name="comment-idx" value="1">
-                                <i class="fas fa-reply"></i> 답글 달기
+                        <div class="col-sm-11">
+                            <div class="comment-info">
+                                <span class="comment-writer">
+                                    <%=comment_data[i].writer %>
+                                </span>
+                                <span class="comment-date">
+                                    <%=comment_data[i].comment_date %>
+                                </span>
+                                <div class="comment-content">
+                                    <%=comment_data[i].comment_content %>
+                                </div>
                             </div>
-                        <% } %>
+                            <% if(require.is_login){ %>
+                                <div class="comment-reply">
+                                    <input type="hidden" name="comment-idx" value="<%=comment_data[i].comment_idx %>">
+                                    <i class="fas fa-reply"></i> 답글 달기
+                                </div>
+                            <% } %>
+                            <% for(let j=0; j<comment_data[i].reply_comment.length; j++){ %>
+                                <div class="row">
+                                    <div class="col-sm-1">
+                                        <div class="comment-writer-image">
+                                            <img src="<%=comment_image[comment_data[i].reply_comment[j].user_id] %>">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-11">
+                                        <div class="comment-info">
+                                            <span class="comment-writer">
+                                                <%=comment_data[i].reply_comment[j].writer %>
+                                            </span>
+                                            <span class="comment-date">
+                                                <%=comment_data[i].reply_comment[j].reply_date %>
+                                            </span>
+                                            <div class="comment-content">
+                                                <%=comment_data[i].reply_comment[j].reply_content %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
                     </div>
-                </div>
+                <% } %>
                 <% if(require.is_login) { %>
                     <div class="input-comment-box row">
                         <div class="col-sm-1">
@@ -161,10 +186,10 @@
                             </div>
                         </div>
                         <div class="col-sm-10">
-                            <textarea class="write-form-textarea" placeholder="댓글을 적어주세요." name="section_content"></textarea>
+                            <textarea class="write-form-textarea input-comment-content" placeholder="댓글을 적어주세요."></textarea>
                         </div>
                         <div class="col-sm-1">
-                            <button type="button" class="btn btn-success">Submit</button>
+                            <button type="button" class="btn btn-success btn-comment">Submit</button>
                         </div>
                     </div>
                 <% } %>
@@ -179,6 +204,9 @@
         <script src="/js/modal.js"></script>
         <script src="/js/HTML.js"></script>
         <script src="/js/feature/pdfToImg.js"></script>
-        <script src="/js/reply.js"></script>
+        <script src="/js/commentEvent.js"></script>
+        <script src="/js/replyEvent.js"></script>
+        <script src="/js/feature/commentSubmit.js"></script>
+        <script src="/js/feature/replySubmit.js"></script>
     </body>
 </html>

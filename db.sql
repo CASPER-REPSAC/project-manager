@@ -38,6 +38,7 @@ CREATE TABLE tmp_post_attach(
 CREATE TABLE post_comment(
     comment_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     post_idx INT NOT NULL,
+    user_id VARCHAR(50) NOT NULL,
     writer VARCHAR(50) NOT NULL,
     comment_date TIMESTAMP NOT NULL,
     comment_content TEXT NOT NULL
@@ -46,6 +47,7 @@ CREATE TABLE post_comment(
 CREATE TABLE comment_reply(
     reply_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     comment_idx INT NOT NULL,
+    user_id VARCHAR(50) NOT NULL,
     writer VARCHAR(50) NOT NULL,
     reply_date TIMESTAMP NOT NULL,
     reply_content TEXT NOT NULL
