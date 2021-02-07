@@ -14,6 +14,8 @@
     --writeFormInputBorder: #e1e4e8;
     --writeFormInputFocus: black;
     --writeFormDateIcon: 0;
+
+    --commentInfoBox: #e8eaec;
 }
 :root[web-theme='dark']{
     --bgColor: #0d1117; /* #16151f */
@@ -31,6 +33,8 @@
     --writeFormInputBorder: #21262d;
     --writeFormInputFocus: #006aff;
     --writeFormDateIcon: 1;
+
+    --commentInfoBox: #161b22;
 }
 * { transition: background-color 1s, color 0.1s, border 0.5s; }
 
