@@ -25,10 +25,49 @@
     margin-left: 30px;
 }
 
+.contents-box{
+    color: var(--fontColor);
+}
+
 
 #pdf-main-container{
     display: inline-block;
 }
+.pdf-to-image-canvas{
+    border: 1px solid black;
+}
 .pdf-to-image-canvas2{
     width: 100%;
+}
+
+.input-comment-box{
+    margin-top: 20px;
+}
+.comment-writer-image{
+    position: relative;
+    text-align: center;
+
+    left: 30px;
+    top: 5px;
+}
+.comment-writer-image > img{
+    border-radius: 50px;
+    width: 60px;
+}
+.comment-info{
+    background-color: var(--commentInfoBox);
+    color: var(--fontColor);
+    padding: 20px;
+    border-radius: 30px;
+
+    width: 100%;
+}
+.comment-writer{
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+.comment-reply{
+    color: blue;
+    font-weight: bold;
+    cursor:pointer
 }

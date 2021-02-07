@@ -22,6 +22,7 @@
 
         <!-- custom css -->
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/write.css">
         <link rel="stylesheet" href="/css/post.css">
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/darkwhite.css">
@@ -31,6 +32,7 @@
     </head>
     <body>
         <input type="hidden" class="file-name" value="<%= post_attach.path%>">
+        <input type="hidden" name="user-image" value="<%= user_info.user_image %>">
         <% for(let i=0; i<post_data.contents.length; i++) { %>
             <input type="hidden" class="section-range" value="<%= post_data.contents[i].range_start %>~<%= post_data.contents[i].range_end %>">
         <% } %>
@@ -121,10 +123,51 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="comments">
-                            <span><i class="fas fa-comments"></i> Comments</span>
+                            <h4><i class="fas fa-comments"></i> Comments (0)</h4>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <div class="comment-writer-image">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="comment-info">
+                            <span class="comment-writer">
+                                김종민
+                            </span>
+                            <span class="comment-date">
+                                2021.02.03
+                            </span>
+                            <div class="comment-content">
+                                aaaaaaaaaa
+                            </div>
+                        </div>
+                        <% if(require.is_login){ %>
+                            <div class="comment-reply">
+                                <input type="hidden" name="comment-idx" value="1">
+                                <i class="fas fa-reply"></i> 답글 달기
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <% if(require.is_login) { %>
+                    <div class="input-comment-box row">
+                        <div class="col-sm-1">
+                            <div class="comment-writer-image">
+                                <img src="<%= user_info.user_image %>">
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <textarea class="write-form-textarea" placeholder="댓글을 적어주세요." name="section_content"></textarea>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="button" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                <% } %>
             </div>
         </div>
         <div id="footer">
@@ -136,5 +179,6 @@
         <script src="/js/modal.js"></script>
         <script src="/js/HTML.js"></script>
         <script src="/js/feature/pdfToImg.js"></script>
+        <script src="/js/reply.js"></script>
     </body>
 </html>
