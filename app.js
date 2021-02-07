@@ -10,6 +10,7 @@ const router_post = require("./router/post");
 const router_login = require("./router/login");
 const router_write = require("./router/write");
 const router_upload = require("./router/upload");
+const router_comment = require("./router/comment");
 
 const config = require("./config/secret.json");
 
@@ -32,6 +33,8 @@ app.get('/login', router_login);
 app.get("/logout", router_login);
 app.get('/auth/google/callback', router_login);
 app.post("/upload", router_upload);
+app.post("/comment", router_comment);
+app.post("/reply", router_comment);
 
 app.listen(8080, () => {
     console.log("running");

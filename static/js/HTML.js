@@ -52,17 +52,17 @@ function pdfToImgModalHTML(modal_number){
 }
 
 function replyInputFormHTML(user_image, comment_idx){
-    return `<div class="input-comment-box row">
+    return `<div class="input-reply-box row">
                 <div class="col-sm-1">
                     <div class="comment-writer-image">
                         <img src="${user_image}">
                     </div>
                 </div>
                 <div class="col-sm-10">
-                    <textarea class="write-form-textarea" placeholder="답글을 적어주세요." name="section_content"></textarea>
+                    <textarea class="write-form-textarea input-reply-content" placeholder="답글을 적어주세요."></textarea>
                 </div>
                 <div class="col-sm-1">
-                    <button type="button" class="btn btn-success" value="${comment_idx}">Submit</button>
+                    <button type="button" class="btn btn-success btn-reply" value="${comment_idx}">Submit</button>
                 </div>
             </div>`;
 }
