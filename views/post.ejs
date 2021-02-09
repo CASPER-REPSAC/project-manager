@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <div class="project-section-info">
+                            <div class="project-section-info" style="white-space: pre-line;">
                                 <%= post_data.contents[i].section_content %>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                     <div class="col-sm-12">
                         <div class="project-opinion">
                             <h3><i class="fas fa-comment-dots"></i> my opinion</h3>
-                            <span class="project-opinion-contents">
+                            <span class="project-opinion-contents" style="white-space: pre-line;">
                                 <%= post_data.opinion %>
                             </span>
                         </div>
@@ -143,7 +143,7 @@
                                 <span class="comment-date">
                                     <%=comment_data[i].comment_date %>
                                 </span>
-                                <div class="comment-content">
+                                <div class="comment-content" style="white-space: pre-line;">
                                     <%=comment_data[i].comment_content %>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@
                                             <span class="comment-date">
                                                 <%=comment_data[i].reply_comment[j].reply_date %>
                                             </span>
-                                            <div class="comment-content">
+                                            <div class="comment-content" style="white-space: pre-line;">
                                                 <%=comment_data[i].reply_comment[j].reply_content %>
                                             </div>
                                         </div>
@@ -208,5 +208,9 @@
         <script src="/js/replyEvent.js"></script>
         <script src="/js/feature/commentSubmit.js"></script>
         <script src="/js/feature/replySubmit.js"></script>
+
+        <script>
+            showPDF($(".file-name").val());
+        </script>
     </body>
 </html>

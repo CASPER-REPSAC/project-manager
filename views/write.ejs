@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
 
+        <!-- pdf -> image 로 변환해 주는 라이브러리 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.min.js"></script>
+
         <!-- 태그 입력에 사용되는 라이브러리 -->
         <script src="/js/jquery.tagsinput.js"></script>
 
@@ -91,7 +94,7 @@
                             <input type="file" class="form-control write-form-input" name="file">
                         </div>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control write-form-input" placeholder="Total Page." readonly name="total_page">
+                            Total page: <input type="text" class="form-control write-form-input write-form-page" readonly name="total_page">
                         </div>
                     </div>
                     <div class="row section-field">
@@ -105,7 +108,7 @@
                                     Set range of page.&nbsp;
                                     <input type="text" class="form-control write-form-input write-form-numbering" value="1" readonly>&nbsp;
                                     <i class="fas fa-minus"></i>&nbsp;
-                                    <input type="number" class="form-control write-form-input write-form-numbering2" value="1">
+                                    <input type="number" class="form-control write-form-input write-form-numbering2" value="1" max="10">
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="button" class="btn btn-success btn-plus btn-section-add"><i class="fas fa-plus"></i></button>
@@ -149,6 +152,7 @@
         <script src="/js/write.js"></script>
         <script src="/js/feature/writeSubmit.js"></script>
         <script src="/js/feature/uploadFile.js"></script>
+        <script src="/js/feature/pdfToImg.js"></script>
         <script src="/js/uploadEvent.js"></script>
         <script>
             $('#tags').tagsInput();
