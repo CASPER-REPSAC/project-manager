@@ -33,3 +33,9 @@ function addBtn(){
 
     $selector.append(template);
 }
+
+function setTotalPage(page){
+    $("input[name='total_page']").val(page);
+    $(".write-form-numbering2").val(page);
+    $(".write-form-numbering2").attr({"max" : page});
+}

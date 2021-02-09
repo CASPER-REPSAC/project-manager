@@ -16,6 +16,8 @@ function getWriteData() {
     if(data.date.length == 0) { alert("날짜를 입력해 주세요"); return; }
     if(data.section_opinion.length == 0) { alert("의견을 입력해 주세요"); return; }
     if(data.tag.length == 0) { alert("태그를 입력해 주세요"); return; }
+    if($("input[type='file']")[0].files.length == 0) { alert("파일을 업로드 해주세요."); return;}
+    if(!checkRange()){ alert("첨부한 파일의 페이지 보다 범위가 큽니다."); return;}
 
     for(let i=0; i<section_count; i++){
         data.section.push({
@@ -47,4 +49,13 @@ function sendToWrite(data){
         if(res.result == "success")
             location.href = res.redirect;
     })
+}
+
+function checkRange(){
+    for(let i=0; i<$(".write-form-numbering2").length; i++){
+        if($(".write-form-numbering2")[i].value > pdf_total_page){
+            return false;
+        }
+    }
+    return true;
 }

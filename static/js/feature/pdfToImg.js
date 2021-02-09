@@ -81,13 +81,17 @@ async function showPage(page_no, _CANVAS) {
 
     // show the canvas and hide the page loader
     document.querySelector("#pdf-canvas").style.display = 'block';
-    // document.querySelector("#page-loader").style.display = 'none';
 }
 
-// click on "Show PDF" buuton
-// document.querySelector("#show-pdf-button").addEventListener('click', function() {
-//     this.style.display = 'none';
-//     showPDF($(".file-name").val());
-// });
+async function getTotalPage(pdf_url){
+    let pdf_info;
 
-showPDF($(".file-name").val());
+    try {
+        pdf_info = await pdfjsLib.getDocument({ url: pdf_url });
+    }
+    catch(error) {
+        alert(error.message);
+        return;
+    }
+    return pdf_info.numPages;
+}

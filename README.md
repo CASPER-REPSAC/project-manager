@@ -101,6 +101,15 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.02.09
+- `Feature`
+  - 파일 업로드 시, 업로드 한 페이지의 총 페이지 표시
+  - 파일 업로드 시, 글 작성 범위 란에 최대 페이지 검증
+  - 파일 업로드 여부 확인
+  - 파일 확장자 및 용량 확인
+- `Bug`
+  - post 페이지에 개행 안되는 문제 해결
+
 2021.02.07
 - `Design`
   - 댓글 디자인
