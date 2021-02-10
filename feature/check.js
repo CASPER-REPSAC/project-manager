@@ -35,6 +35,23 @@ module.exports.checkAuth = async (req, res, data) => {
     return true;
 }
 
+module.exports.isPostOwner = (session) => {
+    if(!session)
+        return false;
+}
+
+module.exports.getUserTheme = (data) => {
+    let isCheck = true;
+
+    if(!data || data == "dark"){
+        data = "dark";
+        isCheck = false;
+    }
+
+    return [data, isCheck];
+}
+
+
 function isNull(data){
     return (!data ? true : false);
 }

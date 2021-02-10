@@ -11,6 +11,7 @@ const router_login = require("./router/login");
 const router_write = require("./router/write");
 const router_upload = require("./router/upload");
 const router_comment = require("./router/comment");
+const router_delete = require("./router/delete");
 
 const config = require("./config/secret.json");
 
@@ -35,6 +36,7 @@ app.get('/auth/google/callback', router_login);
 app.post("/upload", router_upload);
 app.post("/comment", router_comment);
 app.post("/reply", router_comment);
+app.delete("/post/:idx", router_delete);
 
 app.listen(8080, () => {
     console.log("running");

@@ -1,9 +1,8 @@
-const checkTheme = require("../feature/checkTheme");
-const checkOauth = require("../feature/checkOauth");
+const feature = require("../feature/check");
 
 module.exports.getRequireData = async (session) => {
-    const [user_theme, check] = checkTheme.check(session.user_theme);
-    const is_login = await checkOauth.isLogin(session.passport);
+    const [user_theme, check] = feature.getUserTheme(session.user_theme)
+    const is_login = await feature.isLogin(session.passport);
 
     return {
         "web_theme" : user_theme,
