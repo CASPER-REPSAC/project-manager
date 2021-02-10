@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 const path = require("path");
 
 const sendQuery = require("../feature/db");
-const checkOauth = require("../feature/checkOauth");
+const feature = require("../feature/check");
 const requirement = require("../feature/requirement");
 
 const upload = multer({
@@ -40,7 +40,7 @@ function checkFileType(file, cb){
 
 router.post("/upload", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
-    if(!(await checkOauth.checkAuth(req, res, data))) return;
+    if(!(await feature.checkAuth(req, res, data))) return;
 
     upload(req, res, async (err) => {
         if(err){

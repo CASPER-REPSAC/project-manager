@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const sendQuery = require("../feature/db");
-const checkOauth = require("../feature/checkOauth");
+const check = require("../feature/check");
 const requirement = require("../feature/requirement");
 
 router.get("/write", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
-    if(!(await checkOauth.checkAuth(req, res, data))) return;
+    if(!(await check.checkAuth(req, res, data))) return;
 
     res.render("write", {require: data});
 })
 
 router.post("/write", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
-    if(!(await checkOauth.checkAuth(req, res, data))) return;
+    if(!(await check.checkAuth(req, res, data))) return;
 
     const input = req.body;
     
