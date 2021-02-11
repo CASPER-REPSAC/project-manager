@@ -6,7 +6,7 @@ const sendQuery = require("../feature/db");
 
 router.post("/comment", async(req, res) => {
     const data = await requirement.getRequireData(req.session);
-    if(!(await feature.checkAuth(req, res, data))) return;
+    // if(!(await feature.checkAuth(req, res, data))) return;
 
     const post_idx = req.body.post_idx;
     const writer = req.session.passport.user.displayName;
@@ -25,7 +25,7 @@ router.post("/comment", async(req, res) => {
 
 router.post("/reply", async(req, res) => {
     const data = await requirement.getRequireData(req.session);
-    if(!(await feature.checkAuth(req, res, data))) return;
+    // if(!(await feature.checkAuth(req, res, data))) return;
 
     const comment_idx = req.body.comment_idx;
     const reply_content = req.body.reply_content;

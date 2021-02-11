@@ -101,6 +101,10 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.02.12
+- `Feature`
+  - 인증을 통한 권한 상승 구현
+
 2021.02.11
 - `Feature`
   - 게시글 삭제 구현

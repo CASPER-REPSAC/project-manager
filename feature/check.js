@@ -18,12 +18,12 @@ module.exports.getAuth = async (user_id) => {
 
 module.exports.checkAuth = async (req, res, data) => {
     if(!data.is_login){
-        const html = "<script>alert('로그인이 필요합니다.'); location.href='/'; </script>";
+        const html = "<script type='text/javascript'>alert('로그인이 필요합니다.'); location.href='/'; </script>";
         res.send(html);
         return false;
     }
     if(await this.getAuth(req.session.passport) == "guest"){
-        const html = "<script>alert('게스트는 글을 작성 할 수 없습니다.'); location.href='/'; </script>";
+        const html = "<script type='text/javascript'>alert('게스트는 작성 할 수 없습니다. 토큰을 통해 인증을 해주세요.'); location.href='/'; </script>";
         res.send(html);
         return false;
     }
