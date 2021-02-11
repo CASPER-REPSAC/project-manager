@@ -104,6 +104,8 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 2021.02.11
 - `Feature`
   - 게시글 삭제 구현
+  - 좋아요 구현
+  - 인기 글 구현
 
 2021.02.10
 - `Refactoring`
@@ -161,3 +163,6 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 - 초기 버전
 - main page 디자인 
+
+# > Reference
+- 좋아요 구현 (https://www.9lessons.info/2013/05/facebook-like-system-with-jquery-mysql.html)

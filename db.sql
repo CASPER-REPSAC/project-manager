@@ -20,7 +20,8 @@ CREATE TABLE post (
     post_date TIMESTAMP NOT NULL,
     project_date DATE NOT NULL,
     type VARCHAR(10) NOT NULL,
-    tag TEXT NOT NULL
+    tag TEXT NOT NULL,
+    like_count INT DEFAULT 0
 );
 
 CREATE TABLE post_attach(
@@ -52,4 +53,10 @@ CREATE TABLE comment_reply(
     writer VARCHAR(50) NOT NULL,
     reply_date TIMESTAMP NOT NULL,
     reply_content TEXT NOT NULL
+);
+
+CREATE TABLE post_like(
+    like_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    post_idx INT NOT NULL,
+    user_id VARCHAR(50) NOT NULL
 );

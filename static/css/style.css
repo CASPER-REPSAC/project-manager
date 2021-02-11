@@ -16,6 +16,8 @@
     --writeFormDateIcon: 0;
 
     --commentInfoBox: #e8eaec;
+
+    --likeColor: #6a737c;
 }
 :root[web-theme='dark']{
     --bgColor: #0d1117; /* #16151f */
@@ -35,6 +37,8 @@
     --writeFormDateIcon: 1;
 
     --commentInfoBox: #161b22;
+
+    --likeColor: #8b949e;
 }
 * { transition: background-color 1s, color 0.1s, border 0.5s; }
 
