@@ -2,6 +2,7 @@ const express = require("express");
 const sendQuery = require("../feature/db");
 const router = express.Router();
 const requirement = require("../feature/requirement");
+const check = require("../feature/check");
 
 router.get("/post/:idx", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
@@ -23,9 +24,6 @@ router.get("/post/:idx", async (req, res) => {
     const post_attach = await sendQuery(`SELECT path FROM post_attach WHERE post_idx = ?`, [post_idx]);
     const [comment, user_image] = await getCommentAndReply(post_idx);
 
-    // post_row[0].project_date = (await sendQuery(`SELECT date_format(?, '%Y-%m-%d') as date`, [post_row[0].project_date]))[0].date;
-    // post_row[0].contents = post_row[0].contents
-    
     res.render("post", {
         require: data, 
         post_data : post_row[0], 

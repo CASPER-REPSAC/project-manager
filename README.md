@@ -101,6 +101,14 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.02.11
+- `Feature`
+  - 게시글 삭제 구현
+
+2021.02.10
+- `Refactoring`
+  - 코드 정리
+
 2021.02.09
 - `Feature`
   - 파일 업로드 시, 업로드 한 페이지의 총 페이지 표시

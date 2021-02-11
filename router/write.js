@@ -6,6 +6,7 @@ const requirement = require("../feature/requirement");
 
 router.get("/write", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
+    
     if(!(await check.checkAuth(req, res, data))) return;
 
     res.render("write", {require: data});

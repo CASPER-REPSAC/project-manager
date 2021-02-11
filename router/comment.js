@@ -31,14 +31,15 @@ router.post("/reply", async(req, res) => {
     const reply_content = req.body.reply_content;
     const writer = req.session.passport.user.displayName;
     const user_id = req.session.passport.user.id;
+    const post_idx = req.body.post_idx;
 
     if(comment_idx.length == 0 || reply_content.length == 0){
         res.json({"result" : "error", "message" : "필요한 값이 비어 있습니다."});
         return;
     }
 
-    await sendQuery(`INSERT INTO comment_reply (user_id, comment_idx, writer, reply_content, reply_date) VALUES (?, ?, ?, ?, now())`,
-                                              [user_id, comment_idx, writer, reply_content]);
+    await sendQuery(`INSERT INTO comment_reply (user_id, comment_idx, writer, reply_content, reply_date, post_idx) VALUES (?, ?, ?, ?, now(), ?)`,
+                                              [user_id, comment_idx, writer, reply_content, post_idx]);
     res.json({"result" : "success", "message" : "답글이 등록 되었습니다."})
 })
 
