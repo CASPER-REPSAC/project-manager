@@ -12,6 +12,7 @@ const router_write = require("./router/write");
 const router_upload = require("./router/upload");
 const router_comment = require("./router/comment");
 const router_delete = require("./router/delete");
+const router_like = require("./router/like");
 
 const config = require("./config/secret.json");
 
@@ -37,6 +38,7 @@ app.post("/upload", router_upload);
 app.post("/comment", router_comment);
 app.post("/reply", router_comment);
 app.delete("/post/:idx", router_delete);
+app.get("/like/:idx", router_like);
 
 app.listen(8080, () => {
     console.log("running");

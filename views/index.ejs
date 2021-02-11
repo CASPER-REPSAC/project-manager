@@ -26,7 +26,7 @@
                 </div>
                 <div class="header-menu float-right">
                     <% if(!require.is_login){ %>
-                        <a href="/login"><button type="button" class="btn btn-secondary">Login</button></a>
+                        <a href="/login"><button type="button" class="btn btn-secondary"><i class="fab fa-google"></i> Login</button></a>
                     <% } else { %>
                         <a href="/write"><button type="button" class="btn btn-secondary">Write</button></a>
                         <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
@@ -60,20 +60,25 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="project-box">
-                            <h3>popular</h3>
-                            <div class="project-list">
-                                <span class="project-title"><a href="/post">동작 안함</a></span>
-                                <div class="project-info">
-                                    <span class="project-writer">김종민</span>
-                                    <span class="project-date">2021.02.03</span>
+                            <h4><i class="fas fa-fire-alt"></i> Popular</h4>
+                            <% for(let i=0; i<popular.length; i++){ %>
+                                <div class="project-list">
+                                    <div class="project-title"><a href="#" class="badge badge-pill badge-warning"><%= popular[i].type %></a> <a href="/post/<%= popular[i].post_idx %>"><%=popular[i].title %></a></div>
+                                    <% for(let j=0; j<popular[i].tag.split(',').length; j++) { %>
+                                        <a href="#" class="badge badge-pill badge-secondary"><%=popular[i].tag.split(',')[j] %></a>
+                                    <% } %>
+                                    <div class="project-info">
+                                        <span class="project-writer"><%=popular[i].writer %></span>
+                                        <span class="project-date"><%=popular[i].post_date %></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
+                                <hr>
+                            <% } %>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="project-box">
-                            <h3><i class="fas fa-project-diagram"></i> Recent Project</h3>
+                            <h4><i class="fas fa-project-diagram"></i> Recent Project</h4>
                             <% for (let i=0; i<post_data.length; i++){ %>
                                 <div class="project-list">
                                     <div class="project-title"><a href="#" class="badge badge-pill badge-warning"><%= post_data[i].type %></a> <a href="/post/<%= post_data[i].post_idx %>"><%=post_data[i].title %></a></div>
@@ -91,7 +96,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="project-box">
-                            <h3><i class="fas fa-comments"></i> recent comment</h3>
+                            <h4><i class="fas fa-comments"></i> recent comment</h4>
                             <% for(let i=0; i<recent_comment.length; i++){ %>
                                 <div class="project-list">
                                     <span class="project-title"><i class="fas fa-comments"></i> <a href="/post/<%=recent_comment[i].post_idx %>"><%=recent_comment[i].comment_content %></a></span>

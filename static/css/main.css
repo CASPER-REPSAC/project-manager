@@ -76,17 +76,25 @@
 
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
 }
-.project-box > h3{
+.project-box > h4{
     color: var(--h1Color);
     margin-bottom: 50px;
     text-align: center;
 }
 
-
+/* .project-list{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} */
 .project-title{
     font-size: 15px;
     font-weight: bold;
     margin-bottom: 10px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .project-title > i{
     color: var(--infoColor);

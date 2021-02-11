@@ -66,7 +66,18 @@
         <div id="contents">
             <div class="container contents-box">
                 <div class="row">
-                    <div class="col-sm-8">
+                    <div class="col-sm-1">
+                        <div class="like-unlike">
+                            <i class="fas fa-chevron-up"></i>
+                        </div>
+                        <div class="like-unlike like-unlike-count">
+                            <%=post_data.like_count %>
+                        </div>
+                        <!-- <div class="like-unlike">
+                            <i class="fas fa-chevron-down"></i>
+                        </div> -->
+                    </div>
+                    <div class="col-sm-7">
                         <div class="project-title">
                             <h1><i class="fas fa-ghost"></i> <%=post_data.title %></h1>
                         </div>
@@ -90,7 +101,7 @@
                         <div class="col-sm-8">
                             <div class="project-section">
                                 <div class="project-section-title">
-                                    <h3><i class="fas fa-angle-right"></i> Section <%= i+1 %></h3>
+                                    <h5><i class="fas fa-angle-right"></i> Section <%= i+1 %></h5>
                                 </div>
                                 <div class="project-section-image">
                                     <div class="row">
@@ -214,6 +225,7 @@
         <script src="/js/feature/commentSubmit.js"></script>
         <script src="/js/feature/replySubmit.js"></script>
         <script src="/js/delete.js"></script>
+        <script src="/js/like.js"></script>
         <script>
             showPDF($(".file-name").val());
         </script>
