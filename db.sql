@@ -7,7 +7,7 @@ CREATE TABLE user (
     user_image TEXT,
     auth VARCHAR(6) NOT NULL,
     registration_date TIMESTAMP NOT NULL
-)
+);
 
 CREATE TABLE post (
     post_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -17,23 +17,23 @@ CREATE TABLE post (
     subtitle TEXT,
     contents JSON NOT NULL,
     opinion TEXT,
-    post_date DATE NOT NULL,
+    post_date TIMESTAMP NOT NULL,
     project_date DATE NOT NULL,
     type VARCHAR(10) NOT NULL,
     tag TEXT NOT NULL
-)
+);
 
 CREATE TABLE post_attach(
     attach_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     post_idx INT NOT NULL,
     path TEXT
-)
+);
 
 CREATE TABLE tmp_post_attach(
     tmp_attach_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_id VARCHAR(50) NOT NULL,
     tmp_path TEXT 
-)
+);
 
 CREATE TABLE post_comment(
     comment_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -42,13 +42,14 @@ CREATE TABLE post_comment(
     writer VARCHAR(50) NOT NULL,
     comment_date TIMESTAMP NOT NULL,
     comment_content TEXT NOT NULL
-)
+);
 
 CREATE TABLE comment_reply(
     reply_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     comment_idx INT NOT NULL,
+    post_idx INT NOT NULL,
     user_id VARCHAR(50) NOT NULL,
     writer VARCHAR(50) NOT NULL,
     reply_date TIMESTAMP NOT NULL,
     reply_content TEXT NOT NULL
-)
+);

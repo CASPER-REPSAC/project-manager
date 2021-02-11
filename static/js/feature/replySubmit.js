@@ -1,4 +1,4 @@
-function writeReply(comment_idx, reply_content){
+function writeReply(comment_idx, reply_content, post_idx){
     fetch("/reply", {
         method : "POST",
         headers: {
@@ -7,7 +7,8 @@ function writeReply(comment_idx, reply_content){
         },
         body : JSON.stringify({
             "comment_idx" : comment_idx,
-            "reply_content" : reply_content
+            "reply_content" : reply_content,
+            "post_idx" : post_idx
         })
     })
     .then(res => res.json())
