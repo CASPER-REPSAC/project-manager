@@ -13,6 +13,7 @@ const router_upload = require("./router/upload");
 const router_comment = require("./router/comment");
 const router_delete = require("./router/delete");
 const router_like = require("./router/like");
+const router_auth = require("./router/auth");
 
 const config = require("./config/secret.json");
 
@@ -39,6 +40,7 @@ app.post("/comment", router_comment);
 app.post("/reply", router_comment);
 app.delete("/post/:idx", router_delete);
 app.get("/like/:idx", router_like);
+app.post("/auth", router_auth);
 
 app.listen(8080, () => {
     console.log("running");
