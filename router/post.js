@@ -6,6 +6,7 @@ const check = require("../feature/check");
 
 router.get("/post/:idx", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
+    const user_auth = await check.getAuth(req.session.passport);
     const post_idx = req.params.idx;
     const user_info = {"user_image" : ""};
 
@@ -30,7 +31,8 @@ router.get("/post/:idx", async (req, res) => {
         post_attach : post_attach[0], 
         user_info : user_info,
         comment_data : comment,
-        comment_image : user_image
+        comment_image : user_image,
+        user_auth : user_auth
     });
 })
 
