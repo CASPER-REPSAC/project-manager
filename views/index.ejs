@@ -104,20 +104,37 @@
                     <div class="col-sm-4">
                         <div class="project-box">
                             <h4><i class="fas fa-project-diagram"></i> Recent Project</h4>
-                            <% for (let i=0; i<post_data.length; i++){ %>
+                            <% for (let i=0; i<post.data.length; i++){ %>
                                 <div class="project-list">
-                                    <div class="project-title"><a href="#" class="badge badge-pill badge-warning"><%= post_data[i].type %></a> <a href="/post/<%= post_data[i].post_idx %>"><%=post_data[i].title %></a></div>
-                                    <% for(let j=0; j<post_data[i].tag.split(',').length; j++) { %>
-                                        <a href="#" class="badge badge-pill badge-secondary"><%=post_data[i].tag.split(',')[j] %></a>
+                                    <div class="project-title"><a href="#" class="badge badge-pill badge-warning"><%= post.data[i].type %></a> <a href="/post/<%= post.data[i].post_idx %>"><%=post.data[i].title %></a></div>
+                                    <% for(let j=0; j<post.data[i].tag.split(',').length; j++) { %>
+                                        <a href="#" class="badge badge-pill badge-secondary"><%=post.data[i].tag.split(',')[j] %></a>
                                     <% } %>
                                     <div class="project-info">
-                                        <span class="project-writer"><%=post_data[i].writer %></span>
-                                        <span class="project-date"><%=post_data[i].post_date %></span>
+                                        <span class="project-writer"><%=post.data[i].writer %></span>
+                                        <span class="project-date"><%=post.data[i].post_date %></span>
                                     </div>
                                 </div>
                                 <hr>
                             <% } %>
                         </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <% if(post.current_page != 1){ %>
+                                    <li class="page-item">
+                                        <a class="page-link" href="/?page=<%=post.current_page - 1 %>" tabindex="-1"><</i></a>
+                                    </li>
+                                <% } %>
+                                <% for(let num = post.first_num; num <= post.end_num ; num++)  { %> 
+                                    <li class="page-item <% if(num == post.current_page) { %> active <% } %>"><a class="page-link" href="/?page=<%=num %>"><%= num %></a></li>
+                                <% } %>
+                                <% if(post.end_num != post.result_page_num) { %>
+                                    <li class="page-item">
+                                        <a class="page-link" href="/?page=<%=post.current_page + 1 %>">></a>
+                                    </li>
+                                <% } %>
+                            </ul>
+                          </nav>
                     </div>
                     <div class="col-sm-4">
                         <div class="project-box">
