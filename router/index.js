@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
     const page_num = (req.query.page) ? Number(req.query.page) : 1;
     const paging_post_row = await paging(page_num, post_row);
-    console.log(paging_post_row);
+
     res.render("index", {
         require : data, 
         post : paging_post_row, 
