@@ -101,6 +101,10 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.02.17
+- `bug`
+  - 특정 브라우저에서 동작하지 않는 함수 문제 [#18](https://github.com/CASPER-REPSAC/project-manager/issues/18)
+
 2021.02.14
 - `Feature`
   - 페이징 기능 구현 (자잘한 버그 존재..)
