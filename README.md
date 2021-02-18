@@ -101,6 +101,14 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.02.18
+- `bug`
+  - 섹션 추가시, 섹션 범위 max 값 적용 안되는 문제
+  - 섹션 범위 min 값 적용
+- `feature`
+  - 게시글 삭제 시 확인 메시지
+  - 게시글 삭제 시 업로드 파일 삭제
+
 2021.02.17
 - `bug`
   - [#18](https://github.com/CASPER-REPSAC/project-manager/issues/18) 특정 브라우저에서 동작하지 않는 함수 문제

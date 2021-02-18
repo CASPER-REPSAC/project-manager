@@ -5,16 +5,18 @@ function getCurrentSectionPage($section){
     return $section.find(".write-form-numbering2").val();
 }
 
+function getTotalSection(){
+    return $("input[name='total_page']").val();
+}
 
 function addSectionField($secion_field, section_count){
-    let template = writeFormContentHTML();
     const current_section_page = getCurrentSectionPage($secion_field);
-
-    template = template.replace("{{section_number}}", section_count+1);
-    template = template.replace(/{{section}}/gi, Number(current_section_page) + 1);
+    const max_section = getTotalSection();
+    let template = writeFormContentHTML(section_count+1, Number(current_section_page) + 1, max_section);
 
     $secion_field.after(template);
 }
+
 function removeSectionField($section_field){
     $section_field.remove();
     addBtn();

@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const fs = require("fs");
 
 const check = require("../feature/check");
 const sendQuery = require("../feature/db");
@@ -17,9 +18,20 @@ router.delete("/post/:idx", async (req, res) => {
         return;
     }
 
+    // 업로드 된 파일 삭제
+    const file_name = await sendQuery(`SELECT path FROM post_attach WHERE post_idx = ?`, [post_idx]);
+    try{
+        fs.unlinkSync("static" + file_name[0].path);
+    }
+    catch (err){
+        console.error(err);
+    }
+
     await sendQuery(`DELETE FROM post WHERE post_idx = ?`, [post_idx]);
     await sendQuery(`DELETE FROM post_comment WHERE post_idx = ?`, [post_idx]);
+    await sendQuery(`DELETE FROM comment_reply WHERE post_idx = ?`, [post_idx]);
     await sendQuery(`DELETE FROM post_attach WHERE post_idx = ?`, [post_idx]);
+    await sendQuery(`DELETE FROM post_like WHERE post_idx = ?` , [post_idx]);
 
     res.json({"result" : "success", "message" : "글이 삭제 되었습니다.", "redirect" : "/"});
 })
