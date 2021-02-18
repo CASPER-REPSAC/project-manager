@@ -1,0 +1,21 @@
+body{
+    background-color: #0d1117;
+}
+
+#main {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+
+    margin-top: 300px;
+
+    color:white;
+
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 100px;
+}
+
+.content{
+    margin-top: 50px;
+    font-size: 50px;
+}
