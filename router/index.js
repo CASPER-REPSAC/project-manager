@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     const popular_row = await sendQuery(`SELECT * FROM post WHERE like_count >= 1 ORDER BY like_count DESC LIMIT 0, 10`);
     const user_auth = await check.getAuth(req.session.passport);
 
-    const page_num = (req.query.page) ? Number(req.query.page) : 1;
+    const page_num = (req.query.page) ? (Number(req.query.page) ? Number(req.query.page) : 1) : 1;
     const paging_post_row = await paging(page_num, post_row);
 
     res.render("index", {
