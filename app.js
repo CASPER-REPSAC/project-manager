@@ -42,6 +42,11 @@ app.delete("/post/:idx", router_delete);
 app.get("/like/:idx", router_like);
 app.post("/auth", router_auth);
 
+app.get("*", (req, res) => {
+    res.status(404);
+    res.render("404");
+})
+
 app.listen(8080, () => {
     console.log("running");
 })
