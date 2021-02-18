@@ -105,6 +105,7 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 - `bug`
   - 섹션 추가시, 섹션 범위 max 값 적용 안되는 문제
   - 섹션 범위 min 값 적용
+  - page 파라미터 미검증으로 인한 문제
 - `feature`
   - 게시글 삭제 시 확인 메시지
   - 게시글 삭제 시 업로드 파일 삭제
