@@ -13,9 +13,9 @@ passport.deserializeUser(function(obj, done) {
     done(null, obj);
 });
 passport.use(new GoogleStrategy({
-        clientID: config.google_api_clientID,
-        clientSecret: config.google_api_client,
-        callbackURL: 'http://localhost:8080/auth/google/callback'
+        clientID: config.google_api.clientID,
+        clientSecret: config.google_api.clientSecret,
+        callbackURL: config.google_api.callbackURL
     }, function(accessToken, refreshToken, profile, done) {
         process.nextTick(async () => {
             user = profile;
