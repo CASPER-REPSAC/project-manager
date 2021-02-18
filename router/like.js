@@ -20,6 +20,7 @@ router.get("/like/:idx", async (req, res) => {
 
     const like_count_row = await sendQuery(`SELECT like_count FROM post WHERE post_idx = ?`, [post_idx]);
     const update_like_count = Number(like_count_row[0].like_count) + 1;
+    
     await sendQuery(`INSERT INTO post_like (user_id, post_idx) VALUES (?,?)`, [user_id, post_idx]);
     await sendQuery(`UPDATE post SET like_count = ? WHERE post_idx = ?`, [update_like_count, post_idx]);
 
