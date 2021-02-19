@@ -110,6 +110,7 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
   - 게시글 삭제 시 확인 메시지
   - 게시글 삭제 시 업로드 파일 삭제
   - 404 page
+  - 발표 파일 다운로드
 
 2021.02.17
 - `bug`
