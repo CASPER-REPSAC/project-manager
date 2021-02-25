@@ -101,6 +101,10 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.02.25
+- `bug`
+  - [#28](https://github.com/CASPER-REPSAC/project-manager/issues/28) 답글 제출 값 검증이 없어 발생한 버그
+
 2021.02.18
 - `bug`
   - 섹션 추가시, 섹션 범위 max 값 적용 안되는 문제
