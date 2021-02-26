@@ -101,6 +101,10 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.02.26
+- `feature`
+  - feed 기능 추가. 새로운 게시글이 등록 되었을 때, 사용자에게 메일 발송.
+
 2021.02.25
 - `bug`
   - [#28](https://github.com/CASPER-REPSAC/project-manager/issues/28) 답글 제출 값 검증이 없어 발생한 버그

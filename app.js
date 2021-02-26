@@ -14,6 +14,8 @@ const router_comment = require("./router/comment");
 const router_delete = require("./router/delete");
 const router_like = require("./router/like");
 const router_auth = require("./router/auth");
+const router_profile = require("./router/profile");
+const router_feed = require("./router/feed/feed");
 
 const config = require("./config/secret.json");
 
@@ -41,6 +43,8 @@ app.post("/reply", router_comment);
 app.delete("/post/:idx", router_delete);
 app.get("/like/:idx", router_like);
 app.post("/auth", router_auth);
+app.get("/profile", router_profile);
+app.get("/feed", router_feed);
 
 app.get("*", (req, res) => {
     res.status(404);

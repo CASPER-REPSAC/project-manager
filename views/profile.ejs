@@ -1,0 +1,55 @@
+<html web-theme="<%=require.web_theme %>">
+    <head>
+        <title>
+            Project Manager
+        </title>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap" rel="stylesheet">
+
+        <!-- custom css -->
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/profile.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/darkwhite.css">
+        <link rel="stylesheet" href="/css/bootstrap-custom.css">
+        <!-- ---------- -->
+
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <div class="header-title">
+                    <a href="/">Pr<i class="fas fa-ghost"></i>ject Manager</a>
+                </div>
+                <div class="header-menu float-right">
+                    <a href="https://github.com/CASPER-REPSAC/project-manager/issues" target="_blank"><button type="button" class="btn btn-info"><i class="fab fa-github fa-lg"></i> Bug Report</button></a>
+                    <a href="/write"><button type="button" class="btn btn-secondary"><i class="far fa-address-card fa-lg"></i> Profile</button></a>
+                    <a href="/write"><button type="button" class="btn btn-secondary">Write</button></a>
+                    <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
+                </div>
+            </div>
+        </div>
+        <div id="contents">
+            <div class="container">
+                <div class="user-info row">
+                    <div class="user-image col-sm-3">
+                        <img src='<%=user_info.user_image %>'>
+                    </div>
+                    <div class="col-sm-9">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                This project is <a href="https://github.com/CASPER-REPSAC/project-manager">open source.</a>
+            </div>
+        </div>
+        <script src="/js/darkmode.js"></script>
+    </body>
+</html>
