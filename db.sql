@@ -6,7 +6,8 @@ CREATE TABLE user (
     user_name VARCHAR(50) NOT NULL,
     user_image TEXT,
     auth VARCHAR(6) NOT NULL,
-    registration_date TIMESTAMP NOT NULL
+    registration_date TIMESTAMP NOT NULL,
+    feed INT DEFAULT 0
 );
 
 CREATE TABLE post (

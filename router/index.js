@@ -10,16 +10,22 @@ router.get("/", async (req, res) => {
     const recent_comment = await sendQuery(`SELECT post_idx, writer, comment_content, comment_date FROM post_comment ORDER BY comment_idx DESC LIMIT 0, 10`);
     const popular_row = await sendQuery(`SELECT * FROM post WHERE like_count >= 1 ORDER BY like_count DESC LIMIT 0, 10`);
     const user_auth = await check.getAuth(req.session.passport);
+    let feed = '';
 
     const page_num = (req.query.page) ? (Number(req.query.page) ? Number(req.query.page) : 1) : 1;
     const paging_post_row = await paging(page_num, post_row);
+
+    if(check.isLogin(req.session.passport)){
+        feed = (await sendQuery(`SELECT feed FROM user WHERE user_id = ?`, [req.session.passport.user.id]))[0].feed;
+    }
 
     res.render("index", {
         require : data, 
         post : paging_post_row, 
         recent_comment : recent_comment, 
         popular : popular_row, 
-        user_auth : user_auth
+        user_auth : user_auth,
+        feed : feed
     });
 })
 

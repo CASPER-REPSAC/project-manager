@@ -48,7 +48,13 @@
     font-family: 'Londrina Solid', cursive;
 }
 
-
+.active {
+    background-color: green !important;
+    border-color: #28a745 !important;
+}
+.feed{
+    height: 38px;
+}
 /**************/
 
 
