@@ -30,6 +30,8 @@
                         <a href="/login"><button type="button" class="btn btn-secondary"><i class="fab fa-google"></i> Login</button></a>
                     <% } else { %>
                         <% if(user_auth == "guest") { %><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-1">Auth</button> <% } %>
+                        <!-- <a href="/profile"><button type="button" class="btn btn-secondary"><i class="far fa-address-card fa-lg"></i> Profile</button></a> -->
+                        <button type="button" class="btn btn-danger feed <% if(feed == '1') { %> active <% } %>"><i class="fas fa-rss-square fa-lg"></i></button>
                         <a href="/write"><button type="button" class="btn btn-secondary">Write</button></a>
                         <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
 
@@ -172,5 +174,6 @@
         </div>
         <script src="/js/darkmode.js"></script>
         <script src="/js/auth.js"></script>
+        <script src="/js/feed.js"></script>
     </body>
 </html>
