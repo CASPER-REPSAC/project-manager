@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
+
 const sendQuery = require("../feature/db");
 const check = require("../feature/check");
 const requirement = require("../feature/requirement");
+const mail = require("./feed/mail");
 
 router.get("/write", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
@@ -34,7 +36,7 @@ router.post("/write", async (req, res) => {
     const user_id = req.session.passport.user.id;
     const writer = req.session.passport.user.displayName;
 
-    const tmp_path_row = await sendQuery(`SELECT tmp_path FROM tmp_post_attach WHERE user_id = ?`, [user_id]);
+    const tmp_path_row = await sendQuery(`SELECT tmp_path FROM tmp_post_attach WHERE user_id = ? ORDER BY tmp_attach_idx DESC`, [user_id]);
     await sendQuery(`DELETE FROM tmp_post_attach WHERE user_id = ?`, [user_id]);
     await sendQuery(`INSERT INTO post (user_id, writer, title, subtitle, contents, opinion, post_date, project_date, type, tag) VALUES (?, ?, ?, ?, ?, ?, now(), ?, ?, ?)`,
                                        [user_id, writer, input.title, input.subtitle, input.section, input.section_opinion, input.date, input.type, input.tag]);
@@ -42,6 +44,17 @@ router.post("/write", async (req, res) => {
     const row = await sendQuery(`SELECT post_idx FROM post WHERE user_id = ? ORDER BY post_idx DESC LIMIT 0,1`, [user_id]);
     await sendQuery(`INSERT INTO post_attach (post_idx, path) VALUES (?, ?)`, [row[0].post_idx, tmp_path_row[0].tmp_path]);
 
+    const feed_user_list_row = await sendQuery(`SELECT user_email FROM user WHERE feed = 1`);
+    feed_user_list_row.map(async (list) => {
+        const user_email = list.user_email;
+        const title = `Project Manager 에서 새로운 프로젝트가 업로드 되었어요.`;
+        const content = `<a href='${req.hostname}'><img src='${req.hostname}/image/email.png'></a><br><Br>Project Manager 에서 새로운 프로젝트가 업로드 되었어요.<br><Br><Br>
+                            title: ${input.title}<br>
+                            PDF download: <a href='${req.hostname}${tmp_path_row[0].tmp_path}'>${tmp_path_row[0].tmp_path}</a><Br><br>
+                            <a href='${req.hostname}/post/${row[0].post_idx}'>프로젝트 염탐하러 가기.</a><br><Br>
+                            더 이상 메일을 받지 않으려면, <a href='${req.hostname}'>Project Manager</a>에 방문해서 로그인 후 Feed를 꺼주시기 바랍니다.`;
+        await mail.send(user_email, title, content);
+    })
 
     res.json({"result" : "success", "message" : "글이 작성 되었습니다.", "redirect" : `/post/${row[0].post_idx}`})
 })
