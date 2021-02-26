@@ -3,6 +3,7 @@ CREATE DATABASE project_manager;
 CREATE TABLE user (
     user_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_id VARCHAR(50) NOT NULL,
+    user_email TEXT NOT NULL,
     user_name VARCHAR(50) NOT NULL,
     user_image TEXT,
     auth VARCHAR(6) NOT NULL,
