@@ -2,6 +2,7 @@ const express = require("express");
 const session = require('express-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 const app = express();
 
 const router_index = require("./router/index");
@@ -19,6 +20,7 @@ const router_feed = require("./router/feed/feed");
 
 const config = require("./config/secret.json");
 
+app.use(favicon(__dirname + '/static/image/favicon.png'));
 app.use(passport.initialize());
 app.use(bodyParser.json());
 app.set("view engine", "ejs");
