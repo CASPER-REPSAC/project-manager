@@ -16,8 +16,8 @@ module.exports.getAuth = async (user_id) => {
     return row[0].auth;
 }
 
-module.exports.checkAuth = async (req, res, data) => {
-    if(!data.is_login){
+module.exports.checkAuth = async (req, res) => {
+    if(!this.isLogin(req.session.passport)){
         const html = "<script type='text/javascript'>alert('로그인이 필요합니다.'); location.href='/'; </script>";
         res.send(html);
         return false;

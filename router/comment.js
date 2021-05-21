@@ -10,7 +10,7 @@ router.post("/comment", async(req, res) => {
         return;
     }
     // const data = await requirement.getRequireData(req.session);
-    // if(!(await feature.checkAuth(req, res, data))) return;
+    // if(!(await check.checkAuth(req, res))) return;
 
     const post_idx = Number(req.body.post_idx) ? Number(req.body.post_idx) : -1;
     const writer = req.session.passport.user.displayName;
@@ -39,7 +39,7 @@ router.post("/reply", async(req, res) => {
         return;
     }
     // const data = await requirement.getRequireData(req.session);
-    // if(!(await feature.checkAuth(req, res, data))) return;
+    if(!(await check.checkAuth(req, res))) return;
 
     const comment_idx = Number(req.body.comment_idx) ? Number(req.body.comment_idx) : -1;
     const reply_content = req.body.reply_content;
