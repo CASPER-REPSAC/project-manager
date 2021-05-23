@@ -52,3 +52,12 @@
     display: inline-block;
     width: 220px;
 }
+
+#pdf-main-container{
+    display: inline-block;
+}
+
+
+#pdf-contents{
+    margin: 5px 10px;
+}

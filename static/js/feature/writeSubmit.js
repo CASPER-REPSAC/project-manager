@@ -7,7 +7,7 @@ function getWriteData() {
         "total_page" : $("input[name=total_page]").val(),
         "section" : [],
         "section_opinion" : $("textarea[name=section_opinion]").val(),
-        "type" : $(".form-check-input:checked").val(),
+        "type" : $(".select-type-value").val(),
         "tag" : $('#tags').val()
     }
     const section_count = $(".section-field").length;

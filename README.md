@@ -101,6 +101,10 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.05.21 ~ 
+- `design`
+  - main 페이지
+
 2021.03.02
 - `design`
   - favicon 추가

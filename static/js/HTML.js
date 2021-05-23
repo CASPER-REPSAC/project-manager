@@ -26,10 +26,10 @@ function writeFormBtnsHTML(){
             <button type="button" class="btn btn-danger btn-section-remove"><i class="fas fa-minus"></i></button>`;
 }
 
-function pdfToImgModalHTML(modal_number){
+function pdfToImgModalHTML(modal_number, width){
     return `<div id="pdf-main-container">
                 <div id="pdf-contents">
-                    <canvas id="pdf-canvas" class="pdf-to-image-canvas" width="400" data-toggle="modal" data-target="#exampleModal-${modal_number}"></canvas>
+                    <canvas id="pdf-canvas" class="pdf-to-image-canvas" width="${width}" data-toggle="modal" data-target="#exampleModal-${modal_number}"></canvas>
                 </div>
             </div>
 
@@ -51,6 +51,15 @@ function pdfToImgModalHTML(modal_number){
             </div>`
 }
 
+function pdfPreviewHTML(width, page_no){
+    return `<div id="pdf-main-container">
+                <div id="pdf-contents">
+                    <canvas id="pdf-canvas" class="pdf-to-image-canvas" width="${width}"></canvas><Br>
+                    <center>${page_no}</center>
+                </div>
+            </div>`;
+}
+
 function replyInputFormHTML(user_image, comment_idx){
     return `<div class="input-reply-box row">
                 <div class="col-sm-1">
@@ -63,6 +72,32 @@ function replyInputFormHTML(user_image, comment_idx){
                 </div>
                 <div class="col-sm-1">
                     <button type="button" class="btn btn-success btn-reply" value="${comment_idx}">Submit</button>
+                </div>
+            </div>`;
+}
+
+const projectBoxHTML = (data) => {
+    let badge = '';
+    const badgeHTML = `<a href="#" class="badge badge-pill badge-secondary">{{badge}}</a> `;
+    data["tag"].split(",").forEach(tag => {
+        badge += badgeHTML.replace("{{badge}}", tag);
+    })
+
+    return `<div class="col-xl-4 col-lg-4 col-sm-6 animate__animated animate__fadeInUp animate__flipInX">
+                <div class="project-box">
+                    <a href="/post/${data["post_idx"]}"><img class="project-thumbnail" src="/image/header3.jpg"></a>
+                    <div class="project-info">
+                        <a href="#" class="badge badge-pill badge-warning">${data["type"]}</a>
+                        ${badge}
+                        <div class="project-title">
+                            <a href="/post/${data["post_idx"]}">${data["title"]}</a>
+                        </div>
+                    </div>
+                    <div class="project-info-bottom">
+                        <span class="project-writer-image"><img src="${data["user_image"]}"></span>
+                        <span class="project-writer-name">${data["writer"]}</span> · 
+                        <span class="project-writer-date">${data["post_date"]}</span>
+                    </div>
                 </div>
             </div>`;
 }

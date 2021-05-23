@@ -8,10 +8,20 @@ const mail = require("./feed/mail");
 
 router.get("/write", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
-    
     if(!(await check.checkAuth(req, res, data))) return;
 
-    res.render("write", {require: data});
+    const user_auth = await check.getAuth(req.session.passport);
+    let feed = '';
+
+    if(check.isLogin(req.session.passport)){
+        feed = (await sendQuery(`SELECT feed FROM user WHERE user_id = ?`, [req.session.passport.user.id]))[0].feed;
+    }
+
+    res.render("write", {
+        require : data, 
+        user_auth : user_auth,
+        feed : feed
+    });
 })
 
 router.post("/write", async (req, res) => {
