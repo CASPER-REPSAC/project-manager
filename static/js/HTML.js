@@ -83,8 +83,7 @@ const projectBoxHTML = (data) => {
         badge += badgeHTML.replace("{{badge}}", tag);
     })
 
-    return `<div class="col-xl-4 col-lg-4 col-sm-6 animate__animated animate__fadeInUp animate__flipInX">
-                <div class="project-box">
+    return `<div class="col-xl-4 col-lg-4 col-sm-6 project-box animate__animated animate__fadeInUp">
                     <a href="/post/${data["post_idx"]}"><img class="project-thumbnail" src="/image/header3.jpg"></a>
                     <div class="project-info">
                         <a href="#" class="badge badge-pill badge-warning">${data["type"]}</a>
@@ -98,6 +97,5 @@ const projectBoxHTML = (data) => {
                         <span class="project-writer-name">${data["writer"]}</span> · 
                         <span class="project-writer-date">${data["post_date"]}</span>
                     </div>
-                </div>
             </div>`;
 }
