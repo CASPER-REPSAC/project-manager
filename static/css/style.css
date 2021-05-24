@@ -43,9 +43,10 @@
 * { transition: background-color 1s, color 0.1s, border 0.5s; }
 
 
+
+
 body{ 
     background-color: var(--bgColor);
-    /* margin: 20px 350px; */
 }
 a{ text-decoration: none; }
 a:hover{ text-decoration: none; }

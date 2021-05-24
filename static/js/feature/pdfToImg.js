@@ -29,7 +29,7 @@ async function showPDF(pdf_url) {
         let range = $(".section-range")[sec].value.split("~").map((i) => Number(i));
 
         for(let s = range[0]; s <= range[1]; s++){
-            $($(".project-section-image")[sec]).children().children().append(pdfToImgModalHTML(s));
+            $($(".project-section-image")[sec]).children().children().append(pdfToImgModalHTML(s,400));
             showPage(s, $(".pdf-to-image-canvas")[s-1]);
             showPage(s, $(".pdf-to-image-canvas2")[s-1]);
         }
