@@ -17,6 +17,7 @@ const router_like = require("./router/like");
 const router_auth = require("./router/auth");
 const router_profile = require("./router/profile");
 const router_feed = require("./router/feed/feed");
+const router_api_index = require("./router/api/index");
 
 const config = require("./config/secret.json");
 
@@ -48,11 +49,13 @@ app.post("/auth", router_auth);
 app.get("/profile", router_profile);
 app.get("/feed", router_feed);
 
+app.get("/api/index", router_api_index);
+
 app.get("*", (req, res) => {
     res.status(404);
     res.render("404");
 })
 
-app.listen(8080, () => {
+app.listen(8081, () => {
     console.log("running");
 })

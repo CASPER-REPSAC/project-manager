@@ -52,3 +52,19 @@
     display: inline-block;
     width: 220px;
 }
+
+.pdf-preview{
+    margin-top: 50px;
+}
+
+#pdf-main-container{
+    display: inline-block;
+    cursor: pointer;
+}
+.selected-thumbnail{
+    border: 3px solid rgb(255, 0, 0);
+}
+
+#pdf-contents{
+    margin: 5px 5px;
+}
