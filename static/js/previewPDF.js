@@ -8,8 +8,10 @@ const initPDF = async (path) => {
 
     _TOTAL_PAGES = _PDF_DOC.numPages;
     for(let i=1; i<_TOTAL_PAGES+1; i++){
-        $(".pdf-preview").append(pdfPreviewHTML(230, i));
+        $(".pdf-preview").append(pdfPreviewHTML(225, i));
         showPage(i, $(".pdf-to-image-canvas")[i-1]);
-        // $(".pdf-to-image-canvas").css("display", "");
     }
+    setTimeout(() => {
+        $($(".pdf-to-image-canvas")[0]).css("display", "");
+    },1000);
 }

@@ -8,12 +8,14 @@ function getWriteData() {
         "section" : [],
         "section_opinion" : $("textarea[name=section_opinion]").val(),
         "type" : $(".select-type-value").val(),
-        "tag" : $('#tags').val()
+        "tag" : $('#tags').val(),
+        "thumbnail" : ""
     }
     const section_count = $(".section-field").length;
     
     if(data.title.length == 0) { alert("제목을 입력해 주세요"); return; }
     if(data.date.length == 0) { alert("날짜를 입력해 주세요"); return; }
+    if($(".selected-thumbnail").length != 1) { alert("pdf 미리보기에서 썸네일 1개만 선택해 주세요."); return; }
     if(data.section_opinion.length == 0) { alert("의견을 입력해 주세요"); return; }
     if(data.tag.length == 0) { alert("태그를 입력해 주세요"); return; }
     if($("input[type='file']")[0].files.length == 0) { alert("파일을 업로드 해주세요."); return;}
@@ -30,6 +32,10 @@ function getWriteData() {
         if(data.section[i].range_start.length == 0){ alert("시작 범위를 입력해 주세요"); return; }
         if(data.section[i].range_end.length == 0){ alert("끝 범위를 입력해 주세요"); return; }
     }
+
+    const canvas = document.getElementsByClassName("selected-thumbnail")[0];
+    const dataURL = canvas.toDataURL("image/png");
+    data.thumbnail = dataURL;
 
     return data;
 }

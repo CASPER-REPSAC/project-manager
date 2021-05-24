@@ -25,8 +25,6 @@ $(".btn-submit").click(() => {
         sendToWrite(data);
 })
 
-
-
 // 프로젝트 유형 선택
 $(document).on("click", ".select-type", (e) => {
     $(".select-type-value").val(e.target.value);
@@ -37,4 +35,10 @@ $(document).on("click", ".select-type", (e) => {
         $(".select-project-file").addClass("animate__animated animate__fadeInDown");
     },1000);
 
+})
+
+// 썸네일 설정
+$(document).on("click", ".pdf-to-image-canvas", (e) => {
+    $(".pdf-to-image-canvas").removeClass("selected-thumbnail");
+    $(e.target).addClass("selected-thumbnail");
 })

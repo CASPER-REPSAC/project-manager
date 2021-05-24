@@ -104,6 +104,11 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 2021.05.21 ~ 
 - `design`
   - main 페이지
+  - write 페이지
+- `feature`
+  - thumbnail 기능 추가
+- `db`
+  - thumbnail 컬럼 추가
 
 2021.03.02
 - `design`

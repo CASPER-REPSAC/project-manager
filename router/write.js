@@ -48,8 +48,8 @@ router.post("/write", async (req, res) => {
 
     const tmp_path_row = await sendQuery(`SELECT tmp_path FROM tmp_post_attach WHERE user_id = ? ORDER BY tmp_attach_idx DESC`, [user_id]);
     await sendQuery(`DELETE FROM tmp_post_attach WHERE user_id = ?`, [user_id]);
-    await sendQuery(`INSERT INTO post (user_id, writer, title, subtitle, contents, opinion, post_date, project_date, type, tag) VALUES (?, ?, ?, ?, ?, ?, now(), ?, ?, ?)`,
-                                       [user_id, writer, input.title, input.subtitle, input.section, input.section_opinion, input.date, input.type, input.tag]);
+    await sendQuery(`INSERT INTO post (user_id, writer, title, subtitle, contents, opinion, post_date, project_date, type, tag, thumbnail) VALUES (?, ?, ?, ?, ?, ?, now(), ?, ?, ?, ?)`,
+                                       [user_id, writer, input.title, input.subtitle, input.section, input.section_opinion, input.date, input.type, input.tag, input.thumbnail]);
 
     const row = await sendQuery(`SELECT post_idx FROM post WHERE user_id = ? ORDER BY post_idx DESC LIMIT 0,1`, [user_id]);
     await sendQuery(`INSERT INTO post_attach (post_idx, path) VALUES (?, ?)`, [row[0].post_idx, tmp_path_row[0].tmp_path]);
