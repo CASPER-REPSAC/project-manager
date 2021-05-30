@@ -23,7 +23,8 @@ CREATE TABLE post (
     project_date DATE NOT NULL,
     type VARCHAR(10) NOT NULL,
     tag TEXT NOT NULL,
-    like_count INT DEFAULT 0
+    like_count INT DEFAULT 0,
+    thumbnail TEXT NOT NULL
 );
 
 CREATE TABLE post_attach(
