@@ -1,7 +1,7 @@
 $(".btn-auth").click(() => {
     const token = $("input[name='auth-token']").val();
     
-    fetch('/auth',{
+    fetch('/api/auth',{
         method : "POST",
         headers: {
             'Accept': 'application/json, text/plain, */*',

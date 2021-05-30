@@ -16,5 +16,5 @@ $(".dark-mode > label > input[type=checkbox]").click((e) => {
 function sendThemeData(check){
     const data = check ? "light" : "dark";
 
-    fetch(`/theme?data=${data}`);
+    fetch(`/api/theme?data=${data}`);
 }

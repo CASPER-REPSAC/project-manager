@@ -31,11 +31,6 @@ module.exports.checkAuth = async (req, res) => {
     return true;
 }
 
-module.exports.isPostOwner = (session) => {
-    if(!session)
-        return false;
-}
-
 module.exports.getUserTheme = (data) => {
     let isCheck = true;
 
@@ -53,6 +48,14 @@ module.exports.isPostOwner = async (passport, post_idx) => {
     if(row.length == 0)
         return false;
     return true;
+}
+
+module.exports.getFeed = async (passport) => {
+    if(!this.isLogin(passport))
+        return 0;
+        
+    const feed = await sendQuery(`SELECT feed FROM user WHERE user_id = ?`, [passport.user.id]);
+    return feed[0].feed;   
 }
 
 function isNull(data){

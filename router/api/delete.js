@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 
-const check = require("../feature/check");
-const sendQuery = require("../feature/db");
+const check = require("../../feature/check");
+const sendQuery = require("../../feature/db");
 
-router.delete("/post/:idx", async (req, res) => {
+router.delete("/api/post/:idx", async (req, res) => {
     const post_idx = req.params.idx;
     
     if(!check.isLogin(req.session.passport)){
