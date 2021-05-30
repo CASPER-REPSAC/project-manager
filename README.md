@@ -101,7 +101,11 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
-2021.05.21 ~ 
+2021.05.21 ~ 05.24
+- `refactoring`
+  - 코드 및 파일 정리
+
+2021.05.21 ~ 05.24
 - `design`
   - main 페이지
   - write 페이지

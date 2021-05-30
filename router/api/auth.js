@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const check = require("../feature/check");
-const config = require("../config/secret.json");
-const sendQuery = require("../feature/db");
+const check = require("../../feature/check");
+const config = require("../../config/secret.json");
+const sendQuery = require("../../feature/db");
 
-router.post("/auth", async (req,res) => {
+router.post("/api/auth", async (req,res) => {
     if(!check.isLogin(req.session.passport)){
         res.json({"result" : "error" , "message" : "로그인을 해주세요."});
         return;

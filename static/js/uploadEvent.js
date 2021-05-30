@@ -1,3 +1,5 @@
+var pdf_total_page;
+
 $("input[type='file']").on("change", () => {
     const file = $("input[type='file']")[0].files[0];
     const file_ext = getFileExt(file.name);
@@ -21,4 +23,24 @@ function fileExtCheck(file_ext){
     if(file_ext != "pdf")
         return false;
     return true;
+}
+
+function sendFileToServer(upload_file){
+    fetch("/api/upload", {
+        method : "POST",
+        body : upload_file
+    })
+    .then(res => res.json())
+    .then(async (res) => {
+        alert(res.message);
+        $(".select-project-file").addClass("animate__animated animate__fadeOutDown");
+        setTimeout(() => {
+            $(".select-project-file").hide();
+            
+            $(".input-detail").show();
+            $(".input-detail").addClass("animate__animated animate__fadeIn");
+
+            initPDF(res.path);
+        },1000);
+    })
 }
