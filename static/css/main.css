@@ -2,6 +2,13 @@
 #menu{
     margin: 0px 45px;
 }
+
+@media screen and (max-width: 500px) {
+    .bug-report-btn{
+        display: none;
+    }
+}
+
 @media (max-width:769px){
     .header-title{
         font-size: 20px;
