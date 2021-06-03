@@ -6,18 +6,19 @@ var favicon = require('serve-favicon');
 const app = express();
 
 const router_index = require("./router/index");
-const router_theme = require("./router/theme");
 const router_post = require("./router/post");
 const router_login = require("./router/login");
 const router_write = require("./router/write");
-const router_upload = require("./router/upload");
-const router_comment = require("./router/comment");
-const router_delete = require("./router/delete");
-const router_like = require("./router/like");
-const router_auth = require("./router/auth");
 const router_profile = require("./router/profile");
 const router_feed = require("./router/feed/feed");
+const router_modify = require("./router/modify");
 const router_api_index = require("./router/api/index");
+const router_api_auth = require("./router/api/auth");
+const router_api_delete = require("./router/api/delete");
+const router_api_comment = require("./router/api/comment");
+const router_api_like = require("./router/api/like");
+const router_api_theme = require("./router/api/theme");
+const router_api_upload = require("./router/api/upload");
 
 const config = require("./config/secret.json");
 
@@ -33,23 +34,25 @@ app.use(session({
 }));
 
 app.get("/", router_index);
-app.get("/theme", router_theme);
 app.get("/post/:idx", router_post);
 app.get("/write", router_write);
 app.post("/write", router_write);
 app.get('/login', router_login);
 app.get("/logout", router_login);
 app.get('/auth/google/callback', router_login);
-app.post("/upload", router_upload);
-app.post("/comment", router_comment);
-app.post("/reply", router_comment);
-app.delete("/post/:idx", router_delete);
-app.get("/like/:idx", router_like);
-app.post("/auth", router_auth);
 app.get("/profile", router_profile);
 app.get("/feed", router_feed);
+app.get("/modify/:idx", router_modify);
+app.post("/modify", router_modify);
 
 app.get("/api/index", router_api_index);
+app.post("/api/auth", router_api_auth);
+app.delete("/api/post/:idx", router_api_delete);
+app.post("/api/comment", router_api_comment);
+app.post("/api/reply", router_api_comment);
+app.get("/api/like/:idx", router_api_like);
+app.get("/api/theme", router_api_theme);
+app.post("/api/upload", router_api_upload);
 
 app.get("*", (req, res) => {
     res.status(404);

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/theme", (req, res) => {
+router.get("/api/theme", (req, res) => {
     const data = (req.query.data == "dark" ? "dark" : "light");
     req.session.user_theme = data;
 

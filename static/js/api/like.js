@@ -1,6 +1,6 @@
 $(".fa-chevron-up").click(() => {
     const post_idx = $("input[name='post-idx']").val();
-    like_unlike(`/like/${post_idx}`);
+    like_unlike(`/api/like/${post_idx}`);
 })
 
 // $(".fa-chevron-down").click(() => {

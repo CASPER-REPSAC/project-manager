@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const check = require("../feature/check");
-const requirement = require("../feature/requirement");
-const sendQuery = require("../feature/db");
+const check = require("../../feature/check");
+const requirement = require("../../feature/requirement");
+const sendQuery = require("../../feature/db");
 
-router.post("/comment", async(req, res) => {
+router.post("/api/comment", async(req, res) => {
     if(!check.isLogin(req.session.passport)){
         res.json({"result" : "error", "message" : "로그인을 해주세요."});
         return;
@@ -33,7 +33,7 @@ router.post("/comment", async(req, res) => {
     res.json({"result" : "success", "message" : "댓글이 등록 되었습니다.", "redirect" : `/post/${post_idx}`})
 })
 
-router.post("/reply", async(req, res) => {
+router.post("/api/reply", async(req, res) => {
     if(!check.isLogin(req.session.passport)){
         res.json({"result" : "error", "message" : "로그인을 해주세요."});
         return;

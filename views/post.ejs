@@ -3,11 +3,7 @@
         <title>
             Project Manager
         </title>
-        <link rel="stylesheet" href="/css/bootstrap.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <%- include("./fragment/head.ejs") %>
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
@@ -37,56 +33,9 @@
         <% for(let i=0; i<post_data.contents.length; i++) { %>
             <input type="hidden" class="section-range" value="<%= post_data.contents[i].range_start %>~<%= post_data.contents[i].range_end %>">
         <% } %>
-        <div id="header">
-            <div class="container">
-                <div class="header-title">
-                    <a href="/">Pr<i class="fas fa-ghost"></i>ject Manager</a>
-                </div>
-                <div class="header-menu float-right">
-                    <a href="https://github.com/CASPER-REPSAC/project-manager/issues" target="_blank"><button type="button" class="btn btn-info"><i class="fab fa-github fa-lg"></i> Bug Report</button></a>
-                    <% if(!require.is_login){ %>
-                        <a href="/login"><button type="button" class="btn btn-secondary"><i class="fab fa-google"></i> Login</button></a>
-                    <% } else { %>
-                        <% if(user_auth == "guest") { %><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-1">Auth</button> <% } %>
-                        <a href="/write"><button type="button" class="btn btn-secondary">Write</button></a>
-                        <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
 
-                        <% if(user_auth == "guest") { %>
-                            <div class="modal fade" id="exampleModal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">인증하기</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        권한 상승을 위해 토큰 값을 입력해 주세요.
-                                        <input type="text" class="form-control" placeholder="Input token." name="auth-token">
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary btn-auth">submit</button>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        <% } %>
-                    <% } %>
-                </div>
-            </div>
-        </div>
-        <div id="menu">
-            <div class="container">
-                <div class="dark-mode float-right">
-                    <label class="switch">
-                        <input type="checkbox" <%= require.check ? "checked" : "" %>>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-        </div>
+        <%- include("./fragment/header.ejs") %>
+
         <Br><Br>
         <div id="contents">
             <div class="container contents-box">
@@ -158,7 +107,10 @@
                 </div>
                 <div class="row project-content">
                     <div class="col-sm-12 float-right">
-                        <button type="button" class="btn btn-danger btn-delete-post">삭제</button>
+                        <% if(user_info.is_post_owner) { %>
+                            <a href="/modify/<%=post_data.post_idx %>"><button type="button" class="btn btn-info btn-modify-post">수정</button></a>
+                            <button type="button" class="btn btn-danger btn-delete-post">삭제</button>
+                        <% } %>
                     </div>
                 </div>
             </div>
@@ -242,17 +194,15 @@
                 This project is <a href="https://github.com/CASPER-REPSAC/project-manager">open source.</a>
             </div>
         </div>
-        <script src="/js/darkmode.js"></script>
+        <script src="/js/api/darkmode.js"></script>
         <script src="/js/modal.js"></script>
         <script src="/js/HTML.js"></script>
         <script src="/js/feature/pdfToImg.js"></script>
         <script src="/js/commentEvent.js"></script>
         <script src="/js/replyEvent.js"></script>
-        <script src="/js/feature/commentSubmit.js"></script>
-        <script src="/js/feature/replySubmit.js"></script>
-        <script src="/js/delete.js"></script>
-        <script src="/js/like.js"></script>
-        <script src="/js/auth.js"></script>
+        <script src="/js/api/delete.js"></script>
+        <script src="/js/api/like.js"></script>
+        <script src="/js/api/auth.js"></script>
         <script>
             showPDF($(".file-name").val());
         </script>

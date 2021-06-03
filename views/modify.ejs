@@ -30,50 +30,42 @@
 
     </head>
     <body>
+        <input type="hidden" name="project_file" value="<%=post_attach %>">
+        <input type="hidden" name="section_data" value="<%=post_data.contents %>">
+        <input type="hidden" name="my_opinion" value="<%=post_data.opinion %>">
+        <input type="hidden" name="tags" value="<%=post_data.tag %>">
+        <input type="hidden" name="project_type" class="select-type-value" value="<%=post_data.type %>">
+        <input type="hidden" name="total_page" value="">
+        <input type="hidden" name="post_idx" value="<%=post_data.post_idx %>">
         <%- include("./fragment/header.ejs") -%>
         <br><br>
         <div id="content">
             <div class="container write-box">
                 <div class="write-form">
-                    <!-- 프로젝트 유형 선택 -->
-                    <div class="select-project-type">
-                        <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-sm-6"></div>
-                            <div class="col-xl-4 col-lg-4 col-sm-6 ">
-                                <h4>프로젝트 유형을 선택해주세요.</h4><br>
-                                <button type="button" class="btn btn-success select-type" value="casper">캐스퍼 프로젝트</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" class="btn btn-success select-type" value="personal">개인 프로젝트</button>
-                                <input type="hidden" class="select-type-value" value="">
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-sm-6"></div>
-                        </div>
-                    </div>
-                    <!-- --------- -->
-
-                    <!-- 프로젝트 파일 업로드 -->
-                    <div class="select-project-file" style="display: none;">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-3 col-sm-6"></div>
-                            <div class="col-xl-6 col-lg-6 col-sm-6 ">
-                                <h4>프로젝트 pdf 파일을 업로드 해주세요.</h4><br>
-                                <input type="file" class="form-control write-form-input" name="file">
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-sm-6"></div>
-                        </div>
-                    </div>
-                    <!-- --------- -->
-
                     <!-- 프로젝트 상세 정보 입력 -->
-                    <div class="input-detail" style="display: none;">
+                    <div class="input-detail">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" <% if(post_data.type == "casper") {%> checked <% } %> value="casper">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    캐스퍼 프로젝트
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" <% if(post_data.type == "personal") {%> checked <% } %> value="personal">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    개인 프로젝트
+                                </label>
+                            </div>
+                        </div>
                         <div class="row title-field">
                             <div class="col-sm-7">
-                                <input type="text" class="form-control write-form-input" placeholder="제목을 입력해 주세요." name="title">
-                                <input type="text" class="form-control write-form-input" placeholder="부제목을 입력해 주세요." name="subtitle">
-                                
+                                <input type="text" class="form-control write-form-input" placeholder="제목을 입력해 주세요." name="title" value="<%=post_data.title %>">
+                                <input type="text" class="form-control write-form-input" placeholder="부제목을 입력해 주세요." name="subtitle" value="<%=post_data.subtitle %>">
                             </div>
                             <div class="col-sm-5">
                                 프로젝트 발표 날: &nbsp;
-                                <input type="date" class="form-control write-form-input date" name="date" width="30">
+                                <input type="date" class="form-control write-form-input date" name="date" width="30" value="<%=post_data.project_date %>">
                                 
                             </div>
                         </div>
@@ -121,7 +113,7 @@
                         <div class="row">
                             <div class="col-sm-11"></div>
                             <div class="col-sm-1">
-                                <button type="button" class="btn btn-success btn-submit">submit</button>
+                                <button type="button" class="btn btn-success btn-modify-submit">submit</button>
                             </div>
                         </div>
                     </div>
@@ -133,10 +125,11 @@
 
         <script src="/js/HTML.js"></script>
         <script src="/js/api/darkmode.js"></script>
-        <script src="/js/write.js"></script>
         <script src="/js/feature/pdfToImg.js"></script>
         <script src="/js/uploadEvent.js"></script>
         <script src="/js/previewPDF.js"></script>
+        <script src="/js/write.js"></script>
+        <script src="/js/modify.js"></script>
         <script>
             $('#tags').tagsInput();
         </script>

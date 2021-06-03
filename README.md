@@ -101,7 +101,16 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
-2021.05.21 ~ 
+2021.06.03
+- `feature`
+  - 게시글 수정 기능 추가
+  - 로그인 상태 아닐 경우 || 게시글의 주인이 아닐경우 "삭제", "수정" 버튼 안보이게 하기.
+
+2021.05.21 ~ 05.24
+- `refactoring`
+  - 코드 및 파일 정리
+
+2021.05.21 ~ 05.24
 - `design`
   - main 페이지
   - write 페이지
