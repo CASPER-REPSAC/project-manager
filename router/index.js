@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const requirement = require("../feature/requirement");
-const sendQuery = require("../feature/db");
 const check = require("../feature/check");
 
 router.get("/", async (req, res) => {
