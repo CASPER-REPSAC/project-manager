@@ -8,7 +8,7 @@ router.get("/post/:idx", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
     const user_auth = await check.getAuth(req.session.passport);
     const post_idx = req.params.idx;
-    const user_info = {"user_image" : ""};
+    const user_info = {"user_image" : "", "is_post_owner" : 0};
 
     const post_row = await sendQuery(`SELECT * FROM post WHERE post_idx=?`, [post_idx]);
 
@@ -19,9 +19,11 @@ router.get("/post/:idx", async (req, res) => {
 
     if(data.is_login){
         const user_row = await sendQuery(`SELECT user_image FROM user WHERE user_id = ?`, [req.session.passport.user.id]);
+        const is_post_owner = await sendQuery(`SELECT count(post_idx) as cnt FROM post WHERE post_idx = ? AND user_id = ?`, [post_idx, req.session.passport.user.id]);
         user_info.user_image = user_row[0].user_image;
+        user_info.is_post_owner = (is_post_owner[0].cnt == 1 ? 1 : 0);
     }
-
+    
     const post_attach = await sendQuery(`SELECT path FROM post_attach WHERE post_idx = ?`, [post_idx]);
     const [comment, user_image] = await getCommentAndReply(post_idx);
 

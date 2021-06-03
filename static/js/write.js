@@ -49,7 +49,6 @@ function getWriteData() {
         "title" : $("input[name=title]").val(),
         "date" : $("input[name=date]").val(),
         "subtitle" : $("input[name=subtitle]").val(),
-        "file" : '',
         "total_page" : $("input[name=total_page]").val(),
         "section" : [],
         "section_opinion" : $("textarea[name=section_opinion]").val(),
@@ -64,7 +63,6 @@ function getWriteData() {
     if($(".selected-thumbnail").length != 1) { alert("pdf 미리보기에서 썸네일 1개만 선택해 주세요."); return; }
     if(data.section_opinion.length == 0) { alert("의견을 입력해 주세요"); return; }
     if(data.tag.length == 0) { alert("태그를 입력해 주세요"); return; }
-    if($("input[type='file']")[0].files.length == 0) { alert("파일을 업로드 해주세요."); return;}
     if(!checkRange()){ alert("첨부한 파일의 페이지 보다 범위가 큽니다."); return;}
 
     for(let i=0; i<section_count; i++){
@@ -79,6 +77,7 @@ function getWriteData() {
         if(data.section[i].range_end.length == 0){ alert("끝 범위를 입력해 주세요"); return; }
     }
 
+    // 선택한 canvas를 이미지로 변환
     const canvas = document.getElementsByClassName("selected-thumbnail")[0];
     const dataURL = canvas.toDataURL("image/png");
     data.thumbnail = dataURL;

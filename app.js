@@ -11,6 +11,7 @@ const router_login = require("./router/login");
 const router_write = require("./router/write");
 const router_profile = require("./router/profile");
 const router_feed = require("./router/feed/feed");
+const router_modify = require("./router/modify");
 const router_api_index = require("./router/api/index");
 const router_api_auth = require("./router/api/auth");
 const router_api_delete = require("./router/api/delete");
@@ -41,6 +42,8 @@ app.get("/logout", router_login);
 app.get('/auth/google/callback', router_login);
 app.get("/profile", router_profile);
 app.get("/feed", router_feed);
+app.get("/modify/:idx", router_modify);
+app.post("/modify", router_modify);
 
 app.get("/api/index", router_api_index);
 app.post("/api/auth", router_api_auth);

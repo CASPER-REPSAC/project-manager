@@ -107,7 +107,10 @@
                 </div>
                 <div class="row project-content">
                     <div class="col-sm-12 float-right">
-                        <button type="button" class="btn btn-danger btn-delete-post">삭제</button>
+                        <% if(user_info.is_post_owner) { %>
+                            <a href="/modify/<%=post_data.post_idx %>"><button type="button" class="btn btn-info btn-modify-post">수정</button></a>
+                            <button type="button" class="btn btn-danger btn-delete-post">삭제</button>
+                        <% } %>
                     </div>
                 </div>
             </div>
