@@ -127,7 +127,7 @@
     filter: brightness(40%);
 }
 .project-title{
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     margin-top: 10px;
     word-wrap: break-word;
     font-size: 25px;
@@ -206,6 +206,7 @@ input[type="search"]{
     width: 80px;
 }
 .popular-title{
+    font-family: 'Noto Sans KR', sans-serif;
     word-break: break-all;
 }
 /************/
