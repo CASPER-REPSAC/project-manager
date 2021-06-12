@@ -19,13 +19,32 @@
         <div id="contents">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 col-lg-9">
+                    <div class="col-md-8 col-lg-8 ">
                         <div class="row project-list">
-                            <!-- projec list -->
+                            <!-- project list -->
                         </div>
                     </div>
-                    <div class="col-md-4 col-lg-3 sidebar">
-                        <div class="recent-comment-list">
+                    <div class="col-md-4 col-lg-4 sidebar">
+                        <div class="row sidebar-option">
+                            <!-- <div class="col-md-12 d-flex justify-content-center">
+                                <div class="input-group">
+                                    <div class="form-outline">
+                                      <input type="search" id="form1" class="form-control" placeholder="장식용"/>
+                                    </div>
+                                    <button type="button" class="btn btn-primary">
+                                      <i class="fas fa-search"></i>
+                                    </button>
+                                  </div>
+                            </div> -->
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <button type="button" class="btn btn-primary recent-comments-btn">Recent Comments</button>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-center">
+                                <button type="button" class="btn btn-primary popular-projects-btn">Popular Projects</button>
+                            </div>
+                        </div>
+                        <!-- recent comment list -->
+                        <div class="sidebar-list">
                             <img class="recent-comment-list-image" src="https://image.flaticon.com/icons/png/512/3447/3447520.png"><br><br>
                             <% for(let i = 0; i < comment.length; i++){ %>
                                 <div class="row recent-comment-box">
@@ -50,6 +69,29 @@
                                 <hr>
                             <% } %>
                         </div>
+
+                        <!-- popular project list -->
+                        <div class="sidebar-list" style="display: none;">
+                            <img class="popular-list-image" src="https://image.flaticon.com/icons/png/512/1742/1742769.png"><br><br>
+                            <% for(let i = 0; i < popular.length; i++){ %>
+                                <div class="popular-box">
+                                    <div class="popular-tag-list">
+                                        <a href="#" class="badge badge-pill badge-warning"><%=popular[i].type %></a>
+                                        <% for(let j = 0; j < popular[i].tag.split(",").length; j++){ %>
+                                            <a href="#" class="badge badge-pill badge-secondary"><%= popular[i].tag.split(",")[j] %></a>
+                                        <% } %>
+                                    </div>
+                                    <div class="popular-title">
+                                        <a href="/post/<%=popular[i].post_idx %>"><h5><%=popular[i].title %></h5></a>
+                                    </div>
+                                    <div class="popular-info">
+                                        <span class="writer"><%=popular[i].writer %></span> · 
+                                        <span class="date"><%=popular[i].post_date %></span>
+                                    </div>
+                                </div>
+                                <hr>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -69,5 +111,16 @@
         <script src="/js/api/feed.js"></script>
         <script src="/js/HTML.js"></script>
         <script src="/js/api/index.js"></script>
+        <script>
+            $(document).on("click", ".recent-comments-btn", () => {
+                $($(".sidebar-list")[0]).show();
+                $($(".sidebar-list")[1]).hide();
+            })
+
+            $(document).on("click", ".popular-projects-btn", () => {
+                $($(".sidebar-list")[0]).hide();
+                $($(".sidebar-list")[1]).show();
+            })
+        </script>
     </body>
 </html>
