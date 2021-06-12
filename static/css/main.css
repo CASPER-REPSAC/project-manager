@@ -7,6 +7,15 @@
     .bug-report-btn{
         display: none;
     }
+    .favicon-image{
+        width: 25px;
+    }
+}
+
+@media (max-width:768px){
+    .sidebar{
+        display: none;
+    }
 }
 
 @media (max-width:769px){
@@ -34,8 +43,8 @@
 }
 .header-img{
     position: relative;
-    background-image: url(/image/header4.jpg);                                                               
-    height: 20%;
+    background-image: url(/image/header5.png);                                                               
+    height: 22%;
     background-size: cover;
     background-position: 0% 40%;
 
@@ -90,7 +99,9 @@
     margin-top: 50px;
 }
 
+
 .project-box{
+    position: relative;
     transition: transform 250ms;
 }
 .project-box:hover{
@@ -98,8 +109,8 @@
 }
 .project-info {
     position: absolute;
-    top: 0%;
-    left: 0%;
+    top: 0px;
+    left: 0px;
     padding: 30px 40px;
     color: white;
 }
@@ -138,6 +149,48 @@
     border-radius: 70%;
 }
 /************/
+
+
+/* recent comment css */
+.recent-comment-list{
+    position: relative;
+    border: 1px solid var(--borderColor);
+    border-radius : 10px;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
+
+    padding: 20px;
+}
+.recent-comment-list-image{
+    position: absolute;
+    top: -35px;
+    width: 80px;
+}
+.recent-comment-box{
+    color: var(--fontColor);
+    padding: 0px 10px;
+}
+.user-thumbnail{
+    border-radius : 50px;
+    width: 45px;
+}
+.recent-comment-info{
+    position: relative;
+    top:0px;
+    left: 10px;
+}
+.recent-comment-info > .date{
+    color: var(--infoColor);
+}
+.recent-comment-detail{
+    margin-top: 15px;
+    word-break: break-all;
+}
+.recent-comment-detail > a{
+    color: var(--fontColor);
+}
+/************/
+
+
 
 .load-more-btn{
     padding: 10px 20px;
