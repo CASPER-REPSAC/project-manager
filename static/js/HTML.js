@@ -89,8 +89,8 @@ const projectBoxHTML = (data) => {
     })
 
 
-    return `<div class="col-xl-4 col-lg-4 col-sm-6 project-box animate__animated animate__fadeInUp">
-                    <a href="/post/${data["post_idx"]}"><img class="project-thumbnail" src="${thumbnail}"></a>
+    return `<div class="col-sm-12 col-lg-6 project-box">
+                    <a href="/post/${data["post_idx"]}"><img class="project-thumbnail " src="${thumbnail}"></a>
                     <div class="project-info">
                         <a href="#" class="badge badge-pill badge-warning">${data["type"]}</a>
                         ${badge}

@@ -26,7 +26,7 @@ const getContent = (idx) => {
             return;
         }
         data.forEach(d => {
-            $(".project").append(projectBoxHTML(d));
+            $(".project-list").append(projectBoxHTML(d));
         })
     })
 }

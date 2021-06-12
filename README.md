@@ -101,6 +101,14 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.06.12 (v0.52)
+- `feature`
+  - [#39](https://github.com/CASPER-REPSAC/project-manager/issues/39) feed 동작 문제 안되는 현상 해결
+  - 댓글 및 답글에 hash 추가
+- `design`
+  - 메인 페이지 디자인 변경
+  - 최근 댓글 및 답글 레이아웃 추가
+
 2021.06.03
 - `feature`
   - 게시글 수정 기능 추가

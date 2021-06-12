@@ -5,6 +5,7 @@
         </title>
         <%- include("./fragment/head.ejs") %>
 
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
         <!-- custom css -->
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/style.css">
@@ -14,10 +15,42 @@
     </head>
     <body>
         <%- include("./fragment/header.ejs") %>
+
         <div id="contents">
             <div class="container">
-                <div class="row project">
-                    <!-- project content -->
+                <div class="row">
+                    <div class="col-md-8 col-lg-9">
+                        <div class="row project-list">
+                            <!-- projec list -->
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3 sidebar">
+                        <div class="recent-comment-list">
+                            <img class="recent-comment-list-image" src="https://image.flaticon.com/icons/png/512/3447/3447520.png"><br><br>
+                            <% for(let i = 0; i < comment.length; i++){ %>
+                                <div class="row recent-comment-box">
+                                    <div class="col-xm-1">
+                                        <img class="user-thumbnail" src="<%=comment[i].user_image %>">
+                                    </div>
+                                    <div class="col-xm-11">
+                                        <div class="recent-comment-info">
+                                            <div class="writer"><%=comment[i].writer %></div>
+                                            <div class="date"><%=comment[i].comment_date %></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-11 recent-comment-detail">
+                                        <% if(comment[i].type == "comment") { %>
+                                            <a href="/post/<%=comment[i].post_idx %>#comment<%=comment[i].comment_idx %>"><%=comment[i].comment_content %></a>
+                                        <% } %>
+                                        <% if(comment[i].type == "reply") { %>
+                                            <a href="/post/<%=comment[i].post_idx %>#reply<%=comment[i].comment_idx %>"><%=comment[i].comment_content %></a>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <hr>
+                            <% } %>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 col-sm-6"></div>
@@ -28,6 +61,7 @@
                 </div>
             </div>
         </div>
+        
         <%- include("./fragment/footer.ejs") -%>
 
         <script src="/js/api/darkmode.js"></script>

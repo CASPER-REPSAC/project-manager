@@ -77,12 +77,15 @@ function getWriteData() {
         if(data.section[i].range_end.length == 0){ alert("끝 범위를 입력해 주세요"); return; }
     }
 
-    // 선택한 canvas를 이미지로 변환
+    data.thumbnail = canvasToImage();
+    return data;
+}
+
+// 선택한 canvas를 이미지로 변환
+function canvasToImage(){
     const canvas = document.getElementsByClassName("selected-thumbnail")[0];
     const dataURL = canvas.toDataURL("image/png");
-    data.thumbnail = dataURL;
-
-    return data;
+    return dataURL;
 }
 
 function sendToWrite(data){
