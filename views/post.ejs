@@ -118,7 +118,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="comments">
-                            <h4><i class="fas fa-comments"></i> Comments (0)</h4>
+                            <h4><i class="fas fa-comments"></i> Comments (<%=count %>)</h4>
                         </div>
                     </div>
                 </div>
@@ -130,17 +130,19 @@
                             </div>
                         </div>
                         <div class="col-sm-11">
-                            <div class="comment-info">
-                                <span class="comment-writer">
-                                    <%=comment_data[i].writer %>
-                                </span>
-                                <span class="comment-date">
-                                    <%=comment_data[i].comment_date %>
-                                </span>
-                                <div class="comment-content" style="white-space: pre-line;">
-                                    <%=comment_data[i].comment_content %>
+                            <a id="comment<%=comment_data[i].comment_idx %>">
+                                <div class="comment-info">
+                                    <span class="comment-writer">
+                                        <%=comment_data[i].writer %>
+                                    </span>
+                                    <span class="comment-date">
+                                        <%=comment_data[i].comment_date %>
+                                    </span>
+                                    <div class="comment-content" style="white-space: pre-line;">
+                                        <%=comment_data[i].comment_content %>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                             <% if(require.is_login){ %>
                                 <div class="comment-reply">
                                     <input type="hidden" name="comment-idx" value="<%=comment_data[i].comment_idx %>">
@@ -155,17 +157,19 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-11">
-                                        <div class="comment-info">
-                                            <span class="comment-writer">
-                                                <%=comment_data[i].reply_comment[j].writer %>
-                                            </span>
-                                            <span class="comment-date">
-                                                <%=comment_data[i].reply_comment[j].reply_date %>
-                                            </span>
-                                            <div class="comment-content" style="white-space: pre-line;">
-                                                <%=comment_data[i].reply_comment[j].reply_content %>
+                                        <a id="reply<%=comment_data[i].reply_comment[j].reply_idx %>">
+                                            <div class="comment-info">
+                                                <span class="comment-writer">
+                                                    <%=comment_data[i].reply_comment[j].writer %>
+                                                </span>
+                                                <span class="comment-date">
+                                                    <%=comment_data[i].reply_comment[j].reply_date %>
+                                                </span>
+                                                <div class="comment-content" style="white-space: pre-line;">
+                                                    <%=comment_data[i].reply_comment[j].reply_content %>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             <% } %>
@@ -204,7 +208,15 @@
         <script src="/js/api/like.js"></script>
         <script src="/js/api/auth.js"></script>
         <script>
-            showPDF($(".file-name").val());
+            $(document).ready(async () => {
+                await showPDF($(".file-name").val());
+                const focusHash = () => {
+                    if(window.location.hash.length != 0){
+                        document.getElementById(window.location.hash.replace("#", "")).scrollIntoView();
+                    }
+                }
+                focusHash();
+            })
         </script>
     </body>
 </html>

@@ -25,7 +25,7 @@ router.get("/post/:idx", async (req, res) => {
     }
     
     const post_attach = await sendQuery(`SELECT path FROM post_attach WHERE post_idx = ?`, [post_idx]);
-    const [comment, user_image] = await getCommentAndReply(post_idx);
+    const [comment, user_image, count] = await getCommentAndReply(post_idx);
 
     res.render("post", {
         require: data, 
@@ -34,7 +34,8 @@ router.get("/post/:idx", async (req, res) => {
         user_info : user_info,
         comment_data : comment,
         comment_image : user_image,
-        user_auth : user_auth
+        user_auth : user_auth,
+        count : count
     });
 })
 
@@ -42,10 +43,12 @@ async function getCommentAndReply(post_idx){
     let post_comment = await sendQuery(`SELECT * FROM post_comment WHERE post_idx = ?`, [post_idx]);
     const user_image = {};
     let user_list = [];
+    let count = post_comment.length;
 
     // 각 댓글의 답글을 조회
     for(let i = 0; i < post_comment.length; i++){
         let reply_comment = await sendQuery(`SELECT * FROM comment_reply WHERE comment_idx = ?`, [post_comment[i].comment_idx]);
+        count = count + reply_comment.length;
         post_comment[i].reply_comment = reply_comment;
 
         user_list.push(post_comment[i].user_id);
@@ -60,7 +63,7 @@ async function getCommentAndReply(post_idx){
         user_image[user_list[i]] = tmp[0].user_image;
     }
 
-    return [post_comment, user_image];
+    return [post_comment, user_image, count];
 }
 
 module.exports = router;
