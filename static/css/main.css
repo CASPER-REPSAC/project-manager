@@ -151,8 +151,15 @@
 /************/
 
 
-/* recent comment css */
-.recent-comment-list{
+/* sidebar css */
+.sidebar-option{
+    margin-bottom: 50px;
+}
+input[type="search"]{
+    width: 100%;
+}
+
+.sidebar-list{
     position: relative;
     border: 1px solid var(--borderColor);
     border-radius : 10px;
@@ -187,6 +194,19 @@
 }
 .recent-comment-detail > a{
     color: var(--fontColor);
+}
+
+.popular-box{
+    color: var(--fontColor);
+}
+.popular-list-image{
+    position: absolute;
+    top: -40px;
+    left: 280px;
+    width: 80px;
+}
+.popular-title{
+    word-break: break-all;
 }
 /************/
 

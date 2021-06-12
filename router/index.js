@@ -8,11 +8,13 @@ router.get("/", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
     const user_auth = await check.getAuth(req.session.passport);
     const comment_info = await getRecentCommentAndReply();
+    const popular_info = await getPopularProjects();
 
     res.render("index", {
         require : data, 
         user_auth : user_auth,
-        comment : comment_info
+        comment : comment_info,
+        popular : popular_info
     });
 })
 
@@ -52,8 +54,17 @@ const getRecentCommentAndReply = async () => {
         else{
             result[i].user_image = tmp_user[data.user_id];
         }
-    }
 
+        // 최대 글자수
+        if(data.comment_content.length >= 70){
+            result[i].comment_content = data.comment_content.substr(0, 70) + "...";
+        }
+    }
+    return result;
+}
+
+const getPopularProjects = async () => {
+    const result = await executeQuery(`SELECT post_idx, like_count, writer, title, post_date, type, tag FROM post WHERE like_count >= 1 ORDER BY post_date DESC LIMIT 0, 12`);
     return result;
 }
 

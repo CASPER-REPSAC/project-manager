@@ -101,6 +101,13 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.06.13 (v0.53)
+- `feature`
+  - 인기 프로젝트 목록 보기 추가
+- `design`
+  - 인기 프로젝트 목록 디자인 추가
+  - 메인 페이지 디자인 수정
+
 2021.06.12 (v0.52)
 - `feature`
   - [#39](https://github.com/CASPER-REPSAC/project-manager/issues/39) feed 동작 문제 안되는 현상 해결
