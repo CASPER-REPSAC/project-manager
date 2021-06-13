@@ -1,4 +1,48 @@
-.user-info > .user-image > img {
-    border-radius: 50px;
-    width: 150px;
+/* contents css */
+.nav-link{
+    color: var(--fontColor);
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* profile css */
+.profile-box{
+    border: 1px solid var(--borderColor);
+    border-radius: 10px;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
+
+    padding: 20px;
+}
+/* .profile-image-background{
+    width: 98px;
+    height: 98px;
+    border-radius: 100%;
+    background-color: #FFFFF3;
+} */
+.profile-image > img {
+    /* position: relative;
+    top: -94px;
+    left: 4px; */
+    border: 1px solid black;
+    width: 90px;
+    border-radius: 100%;
+}
+.profile-info{
+    color: var(--fontColor);
+}
+.profile-total{
+    margin-top: 30px;
+    color: #A593E0;
+    /* text-align: center; */
+}
+.profile-badge{
+    margin-top: 40px;
+}
+.badge-secondary{
+    margin-bottom: 7px;
+}
+.info{
+    font-weight: bold;
+    color:#e0e3dad8;
 }
