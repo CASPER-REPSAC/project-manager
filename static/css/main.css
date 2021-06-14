@@ -185,6 +185,9 @@ input[type="search"]{
     top:0px;
     left: 10px;
 }
+.recent-comment-info > .writer{
+    font-weight: bold;
+}
 .recent-comment-info > .date{
     color: var(--infoColor);
 }

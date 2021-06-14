@@ -64,7 +64,7 @@ const getRecentCommentAndReply = async () => {
 }
 
 const getPopularProjects = async () => {
-    const result = await executeQuery(`SELECT post_idx, like_count, writer, title, post_date, type, tag FROM post WHERE like_count >= 1 ORDER BY like_count DESC LIMIT 0, 12`);
+    const result = await executeQuery(`SELECT * FROM post WHERE like_count >= 1 ORDER BY like_count DESC LIMIT 0, 12`);
     return result;
 }
 
