@@ -100,8 +100,29 @@ const projectBoxHTML = (data) => {
                     </div>
                     <div class="project-info-bottom">
                         <span class="project-writer-image"><img src="${data["user_image"]}"></span>
-                        <span class="project-writer-name">${data["writer"]}</span> · 
+                        <a href="/profile/${data["writer"]}"><span class="project-writer-name">${data["writer"]}</span></a> · 
                         <span class="project-writer-date">${data["post_date"]}</span>
                     </div>
+            </div>`;
+}
+
+const commentBoxHTML = (data) => {
+    return `<div class="recent-comment-box">
+                <div class="row">
+                    <div class="col-xm-1">
+                        <img class="user-thumbnail" src=${data["user_image"]}>
+                    </div>
+                    <div class="col-xm-11">
+                        <div class="recent-comment-info">
+                            <div class="writer">${data["writer"]}</div>
+                            <div class="date">${data["comment_date"]}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 recent-comment-detail">
+                        <a href="/post/${data["post_idx"]}#${data["type"]}${data["comment_idx"]}">${data["comment_content"]}</a>
+                    </div>
+                </div>
             </div>`;
 }

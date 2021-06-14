@@ -3,53 +3,88 @@
         <title>
             Project Manager
         </title>
-        <link rel="stylesheet" href="/css/bootstrap.css">
-        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&display=swap" rel="stylesheet">
+        <%- include("./fragment/head.ejs") %>
 
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
         <!-- custom css -->
         <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheet" href="/css/profile.css">
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/darkwhite.css">
         <link rel="stylesheet" href="/css/bootstrap-custom.css">
+        <link rel="stylesheet" href="/css/profile.css">
         <!-- ---------- -->
 
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div id="header">
-            <div class="container">
-                <div class="header-title">
-                    <a href="/">Pr<i class="fas fa-ghost"></i>ject Manager</a>
-                </div>
-                <div class="header-menu float-right">
-                    <a href="https://github.com/CASPER-REPSAC/project-manager/issues" target="_blank"><button type="button" class="btn btn-info"><i class="fab fa-github fa-lg"></i> Bug Report</button></a>
-                    <a href="/write"><button type="button" class="btn btn-secondary"><i class="far fa-address-card fa-lg"></i> Profile</button></a>
-                    <a href="/write"><button type="button" class="btn btn-secondary">Write</button></a>
-                    <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
-                </div>
-            </div>
-        </div>
+        <input type="hidden" name="writer" value="<%=writer %>">
+        <input type="hidden" name="user_image" value="<%=user_image %>">
+        <%- include("./fragment/header.ejs") %>
         <div id="contents">
             <div class="container">
-                <div class="user-info row">
-                    <div class="user-image col-sm-3">
-                        <img src='<%=user_info.user_image %>'>
-                    </div>
-                    <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-md-8 col-lg-8">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <a class="nav-link" href="#">Summary</a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a class="nav-link" href="#">All Projects</a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a class="nav-link" href="#">All Comments</a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a class="nav-link" href="#">Popular Projects</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row menu-result-project">
 
+                        </div>
+                        <div class="row menu-result-comment">
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                        <div class="profile-box">
+                            <div class="row">
+                                <div class="col-md-4 profile-image">
+                                    <!-- <div class="profile-image-background"></div> -->
+                                    <img src="<%=user_image %>">
+                                </div>
+                                <div class="col-md-8 profile-info d-flex align-items-center">
+                                    <h5><%=writer %></h5>
+                                </div>
+                            </div>
+                            <div class="row profile-total">
+                                <div class="col-sm-4">
+                                    <h3><%=total.like %></h3>
+                                    <span class="info">Like</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h3><%=total.project %></h3>
+                                    <span class="info">Projects</span>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h3><%=total.comment %></h3>
+                                    <span class="info">Comments</span>
+                                </div>
+                            </div>
+                            <div class="row profile-badge">
+                                <div class="col-md-12">
+                                    <% for(let i=0; i<tags.length; i++) { %>
+                                        <a href="#" class="badge badge-pill badge-secondary"><%=tags[i] %></a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="footer">
-            <div class="container">
-                This project is <a href="https://github.com/CASPER-REPSAC/project-manager">open source.</a>
-            </div>
-        </div>
-        <script src="/js/api/darkmode.js"></script>
+        <%- include("./fragment/footer.ejs") %>
+        <script src="/js/HTML.js"></script>
+        <script src="/js/api/profile.js"></script>
     </body>
 </html>
