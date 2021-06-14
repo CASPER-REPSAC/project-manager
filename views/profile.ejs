@@ -17,6 +17,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
     </head>
     <body>
+        <input type="hidden" name="writer" value="<%=writer %>">
+        <input type="hidden" name="user_image" value="<%=user_image %>">
         <%- include("./fragment/header.ejs") %>
         <div id="contents">
             <div class="container">
@@ -37,7 +39,10 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row menu-result">
+                        <div class="row menu-result-project">
+
+                        </div>
+                        <div class="row menu-result-comment">
 
                         </div>
                     </div>
@@ -46,10 +51,10 @@
                             <div class="row">
                                 <div class="col-md-4 profile-image">
                                     <!-- <div class="profile-image-background"></div> -->
-                                    <img src="https://lh3.googleusercontent.com/a-/AOh14Gg9pomjEoG2ZS31NhEL5rAVTHKFhAiYm2xnY0XoWw=s96-c">
+                                    <img src="<%=user_image %>">
                                 </div>
                                 <div class="col-md-8 profile-info d-flex align-items-center">
-                                    <h5>김종민</h5>
+                                    <h5><%=writer %></h5>
                                 </div>
                             </div>
                             <div class="row profile-total">
@@ -78,6 +83,8 @@
                 </div>
             </div>
         </div>
+        <%- include("./fragment/footer.ejs") %>
+        <script src="/js/HTML.js"></script>
         <script src="/js/api/profile.js"></script>
     </body>
 </html>

@@ -101,6 +101,12 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.06.14 (v0.6)
+- `feature`
+  - 사용자 프로필 보기 추가
+- `design`
+  - 사용자 프로필 페이지 디자인
+
 2021.06.13 (v0.53)
 - `feature`
   - 인기 프로젝트 목록 보기 추가

@@ -41,6 +41,7 @@ app.get('/login', router_login);
 app.get("/logout", router_login);
 app.get('/auth/google/callback', router_login);
 app.get("/profile/:writer", router_profile);
+app.post("/profile/:writer", router_profile);
 app.get("/feed", router_feed);
 app.get("/modify/:idx", router_modify);
 app.post("/modify", router_modify);

@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                        <span class="project-writer"><%=post_data.writer %></span>
+                        <a href="/profile/<%=post_data.writer %>"><span class="project-writer"><%=post_data.writer %></span></a>
                         <span class="project-date"><%=post_data.project_date %></span>
                         <div class="project-tag">
                             <% for(let j=0; j<post_data.tag.split(',').length; j++) { %>
@@ -133,7 +133,7 @@
                             <a id="comment<%=comment_data[i].comment_idx %>">
                                 <div class="comment-info">
                                     <span class="comment-writer">
-                                        <%=comment_data[i].writer %>
+                                        <a href="/profile/<%=comment_data[i].writer %>"><%=comment_data[i].writer %></a>
                                     </span>
                                     <span class="comment-date">
                                         <%=comment_data[i].comment_date %>
@@ -160,7 +160,7 @@
                                         <a id="reply<%=comment_data[i].reply_comment[j].reply_idx %>">
                                             <div class="comment-info">
                                                 <span class="comment-writer">
-                                                    <%=comment_data[i].reply_comment[j].writer %>
+                                                    <a href="/profile/<%=comment_data[i].reply_comment[j].writer %>"><%=comment_data[i].reply_comment[j].writer %></a>
                                                 </span>
                                                 <span class="comment-date">
                                                     <%=comment_data[i].reply_comment[j].reply_date %>
