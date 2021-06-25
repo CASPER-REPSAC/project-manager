@@ -6,7 +6,7 @@
 
 # > Contributors
 - [Neva](https://github.com/Nevaland) (Project architect)
-- [5thofnovmbr](ttps://github.com/5thofnovmbr) (Front Design)
+- [5thofnovmbr](https://github.com/5thofnovmbr) (Front Design)
 - [Universe](https://github.com/Lactea98) (Coder)
 
 # > Summary
