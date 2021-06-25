@@ -55,6 +55,13 @@ app.get("/api/like/:idx", router_api_like);
 app.get("/api/theme", router_api_theme);
 app.post("/api/upload", router_api_upload);
 
+app.get("/robots.txt", (req, res) => {
+    res.type("text/plain");
+    res.send(
+      "User-agent: *\nDisallow: /\n"
+    );
+})
+
 app.get("*", (req, res) => {
     res.status(404);
     res.render("404");

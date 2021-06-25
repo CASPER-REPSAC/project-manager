@@ -4,6 +4,11 @@
 ![images](https://img.shields.io/badge/node-v14.15-brightgreen)
 ![images](https://raw.githubusercontent.com/CASPER-REPSAC/project-manager/main/cover.png)
 
+# > Contributors
+- [Neva](https://github.com/Nevaland) (Project architect)
+- [5thofnovmbr](ttps://github.com/5thofnovmbr) (Front Design)
+- [Universe](https://github.com/Lactea98) (Coder)
+
 # > Summary
 
 Casper에서 활동 했던 `프로젝트` 혹은 `개인 프로젝트`를 관리 하는 웹 서비스.
@@ -100,6 +105,10 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 
 # > Update
+
+2021.06.25 (v0.61)
+- `feature`
+  - robots.txt 추가
 
 2021.06.14 (v0.6)
 - `feature`

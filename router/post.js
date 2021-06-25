@@ -26,6 +26,7 @@ router.get("/post/:idx", async (req, res) => {
     
     const post_attach = await sendQuery(`SELECT path FROM post_attach WHERE post_idx = ?`, [post_idx]);
     const [comment, user_image, count] = await getCommentAndReply(post_idx);
+    const side_posts = await getSidePosts(post_idx);
 
     res.render("post", {
         require: data, 
@@ -35,11 +36,12 @@ router.get("/post/:idx", async (req, res) => {
         comment_data : comment,
         comment_image : user_image,
         user_auth : user_auth,
-        count : count
+        count : count,
+        side_posts: side_posts
     });
 })
 
-async function getCommentAndReply(post_idx){
+const getCommentAndReply = async (post_idx) => {
     let post_comment = await sendQuery(`SELECT * FROM post_comment WHERE post_idx = ?`, [post_idx]);
     const user_image = {};
     let user_list = [];
@@ -64,6 +66,16 @@ async function getCommentAndReply(post_idx){
     }
 
     return [post_comment, user_image, count];
+}
+
+const getSidePosts = async (currnet_post_idx) => {
+    const previous_post = await sendQuery(`SELECT post_idx, title FROM post WHERE post_idx = ?`, [currnet_post_idx - 1]);
+    const next_post = await sendQuery(`SELECT post_idx, title FROM post WHERE post_idx = ?`, [currnet_post_idx + 1]);
+    
+    return {
+        "previous_post" : previous_post,
+        "next_post" : next_post 
+    }
 }
 
 module.exports = router;
