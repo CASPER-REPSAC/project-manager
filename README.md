@@ -114,6 +114,8 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 - `feature`
   - 이전 글, 다음 글 기능 추가
   - [#40](https://github.com/CASPER-REPSAC/project-manager/issues/40) 글 작성시, 페이지 범위 검증 절차 문제점 해결
+- `bug`
+  - [#55](https://github.com/CASPER-REPSAC/project-manager/issues/55) v0.62에서 글 작성 버그 수정
 
 2021.06.25 (v0.61)
 - `feature`
