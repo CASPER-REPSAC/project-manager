@@ -193,6 +193,20 @@
                 <% } %>
             </div>
         </div>
+        <div id="side-post">
+            <div class="container">
+                <% if(side_posts.previous_post.length != 0){ %>
+                    <div class="float-left">
+                        <button type="button" class="btn btn-info" onclick="location.href='/post/<%=side_posts.previous_post[0].post_idx %>'">이전 글</button>
+                    </div>
+                <% } %>
+                <% if(side_posts.next_post.length != 0){ %>
+                <div class="float-right">
+                    <button type="button" class="btn btn-info" onclick="location.href='/post/<%=side_posts.next_post[0].post_idx %>'">다음 글</button>
+                </div>
+                <% } %>
+            </div>
+        </div>
         <div id="footer">
             <div class="container">
                 This project is <a href="https://github.com/CASPER-REPSAC/project-manager">open source.</a>
