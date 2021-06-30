@@ -8,9 +8,9 @@ function writeFormContentHTML(section_number, next_section, max_section) {
                     <div class="row">
                         <div class="col-sm-10">
                             Set range of page.&nbsp;
-                            <input type="text" class="form-control write-form-input write-form-numbering" value="${next_section}" readonly>&nbsp;
+                            <input type="number" class="form-control write-form-input write-form-numbering" value="${next_section}">&nbsp;
                             <i class="fas fa-minus"></i>&nbsp;
-                            <input type="number" class="form-control write-form-input write-form-numbering2" value="${next_section}" min='1' max="${max_section}">
+                            <input type="number" class="form-control write-form-input write-form-numbering" value="${next_section}" min='1' max="${max_section}">
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="btn btn-success btn-plus btn-section-add"><i class="fas fa-plus"></i></button>
@@ -29,22 +29,30 @@ function writeFormBtnsHTML(){
 function pdfToImgModalHTML(modal_number, width){
     return `<div id="pdf-main-container">
                 <div id="pdf-contents">
-                    <canvas id="pdf-canvas" class="pdf-to-image-canvas" width="${width}" data-toggle="modal" data-target="#exampleModal-${modal_number}"></canvas>
+                    <canvas id="pdf-canvas" class="pdf-to-image-canvas" width="${width}" data-toggle="modal" data-target="#pdfModal-${modal_number}"></canvas>
                 </div>
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal-${modal_number}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="pdfModal-${modal_number}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">이미지 확대</h5>
+                            <h5>${modal_number} page</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <canvas id="pdf-canvas" class="pdf-to-image-canvas2" width="1100"></canvas>
+                            <div class="modal-body-btn">
+                                <div class="float-left">
+                                    <button type="button" class="btn btn-info" onclick="changeModal('pdfModal-${modal_number-1}')">previous</button>
+                                </div>
+                                <div class="float-right">
+                                    <button type="button" class="btn btn-info" onclick="changeModal('pdfModal-${modal_number+1}')">next</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

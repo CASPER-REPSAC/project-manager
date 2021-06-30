@@ -69,9 +69,9 @@ const getCommentAndReply = async (post_idx) => {
 }
 
 const getSidePosts = async (currnet_post_idx) => {
-    const previous_post = await sendQuery(`SELECT post_idx, title FROM post WHERE post_idx = ?`, [currnet_post_idx - 1]);
-    const next_post = await sendQuery(`SELECT post_idx, title FROM post WHERE post_idx = ?`, [currnet_post_idx + 1]);
-    
+    const previous_post = await sendQuery(`SELECT post_idx FROM post WHERE post_idx < ? ORDER BY post_idx DESC LIMIT 0, 1`, [currnet_post_idx]);
+    const next_post = await sendQuery(`SELECT post_idx FROM post WHERE post_idx > ? LIMIT 0, 1`, [currnet_post_idx]);
+
     return {
         "previous_post" : previous_post,
         "next_post" : next_post 

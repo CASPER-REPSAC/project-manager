@@ -64,8 +64,10 @@ router.post("/modify", async(req, res) => {
         if(input.section[i].section_content.length == 0){ res.json({"result" : "error", "message" : "섹션 설명을 입력해 주세요."}); return; }
         if(input.section[i].range_start.length == 0){ res.json({"result" : "error", "message" : "시작 범위를 입력해 주세요."}); return; }
         if(input.section[i].range_end.length == 0){ res.json({"result" : "error", "message" : "끝 범위를 입력해 주세요."}); return; }
-
-        if(isNaN(input.section[i].range_start) || isNaN(input.section[i].range_end)){ res.json({"result" : "error", "message" : "범위는 숫자만 입력해 주세요."}); return; }
+        if(!parseInt(input.section[i].range_start) || !parseInt(input.section[i].range_end)){ res.json({"result" : "error", "message" : "범위는 숫자만 입력해 주세요."}); return; }
+        if(parseInt(input.section[i].range_start) <=0 || parseInt(input.section[i].range_end) <= 0) {res.json({"result" : "error", "message" : "지정한 범위는 0 보다 커야 합니다."}); return;}
+        if(parseInt(input.section[i].range_start) > parseInt(input.section[i].range_end)){res.json({"result" : "error", "message" : "시작 범위가 끝 범위보다 클 수 없습니다."}); return; }
+        if(i != 0 && parseInt(input.section[i].range_start) <= parseInt(input.section[i-1].range_end)){res.json({"result" : "error", "message" : "다음 섹션의 '시작 범위'가 이전 색션의 '끝 범위'보다 커야 합니다."}); return; }
     }
 
     await executeQuery(`UPDATE post SET title = ?, subtitle = ?, contents = ?, opinion = ?, project_date = ?, type = ?, tag = ?, thumbnail = ? WHERE post_idx = ?`,
