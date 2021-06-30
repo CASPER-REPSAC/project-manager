@@ -49,7 +49,7 @@ async function showPage(page_no, _CANVAS) {
         var page = await _PDF_DOC.getPage(page_no);
     }
     catch(error) {
-        alert(error.message);
+        console.log(error.message);
     }
 
     // original width of the pdf page at scale 1
@@ -74,7 +74,7 @@ async function showPage(page_no, _CANVAS) {
         await page.render(render_context);
     }
     catch(error) {
-        alert(error.message);
+        console.log(error.message);
     }
 
     _PAGE_RENDERING_IN_PROGRESS = 0;
@@ -90,7 +90,7 @@ async function getTotalPage(pdf_url){
         pdf_info = await pdfjsLib.getDocument({ url: pdf_url });
     }
     catch(error) {
-        alert(error.message);
+        console.log(error.message);
         return;
     }
     return pdf_info.numPages;

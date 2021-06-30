@@ -86,3 +86,7 @@
 .fa-chevron-up, .fa-chevron-down{
     cursor: pointer;
 }
+
+.modal-body-btn{
+    margin-top: 20px;
+}
