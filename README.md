@@ -106,6 +106,10 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.07.01 (v0.63)
+- `feature`
+  - 댓글, 답글 수정 및 삭제 기능 추가
+
 2021.06.30 (v0.62)
 - `feature`
   - 이전 글, 다음 글 기능 추가

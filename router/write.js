@@ -46,7 +46,8 @@ router.post("/write", async (req, res) => {
     }
 
     const user_id = req.session.passport.user.id;
-    const writer = req.session.passport.user.displayName;
+    const writer = (await sendQuery(`SELECT user_name FROM user WHERE user_id = ?`, [user_id]))[0].user_id;
+    console.log(writer);
 
     const tmp_path_row = await sendQuery(`SELECT tmp_path FROM tmp_post_attach WHERE user_id = ? ORDER BY tmp_attach_idx DESC`, [user_id]);
     await sendQuery(`DELETE FROM tmp_post_attach WHERE user_id = ?`, [user_id]);
