@@ -10,7 +10,7 @@ function writeFormContentHTML(section_number, next_section, max_section) {
                             Set range of page.&nbsp;
                             <input type="number" class="form-control write-form-input write-form-numbering" value="${next_section}">&nbsp;
                             <i class="fas fa-minus"></i>&nbsp;
-                            <input type="number" class="form-control write-form-input write-form-numbering" value="${next_section}" min='1' max="${max_section}">
+                            <input type="number" class="form-control write-form-input write-form-numbering2" value="${next_section}" min='1' max="${max_section}">
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="btn btn-success btn-plus btn-section-add"><i class="fas fa-plus"></i></button>
