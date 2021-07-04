@@ -109,6 +109,8 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 2021.07.01 (v0.63)
 - `feature`
   - 댓글, 답글 수정 및 삭제 기능 추가
+- `etc`
+  - 사용자가 닉네임 변경 시, 변경된 닉네임으로 작성되는 문제 수정
 
 2021.06.30 (v0.62)
 - `feature`

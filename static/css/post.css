@@ -72,7 +72,7 @@
     margin-bottom: 50px;
 }
 .comment-reply{
-    color: blue;
+    color: #0056b3;
     font-weight: bold;
     cursor:pointer
 }
@@ -89,4 +89,11 @@
 
 .modal-body-btn{
     margin-top: 20px;
+}
+
+.comment-option{
+    cursor: pointer;
+}
+.comment-option:hover{
+    color: #0056b3;
 }

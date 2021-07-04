@@ -25,3 +25,7 @@ function writeComment(post_idx, comment_content){
         if(res.result == "success") location.href = res.redirect;
     })
 }
+
+$(".comment-modify").on("click", () => {
+    
+})
