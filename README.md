@@ -106,6 +106,10 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.07.04 (v0.63)
+- `bug`
+  - [#58](https://github.com/CASPER-REPSAC/project-manager/issues/58) 글 작성 버그 수정
+
 2021.06.30 (v0.62)
 - `feature`
   - 이전 글, 다음 글 기능 추가
