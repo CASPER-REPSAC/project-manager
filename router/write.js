@@ -46,9 +46,9 @@ router.post("/write", async (req, res) => {
     }
 
     const user_id = req.session.passport.user.id;
-    const writer = req.session.passport.user.displayName;
 
     const tmp_path_row = await sendQuery(`SELECT tmp_path FROM tmp_post_attach WHERE user_id = ? ORDER BY tmp_attach_idx DESC`, [user_id]);
+    const writer = (await sendQuery(`SELECT user_name FROM user WHERE user_id = ?`, [user_id]))[0].user_name;
     await sendQuery(`DELETE FROM tmp_post_attach WHERE user_id = ?`, [user_id]);
     await sendQuery(`INSERT INTO post (user_id, writer, title, subtitle, contents, opinion, post_date, project_date, type, tag, thumbnail) VALUES (?, ?, ?, ?, ?, ?, now(), ?, ?, ?, ?)`,
                                        [user_id, writer, input.title, input.subtitle, input.section, input.section_opinion, input.date, input.type, input.tag, input.thumbnail]);

@@ -13,9 +13,9 @@ router.post("/api/comment", async(req, res) => {
     // if(!(await check.checkAuth(req, res))) return;
 
     const post_idx = Number(req.body.post_idx) ? Number(req.body.post_idx) : -1;
-    const writer = req.session.passport.user.displayName;
     const comment_content = req.body.comment_content;
     const user_id = req.session.passport.user.id;
+    const writer = (await sendQuery(`SELECT user_name FROM user WHERE user_id = ?`, [user_id]))[0].user_name;
 
     if(comment_content.length == 0){
         res.json({"result" : "error", "message" : "댓글을 입력해 주세요."});
@@ -43,8 +43,8 @@ router.post("/api/reply", async(req, res) => {
 
     const comment_idx = Number(req.body.comment_idx) ? Number(req.body.comment_idx) : -1;
     const reply_content = req.body.reply_content;
-    const writer = req.session.passport.user.displayName;
     const user_id = req.session.passport.user.id;
+    const writer = (await sendQuery(`SELECT user_name FROM user WHERE user_id = ?`, [user_id]))[0].user_name;
     const post_idx = Number(req.body.post_idx) ? Number(req.body.post_idx) : -1;
 
     if(reply_content.length == 0){

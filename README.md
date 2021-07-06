@@ -106,6 +106,13 @@ pdf.js            # https://usefulangle.com/post/20/pdfjs-tutorial-1-preview-pdf
 
 # > Update
 
+2021.07.06 (v0.64)
+- `살...려...줘`
+  - 버그 왜캐 많냐...
+- `bug`
+  - [#50](https://github.com/CASPER-REPSAC/project-manager/issues/50)
+  - [#62](https://github.com/CASPER-REPSAC/project-manager/issues/62)
+
 2021.07.04 (v0.63)
 - `bug`
   - [#58](https://github.com/CASPER-REPSAC/project-manager/issues/58) 글 작성 버그 수정

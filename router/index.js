@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const requirement = require("../feature/requirement");
 const check = require("../feature/check");
-const executeQuery = require("../feature/db");
+const sendQuery = require("../feature/db");
 
 router.get("/", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 const getRecentCommentAndReply = async () => {
     // 최근 3개월 이내에 등록된 댓글과 답글을 가져와서, 그 중에 최근에 등록된 10개만 가져옴.
     const tmp_user = {};
-    const result = await executeQuery(`SELECT *
+    const result = await sendQuery(`SELECT *
                                         FROM   (SELECT "comment" AS "type",
                                                         comment_idx,
                                                         post_idx,
@@ -47,7 +47,7 @@ const getRecentCommentAndReply = async () => {
     // 사용자 이미지 가져오기
     for(const [i, data] of result.entries()){
         if(!tmp_user[data.user_id]){
-            const row = await executeQuery(`SELECT user_image FROM user WHERE user_id = ?`, [data.user_id]);
+            const row = await sendQuery(`SELECT user_image FROM user WHERE user_id = ?`, [data.user_id]);
             result[i].user_image = row[0].user_image;
             tmp_user[data.user_id] = row[0].user_image;
         }
@@ -64,7 +64,7 @@ const getRecentCommentAndReply = async () => {
 }
 
 const getPopularProjects = async () => {
-    const result = await executeQuery(`SELECT * FROM post WHERE like_count >= 1 ORDER BY like_count DESC LIMIT 0, 12`);
+    const result = await sendQuery(`SELECT * FROM post WHERE like_count >= 1 ORDER BY like_count DESC LIMIT 0, 12`);
     return result;
 }
 
