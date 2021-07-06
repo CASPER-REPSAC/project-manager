@@ -30,11 +30,6 @@ passport.use(new GoogleStrategy({
                 await sendQuery(`INSERT INTO user (user_id, user_email, user_name, user_image, auth, registration_date) VALUES
                                                (?, ?, ?, ?, "guest", sysdate())`, [user_id, user_email, user_name, user_image]);
             }
-            else if(rows[0].user_email == null){
-                const user_id = profile.id;
-                const user_email = profile.emails[0].value;
-                await sendQuery (`UPDATE user SET user_email = ? WHERE user_id = ?`, [user_email, user_id]);
-            }
             
             return done(null, user);
         });

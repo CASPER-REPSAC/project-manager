@@ -6,8 +6,8 @@ const menu_list = {
 }
 
 $(document).ready(async () => {
-    const writer = $("input[name='writer']").val();
-    const result = await getData(writer, menu_list[Object.keys(menu_list)[0]]);
+    const user_id = $("input[name='user_id']").val();
+    const result = await getData(user_id, menu_list[Object.keys(menu_list)[0]]);
     showData(Object.values(menu_list), menu_list[Object.keys(menu_list)[0]], result);
 })
 
@@ -15,16 +15,16 @@ $(document).on("click", ".nav-link", async (e) => {
     $(".menu-result-project").children().remove();
     $(".menu-result-comment").children().remove()
 
-    const writer = $("input[name='writer']").val();
+    const user_id = $("input[name='user_id']").val();
     const selected_menu = $(e.target).text();
 
-    const result = await getData(writer, menu_list[selected_menu]);
+    const result = await getData(user_id, menu_list[selected_menu]);
     showData(Object.values(menu_list), menu_list[selected_menu], result);
 })
 
-const getData = async (writer, menu) => {
+const getData = async (user_id, menu) => {
     return await(
-        fetch(`/profile/${writer}`, {
+        fetch(`/profile/${user_id}`, {
             method : "POST",
             headers: {
                 'Content-Type': 'application/json'

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const requirement = require("../feature/requirement");
 const check = require("../feature/check");
-const executeQuery = require("../feature/db");
+const sendQuery = require("../feature/db");
 
 router.get("/modify/:idx", async (req, res) => {
     if(!check.isLogin(req.session.passport)){
@@ -25,8 +25,8 @@ router.get("/modify/:idx", async (req, res) => {
 
     const data = await requirement.getRequireData(req.session);
     const user_auth = await check.getAuth(req.session.passport);
-    const post_data = await executeQuery(`SELECT * FROM post WHERE post_idx = ? AND user_id = ?`, [post_idx, req.session.passport.user.id]);
-    const post_attach = await executeQuery(`SELECT path FROM post_attach WHERE post_idx = ?`, [post_idx]);
+    const post_data = await sendQuery(`SELECT * FROM post WHERE post_idx = ? AND user_id = ?`, [post_idx, req.session.passport.user.id]);
+    const post_attach = await sendQuery(`SELECT path FROM post_attach WHERE post_idx = ?`, [post_idx]);
     post_data[0].contents = JSON.stringify(post_data[0].contents);
 
     res.render("modify", {
@@ -70,7 +70,7 @@ router.post("/modify", async(req, res) => {
         if(i != 0 && parseInt(input.section[i].range_start) <= parseInt(input.section[i-1].range_end)){res.json({"result" : "error", "message" : "다음 섹션의 '시작 범위'가 이전 색션의 '끝 범위'보다 커야 합니다."}); return; }
     }
 
-    await executeQuery(`UPDATE post SET title = ?, subtitle = ?, contents = ?, opinion = ?, project_date = ?, type = ?, tag = ?, thumbnail = ? WHERE post_idx = ?`,
+    await sendQuery(`UPDATE post SET title = ?, subtitle = ?, contents = ?, opinion = ?, project_date = ?, type = ?, tag = ?, thumbnail = ? WHERE post_idx = ?`,
                                         [input.title, input.subtitle, input.section, input.section_opinion, input.date, input.type, input.tag, input.thumbnail, input.post_idx]);
     req.session.post_idx = null;
     res.status(200).json({"result" : "success", "message" : "글이 수정 되었습니다.", "redirect" : `/post/${input.post_idx}`});

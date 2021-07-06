@@ -4,38 +4,38 @@ const sendQuery = require("../feature/db");
 const check = require("../feature/check");
 const requirement = require("../feature/requirement");
 
-router.get("/profile/:writer", async (req, res) => {
-    const user_id = await checkUserName(req.params.writer);
-    const user_auth = await check.getAuth(req.session.passport);
-
-    if(user_id == -1){
+router.get("/profile/:user_id", async (req, res) => {
+    if(!(await checkUserId(req.params.user_id))){
         res.send("<script>alert('사용자가 존재하지 않습니다.'); location.href='/'; </script>");
         return;
     }
-    
+
+    const user_id = req.params.user_id;
+    const user_auth = await check.getAuth(req.session.passport);
     const require = await requirement.getRequireData(req.session);
     const total_count = await getTotal(user_id);
     const tags = await getAllTags(user_id);
-    const user_image = await sendQuery(`SELECT user_image FROM user WHERE user_name = ?`, [req.params.writer]);
+    const user_info = await sendQuery(`SELECT user_image, user_name FROM user WHERE user_id = ?`, [user_id]);
 
     res.render("profile", {
         "require" : require,
         "total" : total_count,
         "tags" : tags,
-        "writer" : req.params.writer,
-        "user_image" : user_image[0].user_image,
+        "writer" : user_info[0].user_name,
+        "user_image" : user_info[0].user_image,
+        "user_id" : user_id,
         user_auth : user_auth
     });
 })
 
-router.post("/profile/:writer", async (req, res) => {
-    const option = req.body.option;
-    const user_id = await checkUserName(req.params.writer);
-
-    if(user_id == -1){
+router.post("/profile/:user_id", async (req, res) => {
+    if(!(await checkUserId(req.params.user_id))){
         res.send("<script>alert('사용자가 존재하지 않습니다.'); location.href='/'; </script>");
         return;
     }
+
+    const option = req.body.option;
+    const user_id = req.params.user_id;
 
     if(option == "summary"){
         const row_posts = await sendQuery(`SELECT * FROM post WHERE user_id = ? ORDER BY post_date DESC LIMIT 0, 4 `, [user_id]);
@@ -113,10 +113,10 @@ router.post("/profile/:writer", async (req, res) => {
     return;
 })
 
-const checkUserName = async (user_id) => {
-    const row = await sendQuery(`SELECT user_id FROM user WHERE user_name = ?`, [user_id]);
+const checkUserId = async (user_id) => {
+    const row = await sendQuery(`SELECT user_id FROM user WHERE user_id = ?`, [user_id]);
     if(row.length == 0)
-        return -1;
+        return 0;
     return row[0].user_id;
 }
 
