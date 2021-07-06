@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="col-xm-11">
                                         <div class="recent-comment-info">
-                                            <div class="writer"><a href="/profile/<%=comment[i].writer %>"><%=comment[i].writer %></a></div>
+                                            <div class="writer"><a href="/profile/<%=comment[i].user_id %>"><%=comment[i].writer %></a></div>
                                             <div class="date"><%=comment[i].comment_date %></div>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                         <a href="/post/<%=popular[i].post_idx %>"><h5><%=popular[i].title %></h5></a>
                                     </div>
                                     <div class="popular-info">
-                                        <span class="writer"><%=popular[i].writer %></span> · 
+                                        <a href="/profile/<%=comment[i].user_id %>"><span class="writer"><%=popular[i].writer %></span></a> · 
                                         <span class="date"><%=popular[i].post_date %></span>
                                     </div>
                                 </div>

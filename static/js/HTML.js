@@ -108,7 +108,7 @@ const projectBoxHTML = (data) => {
                     </div>
                     <div class="project-info-bottom">
                         <span class="project-writer-image"><img src="${data["user_image"]}"></span>
-                        <a href="/profile/${data["writer"]}"><span class="project-writer-name">${data["writer"]}</span></a> · 
+                        <a href="/profile/${data["user_id"]}"><span class="project-writer-name">${data["writer"]}</span></a> · 
                         <span class="project-writer-date">${data["post_date"]}</span>
                     </div>
             </div>`;
