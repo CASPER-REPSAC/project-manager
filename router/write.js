@@ -4,7 +4,7 @@ const router = express.Router();
 const sendQuery = require("../feature/db");
 const check = require("../feature/check");
 const requirement = require("../feature/requirement");
-const mail = require("./feed/mail");
+const mailer = require("./feed/mailer");
 
 router.get("/write", async (req, res) => {
     const data = await requirement.getRequireData(req.session);
@@ -55,17 +55,16 @@ router.post("/write", async (req, res) => {
 
     const row = await sendQuery(`SELECT post_idx FROM post WHERE user_id = ? ORDER BY post_idx DESC LIMIT 0,1`, [user_id]);
     await sendQuery(`INSERT INTO post_attach (post_idx, path) VALUES (?, ?)`, [row[0].post_idx, tmp_path_row[0].tmp_path]);
-
     const feed_user_list_row = await sendQuery(`SELECT user_email FROM user WHERE feed = 1`);
     feed_user_list_row.map(async (list) => {
         const user_email = list.user_email;
-        const title = `Project Manager 에서 새로운 프로젝트가 업로드 되었어요.`;
-        const content = `<a href='${req.hostname}'><img src='${req.hostname}/image/email.png'></a><br><Br>Project Manager 에서 새로운 프로젝트가 업로드 되었어요.<br><Br><Br>
+        const title = `[Casper Project Manager] New Project!!`;
+        const content = `<a href='${req.hostname}'><img src='${req.hostname}/image/email2.png'></a><br><Br>Project Manager 에서 새로운 프로젝트가 업로드 되었어요.<br><Br><Br>
                             title: ${input.title}<br>
                             PDF download: <a href='${req.hostname}${tmp_path_row[0].tmp_path}'>${tmp_path_row[0].tmp_path}</a><Br><br>
                             <a href='${req.hostname}/post/${row[0].post_idx}'>프로젝트 염탐하러 가기.</a><br><Br>
                             더 이상 메일을 받지 않으려면, <a href='${req.hostname}'>Project Manager</a>에 방문해서 로그인 후 Feed를 꺼주시기 바랍니다.`;
-        await mail.send(user_email, title, content);
+        await mailer.start(user_email, content, title);
     })
 
     res.json({"result" : "success", "message" : "글이 작성 되었습니다.", "redirect" : `/post/${row[0].post_idx}`})
