@@ -1,11 +1,11 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const check = require("../../feature/check");
-const sendQuery = require("../../feature/db");
+import { isLogin } from "../../feature/check.js";
+import sendQuery from "../../feature/db.js";
 
 router.get("/api/like/:idx", async (req, res) => {
-    if(!check.isLogin(req.session.passport)){
+    if(!isLogin(req.session.passport)){
         res.json({"result" : "error", "message" : "로그인을 해주세요."});
         return;
     }
@@ -27,4 +27,4 @@ router.get("/api/like/:idx", async (req, res) => {
     res.json({"result" : "success", "count" : update_like_count});
 })
 
-module.exports = router;
+export default router;

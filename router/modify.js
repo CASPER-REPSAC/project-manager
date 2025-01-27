@@ -1,11 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const requirement = require("../feature/requirement");
-const check = require("../feature/check");
-const sendQuery = require("../feature/db");
+import { Router } from "express";
+const router = Router();
+import { getRequireData } from "../feature/requirement.js";
+import { isLogin, isPostOwner, getAuth } from "../feature/check.js";
+import sendQuery from "../feature/db.js";
 
 router.get("/modify/:idx", async (req, res) => {
-    if(!check.isLogin(req.session.passport)){
+    if(!isLogin(req.session.passport)){
         res.status(401).send("<script>alert('로그인을 해주세요.'); location.href='/';</script>");
         return;
     }
@@ -16,15 +16,15 @@ router.get("/modify/:idx", async (req, res) => {
     }
 
     const post_idx = Number(req.params.idx);
-    if(!(await check.isPostOwner(req.session.passport, post_idx))){
+    if(!(await isPostOwner(req.session.passport, post_idx))){
         res.status(403).send("<script>alert('해당 게시글의 작성자가 아니거나 글이 존재하지 않습니다.'); location.href='/'; </script>");
         return;
     }
 
     req.session.post_idx = post_idx;
 
-    const data = await requirement.getRequireData(req.session);
-    const user_auth = await check.getAuth(req.session.passport);
+    const data = await getRequireData(req.session);
+    const user_auth = await getAuth(req.session.passport);
     const post_data = await sendQuery(`SELECT * FROM post WHERE post_idx = ? AND user_id = ?`, [post_idx, req.session.passport.user.id]);
     const post_attach = await sendQuery(`SELECT path FROM post_attach WHERE post_idx = ?`, [post_idx]);
     post_data[0].contents = JSON.stringify(post_data[0].contents);
@@ -38,7 +38,7 @@ router.get("/modify/:idx", async (req, res) => {
 })
 
 router.post("/modify", async(req, res) => {
-    if(!check.isLogin(req.session.passport)){
+    if(!isLogin(req.session.passport)){
         res.status(401).json({"result" : "error", "message" : "로그인을 해주세요."});
         return;
     }
@@ -48,7 +48,7 @@ router.post("/modify", async(req, res) => {
         return;
     }
 
-    if(!(await check.isPostOwner(req.session.passport, req.body.post_idx))){
+    if(!(await isPostOwner(req.session.passport, req.body.post_idx))){
         res.status(403).json({"result" : "error", "message" : "해당 게시글의 작성자가 아니거나 글이 존재하지 않습니다."});
         return;
     }
@@ -76,4 +76,4 @@ router.post("/modify", async(req, res) => {
     res.status(200).json({"result" : "success", "message" : "글이 수정 되었습니다.", "redirect" : `/post/${input.post_idx}`});
 })
 
-module.exports = router;
+export default router;

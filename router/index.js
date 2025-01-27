@@ -1,12 +1,12 @@
-const express = require("express");
-const router = express.Router();
-const requirement = require("../feature/requirement");
-const check = require("../feature/check");
-const sendQuery = require("../feature/db");
+import { Router } from "express";
+const router = Router();
+import { getRequireData } from "../feature/requirement.js";
+import { getAuth } from "../feature/check.js";
+import sendQuery from "../feature/db.js";
 
 router.get("/", async (req, res) => {
-    const data = await requirement.getRequireData(req.session);
-    const user_auth = await check.getAuth(req.session.passport);
+    const data = await getRequireData(req.session);
+    const user_auth = await getAuth(req.session.passport);
     const comment_info = await getRecentCommentAndReply();
     const popular_info = await getPopularProjects();
 
@@ -44,17 +44,7 @@ const getRecentCommentAndReply = async () => {
                                         ORDER  BY comment_date DESC
                                         LIMIT  0, 10`);
     
-    // 사용자 이미지 가져오기
     for(const [i, data] of result.entries()){
-        if(!tmp_user[data.user_id]){
-            const row = await sendQuery(`SELECT user_image FROM user WHERE user_id = ?`, [data.user_id]);
-            result[i].user_image = row[0].user_image;
-            tmp_user[data.user_id] = row[0].user_image;
-        }
-        else{
-            result[i].user_image = tmp_user[data.user_id];
-        }
-
         // 최대 글자수
         if(data.comment_content.length >= 70){
             result[i].comment_content = data.comment_content.substr(0, 70) + "...";
@@ -68,4 +58,4 @@ const getPopularProjects = async () => {
     return result;
 }
 
-module.exports = router;
+export default router;

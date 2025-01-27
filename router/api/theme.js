@@ -1,5 +1,5 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
 router.get("/api/theme", (req, res) => {
     const data = (req.query.data == "dark" ? "dark" : "light");
@@ -8,4 +8,4 @@ router.get("/api/theme", (req, res) => {
     res.json({"result" : "success"});
 })
 
-module.exports = router;
+export default router;

@@ -1,13 +1,13 @@
-const fs = require('fs');
-const readline = require('readline');
-const {google} = require('googleapis');
+import { readFile, writeFile } from 'fs';
+import { createInterface } from 'readline';
+import { google } from 'googleapis';
 
 const SCOPES = ['https://mail.google.com/', 'https://www.googleapis.com/auth/gmail.send', ];
 
 const TOKEN_PATH = './config/token.json';
 
-module.exports.start = (to, email_message, title) => {
-    fs.readFile('./config/credentials.json', (err, content) => {
+export function start(to, email_message, title) {
+    readFile('./config/credentials.json', (err, content) => {
         if (err) return console.log('Error loading client secret file:', err); // Authorize a client with credentials, then call the Gmail API.
         authorize(to, email_message, title, JSON.parse(content), sendMail);
     });
@@ -21,7 +21,7 @@ function authorize(to, email_message, title, credentials, callback) {
 		redirect_uris
 	} = credentials.installed;
 	const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]); // Check if we have previously stored a token.
-	fs.readFile(TOKEN_PATH, (err, token) => {
+	readFile(TOKEN_PATH, (err, token) => {
 		if (err) return getNewToken(oAuth2Client, callback);
 		oAuth2Client.setCredentials(JSON.parse(token));
 		callback(oAuth2Client, to, email_message, title);
@@ -34,7 +34,7 @@ function getNewToken(oAuth2Client, callback) {
 		scope: SCOPES,
 	});
 	console.log('Authorize this app by visiting this url:', authUrl);
-	const rl = readline.createInterface({
+	const rl = createInterface({
 		input: process.stdin,
 		output: process.stdout,
 	});
@@ -43,7 +43,7 @@ function getNewToken(oAuth2Client, callback) {
 		oAuth2Client.getToken(code, (err, token) => {
 			if (err) return console.error('Error retrieving access token', err);
 			oAuth2Client.setCredentials(token);
-			fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+			writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
 				if (err) return console.error(err);
 				console.log('Token stored to', TOKEN_PATH);
 			});

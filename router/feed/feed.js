@@ -1,13 +1,13 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const sendQuery = require("../../feature/db");
-const check = require("../../feature/check");
+import sendQuery from "../../feature/db.js";
+import { isLogin } from "../../feature/check.js";
 
 router.get("/feed", async (req, res) => {
     const option = Number(req.query.feed) ? Number(req.query.feed) : 0;
 
-    if(!check.isLogin(req.session.passport)){
+    if(!isLogin(req.session.passport)){
         res.json({"result" : "error", "message" : "로그인을 해주세요."});
         return;
     }
@@ -18,4 +18,4 @@ router.get("/feed", async (req, res) => {
     res.json({"result" : "success"});
 })
 
-module.exports = router;
+export default router;

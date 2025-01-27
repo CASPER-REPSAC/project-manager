@@ -1,49 +1,44 @@
-const express = require("express");
-const router = express.Router();
-const passport = require('passport');
-const GoogleStrategy = require( 'passport-google-oauth20' ).Strategy;
-const sendQuery = require("../feature/db");
-
-const config = require("../config/secret.json");
-
+import { Router } from "express";
+const router = Router();
+import passport from 'passport';
+import sendQuery from "../feature/db.js";
+import OpenIDConnectStrategy from "passport-openidconnect";
+import secret from "../config/secret.json" with { "type": "json" };
 passport.serializeUser(function(user, done) {
     done(null, user);
 });
 passport.deserializeUser(function(obj, done) {
     done(null, obj);
 });
-passport.use(new GoogleStrategy({
-        clientID: config.google_api.clientID,
-        clientSecret: config.google_api.clientSecret,
-        callbackURL: config.google_api.callbackURL
-    }, function(accessToken, refreshToken, profile, done) {
-        process.nextTick(async () => {
-            user = profile;
-            
-            const rows = await sendQuery(`SELECT user_id, user_email FROM user WHERE user_id = ?`, [profile.id]);
-            if(rows.length == 0){
-                const user_id = profile.id;
-                const user_image = profile.photos[0].value;
-                const user_name = profile._json.name;
-                const user_email = profile.emails[0].value;
-
-                await sendQuery(`INSERT INTO user (user_id, user_email, user_name, user_image, auth, registration_date) VALUES
-                                               (?, ?, ?, ?, "guest", sysdate())`, [user_id, user_email, user_name, user_image]);
-            }
-            
-            return done(null, user);
-        });
+passport.use(new OpenIDConnectStrategy({
+    issuer: secret.sso.issuer,
+    authorizationURL: secret.sso.auth_url,
+    tokenURL: secret.sso.token_url,
+    clientID: secret.sso.client_id,
+    clientSecret: secret.sso.client_secret,
+    callbackURL: secret.sso.callback_url,
+    scope: ['profile', 'email', 'openid', 'offline_access']
+}, (issuer, profile, done) => {
+    done(null, profile);
+}));
+router.get('/login', passport.authenticate('openidconnect'), async (req, res) => {
+    console.log("login");
+    const user = req.session.passport.user;
+    const user_id = user.id;
+    const user_name = user.displayName;
+    const user_email = user.emails[0].value;
+    const rows = await sendQuery(`SELECT user_id, user_email FROM user WHERE user_id = ?`, [user_id]);
+    if(rows.length == 0){
+        await sendQuery(`INSERT INTO user (user_id, user_email, user_name, auth, registration_date) VALUES
+                                       (?, ?, ?, "guest", sysdate())`, [user_id, user_email, user_name]);
     }
-));
-
-router.get('/login', passport.authenticate('google', { scope: ['profile', 'email']}));
+    else{
+        await sendQuery(`UPDATE user SET user_name = ?, user_email = ? WHERE user_id = ?`, [user_name, user_email, user_id]);
+    }
+    res.redirect("/");
+});
 router.get("/logout", (req, res) => {
     req.session.passport = undefined;
     res.redirect("/");
-})
-router.get('/auth/google/callback', passport.authenticate( 'google', { failureRedirect: '/login' }), (req, res) => {
-    // console.log(req.session.passport);
-    res.redirect('/');
 });
-
-module.exports = router;
+export default router;

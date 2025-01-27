@@ -1,11 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const check = require("../../feature/check");
-const requirement = require("../../feature/requirement");
-const sendQuery = require("../../feature/db");
+import { Router } from "express";
+const router = Router();
+import { isLogin } from "../../feature/check.js";
+import requirement from "../../feature/requirement.js";
+import sendQuery from "../../feature/db.js";
 
 router.post("/api/comment", async(req, res) => {
-    if(!check.isLogin(req.session.passport)){
+    if(!isLogin(req.session.passport)){
         res.json({"result" : "error", "message" : "로그인을 해주세요."});
         return;
     }
@@ -34,7 +34,7 @@ router.post("/api/comment", async(req, res) => {
 })
 
 router.post("/api/reply", async(req, res) => {
-    if(!check.isLogin(req.session.passport)){
+    if(!isLogin(req.session.passport)){
         res.json({"result" : "error", "message" : "로그인을 해주세요."});
         return;
     }
@@ -71,4 +71,4 @@ router.post("/api/reply", async(req, res) => {
 
 
 
-module.exports = router;
+export default router;

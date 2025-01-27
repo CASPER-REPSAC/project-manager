@@ -50,9 +50,6 @@
                             <img class="recent-comment-list-image" src="https://image.flaticon.com/icons/png/512/3447/3447520.png"><br><br>
                             <% for(let i = 0; i < comment.length; i++){ %>
                                 <div class="row recent-comment-box">
-                                    <div class="col-xm-1">
-                                        <img class="user-thumbnail" src="<%=comment[i].user_image %>">
-                                    </div>
                                     <div class="col-xm-11">
                                         <div class="recent-comment-info">
                                             <div class="writer"><a href="/profile/<%=comment[i].user_id %>"><%=comment[i].writer %></a></div>

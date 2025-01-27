@@ -28,7 +28,6 @@
     </head>
     <body>
         <input type="hidden" class="file-name" value="<%= post_attach.path%>">
-        <input type="hidden" name="user-image" value="<%= user_info.user_image %>">
         <input type="hidden" name="post-idx" value="<%=post_data.post_idx %>">
         <% for(let i=0; i<post_data.contents.length; i++) { %>
             <input type="hidden" class="section-range" value="<%= post_data.contents[i].range_start %>~<%= post_data.contents[i].range_end %>">
@@ -124,11 +123,6 @@
                 </div>
                 <% for(let i = 0; i<comment_data.length; i++){ %>
                     <div class="row">
-                        <div class="col-sm-1">
-                            <div class="comment-writer-image">
-                                <img src="<%=comment_image[comment_data[i].user_id] %>">
-                            </div>
-                        </div>
                         <div class="col-sm-11">
                             <a id="comment<%=comment_data[i].comment_idx %>">
                                 <div class="comment-info">
@@ -151,11 +145,6 @@
                             <% } %>
                             <% for(let j=0; j<comment_data[i].reply_comment.length; j++){ %>
                                 <div class="row">
-                                    <div class="col-sm-1">
-                                        <div class="comment-writer-image">
-                                            <img src="<%=comment_image[comment_data[i].reply_comment[j].user_id] %>">
-                                        </div>
-                                    </div>
                                     <div class="col-sm-11">
                                         <a id="reply<%=comment_data[i].reply_comment[j].reply_idx %>">
                                             <div class="comment-info">
@@ -178,11 +167,6 @@
                 <% } %>
                 <% if(require.is_login) { %>
                     <div class="input-comment-box row">
-                        <div class="col-sm-1">
-                            <div class="comment-writer-image">
-                                <img src="<%= user_info.user_image %>">
-                            </div>
-                        </div>
                         <div class="col-sm-10">
                             <textarea class="write-form-textarea input-comment-content" placeholder="댓글을 적어주세요."></textarea>
                         </div>

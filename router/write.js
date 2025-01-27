@@ -1,19 +1,19 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const sendQuery = require("../feature/db");
-const check = require("../feature/check");
-const requirement = require("../feature/requirement");
-const mailer = require("./feed/mailer");
+import sendQuery from "../feature/db.js";
+import { checkAuth, getAuth, isLogin } from "../feature/check.js";
+import { getRequireData } from "../feature/requirement.js";
+import { start } from "./feed/mailer.js";
 
 router.get("/write", async (req, res) => {
-    const data = await requirement.getRequireData(req.session);
-    if(!(await check.checkAuth(req, res, data))) return;
+    const data = await getRequireData(req.session);
+    if(!(await checkAuth(req, res, data))) return;
 
-    const user_auth = await check.getAuth(req.session.passport);
+    const user_auth = await getAuth(req.session.passport);
     let feed = '';
 
-    if(check.isLogin(req.session.passport)){
+    if(isLogin(req.session.passport)){
         feed = (await sendQuery(`SELECT feed FROM user WHERE user_id = ?`, [req.session.passport.user.id]))[0].feed;
     }
 
@@ -25,8 +25,8 @@ router.get("/write", async (req, res) => {
 })
 
 router.post("/write", async (req, res) => {
-    const data = await requirement.getRequireData(req.session);
-    if(!(await check.checkAuth(req, res, data))) return;
+    const data = await getRequireData(req.session);
+    if(!(await checkAuth(req, res, data))) return;
 
     const input = req.body;
     
@@ -51,7 +51,7 @@ router.post("/write", async (req, res) => {
     const writer = (await sendQuery(`SELECT user_name FROM user WHERE user_id = ?`, [user_id]))[0].user_name;
     await sendQuery(`DELETE FROM tmp_post_attach WHERE user_id = ?`, [user_id]);
     await sendQuery(`INSERT INTO post (user_id, writer, title, subtitle, contents, opinion, post_date, project_date, type, tag, thumbnail) VALUES (?, ?, ?, ?, ?, ?, now(), ?, ?, ?, ?)`,
-                                       [user_id, writer, input.title, input.subtitle, input.section, input.section_opinion, input.date, input.type, input.tag, input.thumbnail]);
+                                       [user_id, writer, input.title, input.subtitle, JSON.stringify(input.section), input.section_opinion, input.date, input.type, input.tag, input.thumbnail]);
 
     const row = await sendQuery(`SELECT post_idx FROM post WHERE user_id = ? ORDER BY post_idx DESC LIMIT 0,1`, [user_id]);
     await sendQuery(`INSERT INTO post_attach (post_idx, path) VALUES (?, ?)`, [row[0].post_idx, tmp_path_row[0].tmp_path]);
@@ -64,11 +64,11 @@ router.post("/write", async (req, res) => {
                             PDF download: <a href='${req.hostname}${tmp_path_row[0].tmp_path}'>${tmp_path_row[0].tmp_path}</a><Br><br>
                             <a href='${req.hostname}/post/${row[0].post_idx}'>프로젝트 염탐하러 가기.</a><br><Br>
                             더 이상 메일을 받지 않으려면, <a href='${req.hostname}'>Project Manager</a>에 방문해서 로그인 후 Feed를 꺼주시기 바랍니다.`;
-        await mailer.start(user_email, content, title);
+        await start(user_email, content, title);
     })
 
     res.json({"result" : "success", "message" : "글이 작성 되었습니다.", "redirect" : `/post/${row[0].post_idx}`})
 })
 
 
-module.exports = router;
+export default router;

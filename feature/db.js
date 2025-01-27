@@ -1,12 +1,14 @@
-const mysql = require('mysql2/promise');
-const config = require("../config/secret.json");
+import { createPool } from 'mysql2/promise';
+import secret from "../config/secret.json" with { type: "json" };
 
-const pool = mysql.createPool(
+const mysql = secret.mysql;
+
+const pool = createPool(
     {   
-        host: 'localhost', 
-        user: config.mysql.user,
-        password: config.mysql.password,
-        database: config.mysql.dbname,
+        host: mysql.host, 
+        user: mysql.user,
+        password: mysql.password,
+        database: mysql.dbname,
         dateStrings: 'date'
     }
 );
@@ -26,6 +28,7 @@ const sendQuery = async function(query, values) {
             connection.release();
             console.log("query error");
             console.log(err);
+            console.log(query, values);
         }
     } catch(err) {
         console.log("db error");
@@ -33,4 +36,4 @@ const sendQuery = async function(query, values) {
     }
 };
 
-module.exports = sendQuery
+export default sendQuery

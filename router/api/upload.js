@@ -1,20 +1,20 @@
-const express = require("express");
-const router = express.Router();
-const multer = require("multer");
-const { v4: uuidv4 } = require('uuid');
-const path = require("path");
+import { Router } from "express";
+const router = Router();
+import multer, { diskStorage } from "multer";
+import { v4 as uuidv4 } from 'uuid';
+import { extname as _extname } from "path";
 
-const sendQuery = require("../../feature/db");
-const feature = require("../../feature/check");
-const requirement = require("../../feature/requirement");
+import sendQuery from "../../feature/db.js";
+import { checkAuth } from "../../feature/check.js";
+import { getRequireData } from "../../feature/requirement.js";
 
 const upload = multer({
-    storage: multer.diskStorage({
+    storage: diskStorage({
         destination: function (req, file, cb) {
             cb(null, 'static/uploads/');
         },
         filename: function (req, file, cb) {
-            cb(null, uuidv4() + path.extname(file.originalname));
+            cb(null, uuidv4() + _extname(file.originalname));
         }
     }),
     limits: {
@@ -27,7 +27,7 @@ const upload = multer({
 
 function checkFileType(file, cb){
     const filetypes = /pdf/;
-    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+    const extname = filetypes.test(_extname(file.originalname).toLowerCase());
     const mimetype = filetypes.test(file.mimetype);
   
     if(mimetype && extname){
@@ -39,8 +39,8 @@ function checkFileType(file, cb){
 
 
 router.post("/api/upload", async (req, res) => {
-    const data = await requirement.getRequireData(req.session);
-    if(!(await feature.checkAuth(req, res, data))) return;
+    const data = await getRequireData(req.session);
+    if(!(await checkAuth(req, res, data))) return;
 
     upload(req, res, async (err) => {
         if(err){
@@ -61,4 +61,4 @@ router.post("/api/upload", async (req, res) => {
     })
 })
 
-module.exports = router;
+export default router;

@@ -1,8 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const sendQuery = require("../feature/db");
-const check = require("../feature/check");
-const requirement = require("../feature/requirement");
+import { Router } from "express";
+const router = Router();
+import sendQuery from "../feature/db.js";
+import { getAuth } from "../feature/check.js";
+import { getRequireData } from "../feature/requirement.js";
 
 router.get("/profile/:user_id", async (req, res) => {
     if(!(await checkUserId(req.params.user_id))){
@@ -11,18 +11,17 @@ router.get("/profile/:user_id", async (req, res) => {
     }
 
     const user_id = req.params.user_id;
-    const user_auth = await check.getAuth(req.session.passport);
-    const require = await requirement.getRequireData(req.session);
+    const user_auth = await getAuth(req.session.passport);
+    const require = await getRequireData(req.session);
     const total_count = await getTotal(user_id);
     const tags = await getAllTags(user_id);
-    const user_info = await sendQuery(`SELECT user_image, user_name FROM user WHERE user_id = ?`, [user_id]);
+    const user_info = await sendQuery(`SELECT user_name FROM user WHERE user_id = ?`, [user_id]);
 
     res.render("profile", {
         "require" : require,
         "total" : total_count,
         "tags" : tags,
         "writer" : user_info[0].user_name,
-        "user_image" : user_info[0].user_image,
         "user_id" : user_id,
         user_auth : user_auth
     });
@@ -160,4 +159,4 @@ const getAllTags = async (user_id) => {
     return result;
 }
 
-module.exports = router;
+export default router;

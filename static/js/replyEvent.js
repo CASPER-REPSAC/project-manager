@@ -5,9 +5,7 @@ $(document).on("click", ".comment-reply", (e) => {
         return;
     }
     const comment_idx = $target.find("input[name='comment-idx']").val();
-    const user_image = $("input[name='user-image']").val();
-
-    $target.closest(".col-sm-11").append(replyInputFormHTML(user_image, comment_idx));
+    $target.closest(".col-sm-11").append(replyInputFormHTML(comment_idx));
 })
 
 $(document).on("click", ".btn-reply", (e) => {

@@ -41,29 +41,24 @@ const getData = async (user_id, menu) => {
 const showData = (menu_list, menu, data) =>{
     if(menu == menu_list[0]){
         for(let i=0; i<data.posts.length; i++){
-            data.posts[i].user_image = $("input[name='user_image']").val();
             $(".menu-result-project").append(projectBoxHTML(data.posts[i]));
         }
         for(let i=0; i<data.comments.length; i++){
-            data.comments[i].user_image = $("input[name='user_image']").val();
             $(".menu-result-comment").append(commentBoxHTML(data.comments[i]));
         }
     }
     else if(menu == menu_list[1]){
         for(let i=0; i<data.posts.length; i++){
-            data.posts[i].user_image = $("input[name='user_image']").val();
             $(".menu-result-project").append(projectBoxHTML(data.posts[i]));
         }
     }
     else if(menu == menu_list[2]){
         for(let i=0; i<data.comments.length; i++){
-            data.comments[i].user_image = $("input[name='user_image']").val();
             $(".menu-result-comment").append(commentBoxHTML(data.comments[i]));
         }
     }
     else if(menu == menu_list[3]){
         for(let i=0; i<data.posts.length; i++){
-            data.posts[i].user_image = $("input[name='user_image']").val();
             $(".menu-result-project").append(projectBoxHTML(data.posts[i]));
         }
     }

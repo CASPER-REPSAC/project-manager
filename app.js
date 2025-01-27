@@ -1,36 +1,60 @@
-const express = require("express");
-const session = require('express-session');
-const passport = require('passport');
-const bodyParser = require('body-parser');
-var favicon = require('serve-favicon');
+import express from "express";
+import session from 'express-session';
+import passport from 'passport';
+import parser from 'body-parser';
+import favicon from 'serve-favicon';
 const app = express();
 
-const router_index = require("./router/index");
-const router_post = require("./router/post");
-const router_login = require("./router/login");
-const router_write = require("./router/write");
-const router_profile = require("./router/profile");
-const router_feed = require("./router/feed/feed");
-const router_modify = require("./router/modify");
-const router_api_index = require("./router/api/index");
-const router_api_auth = require("./router/api/auth");
-const router_api_delete = require("./router/api/delete");
-const router_api_comment = require("./router/api/comment");
-const router_api_like = require("./router/api/like");
-const router_api_theme = require("./router/api/theme");
-const router_api_upload = require("./router/api/upload");
+import router_index from "./router/index.js";
+import router_post from "./router/post.js";
+import router_login from "./router/login.js";
+import router_write from "./router/write.js";
+import router_profile from "./router/profile.js";
+import router_feed from "./router/feed/feed.js";
+import router_modify from "./router/modify.js";
+import router_api_index from "./router/api/index.js";
+import router_api_auth from "./router/api/auth.js";
+import router_api_delete from "./router/api/delete.js";
+import router_api_comment from "./router/api/comment.js";
+import router_api_like from "./router/api/like.js";
+import router_api_theme from "./router/api/theme.js";
+import router_api_upload from "./router/api/upload.js";
 
-const config = require("./config/secret.json");
+import secret from "./config/secret.json" with { type: "json" };
 
-app.use(favicon(__dirname + '/static/image/favicon.png'));
+import sendQuery from "./feature/db.js";
+import { readFileSync } from "fs";
+
+
+sendQuery(`SHOW TABLES LIKE 'user'`, []).then((rows) => {
+    if(rows.length == 0){
+        const sql = readFileSync("./db.sql").toString().split(";");
+        while(sql.length > 0){
+            if(sql[0].trim() == ""){
+                sql.shift();
+                continue;
+            }
+            sendQuery(sql.shift(), []).then(() => {
+                console.log("Table created");
+            }).catch((err) => {
+                console.log("Table creation error");
+                console.log(err);
+            });
+        }
+    }
+}).catch((err) => {
+    console.log("Table check error");
+    console.log(err);
+});
+app.use(favicon('./static/image/favicon.png'));
 app.use(passport.initialize());
-app.use(bodyParser.json());
+app.use(parser.json());
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/static"));
+app.use(express.static("static"));
 app.use(session({
- secret: config.session_key,
- resave: false,
- saveUninitialized: true
+    secret: secret.session_key,
+    resave: true,
+    saveUninitialized: false
 }));
 
 app.get("/", router_index);
@@ -58,7 +82,7 @@ app.post("/api/upload", router_api_upload);
 app.get("/robots.txt", (req, res) => {
     res.type("text/plain");
     res.send(
-      "User-agent: *\nDisallow: /\n"
+        "User-agent: *\nDisallow: /\n"
     );
 })
 
@@ -67,6 +91,6 @@ app.get("*", (req, res) => {
     res.render("404");
 })
 
-app.listen(8081, () => {
+app.listen(80, () => {
     console.log("running");
 })

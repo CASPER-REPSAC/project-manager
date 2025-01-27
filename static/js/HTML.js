@@ -68,13 +68,8 @@ function pdfPreviewHTML(width, page_no){
             </div>`;
 }
 
-function replyInputFormHTML(user_image, comment_idx){
+function replyInputFormHTML(comment_idx){
     return `<div class="input-reply-box row">
-                <div class="col-sm-1">
-                    <div class="comment-writer-image">
-                        <img src="${user_image}">
-                    </div>
-                </div>
                 <div class="col-sm-10">
                     <textarea class="write-form-textarea input-reply-content" placeholder="답글을 적어주세요."></textarea>
                 </div>
@@ -107,7 +102,6 @@ const projectBoxHTML = (data) => {
                         </div>
                     </div>
                     <div class="project-info-bottom">
-                        <span class="project-writer-image"><img src="${data["user_image"]}"></span>
                         <a href="/profile/${data["user_id"]}"><span class="project-writer-name">${data["writer"]}</span></a> · 
                         <span class="project-writer-date">${data["post_date"]}</span>
                     </div>
@@ -117,9 +111,6 @@ const projectBoxHTML = (data) => {
 const commentBoxHTML = (data) => {
     return `<div class="recent-comment-box">
                 <div class="row">
-                    <div class="col-xm-1">
-                        <img class="user-thumbnail" src=${data["user_image"]}>
-                    </div>
                     <div class="col-xm-11">
                         <div class="recent-comment-info">
                             <div class="writer">${data["writer"]}</div>

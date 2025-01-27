@@ -38,6 +38,10 @@ async function showPDF(pdf_url) {
 
 // load and render specific page of the PDF
 async function showPage(page_no, _CANVAS) {
+    if(page_no > _TOTAL_PAGES || page_no < 1) {
+        console.error(`Page number out of range ${page_no}/${_TOTAL_PAGES}`);
+        return;
+    }
     _PAGE_RENDERING_IN_PROGRESS = 5;
     _CURRENT_PAGE = page_no;
 
