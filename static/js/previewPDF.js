@@ -1,6 +1,7 @@
 const initPDF = async (path) => {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
     try {
-        _PDF_DOC = await pdfjsLib.getDocument({url: path});
+        _PDF_DOC = await pdfjsLib.getDocument({url: path}).promise;
     }
     catch(error) {
         alert(error.message);
