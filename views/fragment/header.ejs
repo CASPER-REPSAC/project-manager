@@ -10,13 +10,13 @@
                 <span class="slider round"></span>
             </label></div> -->
             <% if(!require.is_login){ %>
-                <a href="/login"><button type="button" class="btn btn-secondary"><i class="fab fa-google"></i> Login</button></a>
+                <a href="/login"><button type="button" class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> Login</button></a>
             <% } else { %>
                 <% if(user_auth == "guest") { %><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-1">Auth</button> <% } %>
                 <!-- <a href="/profile"><button type="button" class="btn btn-secondary"><i class="far fa-address-card fa-lg"></i> Profile</button></a> -->
-                <button type="button" class="btn btn-danger feed <% if(require.feed == '1') { %> active <% } %>"><i class="fas fa-rss-square fa-lg"></i></button>
-                <a href="/write"><button type="button" class="btn btn-secondary">Write</button></a>
-                <a href="/logout"><button type="button" class="btn btn-secondary">Logout</button></a>
+                <button type="button" class="btn btn-danger <% if(require.feed == '1') { %> active <% } %>"><i class="far fa-paper-plane"></i> Mailing</button>
+                <a href="/write"><button type="button" class="btn btn-write"><i class="fas fa-pen"></i> Write</button></a>
+                <a href="/logout"><button type="button" class="btn btn-secondary"><i class="fas fa-sign-out-alt"></i> Logout</button></a>
 
                 <% if(user_auth == "guest") { %>
                     <div class="modal fade" id="exampleModal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
