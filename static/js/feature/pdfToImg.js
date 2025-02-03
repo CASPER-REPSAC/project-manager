@@ -42,18 +42,23 @@ async function showPage(page_no, _CANVAS) {
     catch(error) {
         console.log(error.message);
     }
-    var pdf_original_width = page.getViewport({scale:1}).width;
-    var scale_required = _CANVAS.width / pdf_original_width;
-    var viewport = page.getViewport({scale: scale_required});
+    
     const outputScale = window.devicePixelRatio || 1;
-    _CANVAS.width = viewport.width * outputScale;
-    _CANVAS.height = viewport.height * outputScale;
-    _CANVAS.style.width = `${viewport.width}px`;
-    _CANVAS.style.height = `${viewport.height}px`;
+    var pdf_original_width = page.getViewport({scale:1}).width;
+    var scale_required = (_CANVAS.width / outputScale) / pdf_original_width;
+    var viewport = page.getViewport({scale: scale_required * outputScale});
+    
+    _CANVAS.width = Math.floor(viewport.width * outputScale);
+    _CANVAS.height = Math.floor(viewport.height * outputScale);
+    _CANVAS.style.width = Math.floor(viewport.width) + 'px';
+    _CANVAS.style.height = Math.floor(viewport.height) + 'px';
+    
     var render_context = {
         canvasContext: _CANVAS.getContext('2d'),
-        viewport: viewport
+        viewport: viewport,
+        transform: [outputScale, 0, 0, outputScale, 0, 0]
     };
+    
     try {
         await page.render(render_context);
     }
@@ -61,6 +66,7 @@ async function showPage(page_no, _CANVAS) {
         console.log(error.message);
     }
 }
+
 
 async function getTotalPage(pdf_url){
     let pdf_info;
