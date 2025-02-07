@@ -24,3 +24,13 @@
     height: 200px;
     padding: 10px;
 }
+
+/* 대댓글이 댓글의 오른쪽에 위치하도록 설정 */
+.reply-comment {
+    margin-left: 20px;  /* 댓글과의 간격을 추가 */
+}
+
+/* 댓글과 대댓글 사이의 간격을 추가 */
+.comment-info {
+    margin-bottom: 10px;  /* 댓글 간격 설정 */
+}
