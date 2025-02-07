@@ -26,47 +26,53 @@ function writeFormBtnsHTML(){
             <button type="button" class="btn btn-danger btn-section-remove"><i class="fas fa-minus"></i></button>`;
 }
 
-function pdfToImgModalHTML(modal_number, width){
-    return `<div id="pdf-main-container">
-                <div id="pdf-contents">
-                    <canvas id="pdf-canvas" class="pdf-to-image-canvas" width="${width}" data-toggle="modal" data-target="#pdfModal-${modal_number}"></canvas>
-                </div>
+function pdfToImgModalHTML(modal_number) {
+    return `
+        <div id="pdf-main-container">
+            <div id="pdf-contents">
+                <canvas id="pdf-canvas-${modal_number}" class="pdf-to-image-canvas" width="400" data-toggle="modal" data-target="#pdfModal-${modal_number}"></canvas>
             </div>
+        </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="pdfModal-${modal_number}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5>${modal_number} page</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <canvas id="pdf-canvas" class="pdf-to-image-canvas2" width="1100"></canvas>
-                            <div class="modal-body-btn">
-                                <div class="float-left">
-                                    <button type="button" class="btn btn-info" onclick="changeModal('pdfModal-${modal_number-1}')">previous</button>
-                                </div>
-                                <div class="float-right">
-                                    <button type="button" class="btn btn-info" onclick="changeModal('pdfModal-${modal_number+1}')">next</button>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="pdfModal-${modal_number}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>${modal_number} Page</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!-- PDF 슬라이드 영역 -->
+                    <div class="modal-body d-flex justify-content-center" 
+                         style="max-height: 80vh; overflow-y: auto; text-align: center;">
+                        <canvas id="pdf-canvas-modal-${modal_number}" 
+                                class="pdf-to-image-canvas2"
+                                style="width: 100%; height: auto; max-height: 100%;"></canvas>
+                    </div>
+
+                    <!-- Footer 추가 -->
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="btn btn-info prev-btn" onclick="changeModal(${modal_number - 1})">Previous</button>
+                        <button type="button" class="btn btn-info next-btn" onclick="changeModal(${modal_number + 1})">Next</button>
                     </div>
                 </div>
-            </div>`
+            </div>
+        </div>`;
 }
+
 
 function pdfPreviewHTML(width, page_no){
     return `<div id="pdf-main-container">
                 <div id="pdf-contents">
-                    <canvas id="pdf-canvas" class="pdf-to-image-canvas" width="${width}"></canvas><Br>
+                    <canvas id="pdf-canvas-${page_no}" class="pdf-to-image-canvas" width="${width}"></canvas><Br>
                     <center>${page_no}</center>
                 </div>
             </div>`;
 }
+
 
 function replyInputFormHTML(comment_idx){
     return `<div class="input-reply-box row">

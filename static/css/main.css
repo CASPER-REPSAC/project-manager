@@ -227,3 +227,16 @@ input[type="search"]{
 }
 
 /****************/
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝 정렬 */
+    padding: 10px 20px;
+    border-top: 1px solid #ddd; /* 구분선 추가 */
+}
+
+.prev-btn, .next-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+

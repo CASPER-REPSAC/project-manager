@@ -21,7 +21,7 @@ CREATE TABLE post (
     type VARCHAR(10) NOT NULL,
     tag TEXT NOT NULL,
     like_count INT DEFAULT 0,
-    thumbnail TEXT NOT NULL
+    thumbnail LONGTEXT NOT NULL
 );
 
 CREATE TABLE post_attach(
