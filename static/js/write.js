@@ -1,3 +1,5 @@
+import { pdf_total_page } from "/js/uploadEvent.js";
+
 $(document).on("click", "button.btn-section-add", (e) => {
     const section_field_count = getSectionFieldLength();
     const $parent_section_field = $(e.target.closest(".section-field"));
@@ -44,7 +46,7 @@ $(document).on("click", ".pdf-to-image-canvas", (e) => {
 })
 
 
-function getWriteData() {
+export function getWriteData() {
     const data = {
         "title" : $("input[name=title]").val(),
         "date" : $("input[name=date]").val(),

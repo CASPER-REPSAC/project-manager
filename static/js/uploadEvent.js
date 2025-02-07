@@ -1,4 +1,6 @@
-var pdf_total_page;
+import { initPDF } from '/js/previewPDF.js';
+
+export let pdf_total_page;
 
 $("input[type='file']").on("change", () => {
     const file = $("input[type='file']")[0].files[0];

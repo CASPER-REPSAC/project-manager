@@ -54,6 +54,7 @@ router.post("/modify", async(req, res) => {
     }
 
     const input = req.body;
+    console.log(input)
     
     if(input.title.length == 0) { res.json({"result" : "error", "message" : "제목을 입력해 주세요."}); return; }
     if(input.date.length == 0) { res.json({"result" : "error", "message" : "날짜를 입력해 주세요"}); return; }
@@ -71,7 +72,7 @@ router.post("/modify", async(req, res) => {
     }
 
     await sendQuery(`UPDATE post SET title = ?, subtitle = ?, contents = ?, opinion = ?, project_date = ?, type = ?, tag = ?, thumbnail = ? WHERE post_idx = ?`,
-                                        [input.title, input.subtitle, input.section, input.section_opinion, input.date, input.type, input.tag, input.thumbnail, input.post_idx]);
+                                        [input.title, input.subtitle, JSON.stringify(input.section), input.section_opinion, input.date, input.type, input.tag, input.thumbnail, input.post_idx]);
     req.session.post_idx = null;
     res.status(200).json({"result" : "success", "message" : "글이 수정 되었습니다.", "redirect" : `/post/${input.post_idx}`});
 })
