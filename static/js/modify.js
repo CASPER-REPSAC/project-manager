@@ -1,3 +1,5 @@
+import { initPDF } from '/js/previewPDF.js';
+
 const init = async () => {
     const project_path = $("input[name=project_file]").val();
     await initPDF(project_path);
@@ -7,7 +9,14 @@ const init = async () => {
     const opinion = $("input[name=my_opinion]").val();
     const tags = $("input[name=tags]").val().split(",");
 
-    // 섹션 개수 만큼 섹션 영역 추가.
+    const datas = []
+
+    for(let i=0; i<section_data.length; i++){
+        if(section_data[i] != null){
+            
+        }
+    }
+    // 섹션 개수 만큼 섹션 영역 추가
     for(let i=1; i<section_data.length; i++){
         $(".btn-section-add").click();
     }
